@@ -1,0 +1,8 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Cairo-design-system/components.git",
+  "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
+  "license": "MIT"
+}
