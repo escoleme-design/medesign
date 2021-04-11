@@ -3,6 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Cairo-design-system/components.git",
+  "keywords": [
+    "react",
+    "components",
+    "library",
+    "design-system"
+  ],
+  "files": [
+    "codemods",
+    "dist",
+    "lib",
+    "lib-esm",
+    "index.d.ts",
+    "!lib/__tests__",
+    "!lib-esm/__tests__"
+  ],
   "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "license": "MIT",
   "scripts": {
