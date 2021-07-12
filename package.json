@@ -23,7 +23,6 @@
   "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd docs && yarn run develop",
     "dist": "concurrently yarn:dist:*",
     "dist:rollup": "cross-env NODE_ENV=production rollup -c",
     "dist:transpile:cjs": "cross-env BABEL_MODULE=commonjs babel src --out-dir lib --extensions '.js,.ts,.jsx,.tsx'",
