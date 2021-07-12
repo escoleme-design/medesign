@@ -102,3 +102,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Others
+.DS_Store
+.idea
+coverage/
+dist/
+lib/
+lib-esm/
+public/
+stats.html

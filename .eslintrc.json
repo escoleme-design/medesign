@@ -1,0 +1,76 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true,
+        "browser": true,
+        "commonjs": true,
+        "jest": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:jsx-a11y/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "ignorePatterns": [
+        "node_modules",
+        ".cache",
+        "coverage/**/*",
+        "docs/public/**/*",
+        "dist/**/*",
+        "lib/**/*",
+        "lib-*/**/*",
+        "types/**/*"
+    ],
+    "globals": {
+      "__DEV__": "readonly"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    // rules which apply to JS, TS, etc.
+    "rules": {
+        "react/prop-types": 0,
+        "react/display-name": 0,
+        "react-hooks/exhaustive-deps": "error",
+        "jsx-a11y/label-has-for": [2, {"components": []}]
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "overrides": [
+        // rules which apply only to JS
+        {
+            "files": ["**/*.js", "**/*.jsx"],
+            "extends": ["plugin:github/recommended", "plugin:github/browser"],
+            "rules": {
+            "eslint-comments/no-use": 0,
+            "import/no-namespace": 0,
+            "no-shadow": 0,
+            "no-unused-vars": ["error", {"ignoreRestSiblings": true}]
+            }
+        },
+        // rules which apply only to TS
+        {
+            "files": ["**/*.ts", "**/*.tsx"],
+            "extends": ["plugin:@typescript-eslint/recommended"],
+            "rules": {
+            "@typescript-eslint/no-explicit-any": 2,
+            "@typescript-eslint/explicit-module-boundary-types": 0,
+            "@typescript-eslint/no-unused-vars": ["error", {"argsIgnorePattern": "^_"}]
+            }
+        }
+    ]
+}
