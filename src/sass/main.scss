@@ -1,8 +1,13 @@
 @import 'vendors/rfs';
 
-@import "components/button";
+@import "abstracts/variables";
+@import "abstracts/helper";
+@import "abstracts/mixins/index";
+
+@import "atoms/button";
 
 .pato {
   background: red;
   border: 1px solid red;
-}
+} 
+

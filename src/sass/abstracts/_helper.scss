@@ -1,0 +1,28 @@
+/// Função que substitui valores negativos para 0
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - Função positive-value-radius
+///   positive-value-radius(-12px)
+///   // 0px
+///
+///   positive-value-radius(42px)
+///   // 42px
+/// @group helper
+/// @link http://some.url
+/// @param {Number} $radius - Um conjunto ou um valor unitário númerico
+/// @return {Number} Se houver um valor negativo retorna 0, senão o próprio valor. 
+/// @since 1.0.0
+/// @throw Error related message
+@function positive-value-radius($radius) {
+  $result: ();
+
+  @each $value in $radius {
+    @if type-of($value) == number {
+      $result: append($result, max($value, 0));
+    } @else {
+      $result: append($result, $value);
+    }
+  }
+
+  @return  $result;
+}

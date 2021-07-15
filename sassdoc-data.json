@@ -1,0 +1,37 @@
+[
+  {
+    "description": "",
+    "commentRange": {
+      "start": 14,
+      "end": 15
+    },
+    "context": {
+      "type": "function",
+      "name": "abs",
+      "code": "\n  \n",
+      "line": {
+        "start": 16,
+        "end": 18
+      }
+    },
+    "author": [
+      "Joel Henrique Silva Santos"
+    ],
+    "parameter": [
+      {
+        "type": "String",
+        "name": "foo",
+        "default": "bar",
+        "description": "Baz."
+      }
+    ],
+    "access": "public",
+    "group": [
+      "undefined"
+    ],
+    "file": {
+      "path": "abstracts\\_helper.scss",
+      "name": "_helper.scss"
+    }
+  }
+]

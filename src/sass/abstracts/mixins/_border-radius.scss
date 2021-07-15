@@ -1,0 +1,241 @@
+/// Mixin para inserir border-radius em todos os cantos caso a variável $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-radius
+///   @include border-radius(66px);
+///   // border-radius: 66px;
+///
+///   @include border-radius(42px 66px);
+///   // border-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto superior do elemento (esquerdo
+/// e direito) caso a variável $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-top-radius
+///   @include border-top-radius(66px);
+///   // border-top-left-radius: 66px;
+///   // border-top-right-radius: 66px;
+///
+///   @include border-top-radius(42px 66px);
+///   // border-top-left-radius: 42px 66px;
+///   // border-top-right-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-top-left-radius e border-top-right-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-top-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-left-radius: positive-value-radius($radius);
+    border-top-right-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto direito do elemento
+/// caso a variável $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-end-radius
+///   @include border-end-radius(66px);
+///   // border-top-right-radius: 66px;
+///   // border-bottom-right-radius: 66px;
+///
+///   @include border-end-radius(42px 66px);
+///   // border-top-right-radius: 42px 66px;
+///   // border-bottom-right-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-top-right-radius e border-bottom-right-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-end-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-right-radius: positive-value-radius($radius);
+    border-bottom-right-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto inferior
+/// caso a variável $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-bottom-radius
+///   @include border-bottom-radius(66px);
+///   // border-bottom-right-radius: 66px;
+///   // border-bottom-left-radius: 66px;
+///
+///   @include border-bottom-radius(42px 66px);
+///   // border-bottom-right-radius: 42px 66px;
+///   // border-bottom-left-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-bottom-right-radius e border-bottom-left-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-bottom-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: positive-value-radius($radius);
+    border-bottom-left-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto esquerdo
+/// caso a variável $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-start-radius
+///   @include border-start-radius(66px);
+///   // border-top-left-radius: 66px;
+///   // border-bottom-left-radius: 66px;
+///
+///   @include border-start-radius(42px 66px);
+///   // border-top-left-radius: 42px 66px;
+///   // border-bottom-left-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-top-left-radius e border-bottom-left-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-start-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-left-radius: positive-value-radius($radius);
+    border-bottom-left-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto superior esquerdo
+/// caso a variável $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-top-start-radius
+///   @include border-top-start-radius(66px);
+///   // border-top-left-radius: 66px;
+///
+///   @include border-top-start-radius(42px 66px);
+///   // border-top-left-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-top-left-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-top-start-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-left-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto superior direito caso a variável 
+/// $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-top-end-radius
+///   @include border-top-end-radius(66px);
+///   // border-top-right-radius: 66px;
+///
+///   @include border-top-end-radius(42px 66px);
+///   // border-top-right-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-top-right-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-top-end-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-right-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto inferior direito caso a variável
+/// $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-bottom-end-radius
+///   @include border-bottom-end-radius(66px);
+///   // border-bottom-right-radius: 66px;
+///
+///   @include border-bottom-end-radius(42px 66px);
+///   // border-bottom-right-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-bottom-right-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-bottom-end-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: positive-value-radius($radius);
+  }
+}
+
+/// Mixin para inserir border-radius no canto inferior esquerdo caso a variável
+/// $enable-rounded esteja definada como true
+/// 
+/// @author Joel Henrique Silva Santos
+/// @example scss - border-bottom-start-radius
+///   @include border-bottom-start-radius(66px);
+///   // border-bottom-left-radius: 66px;
+///
+///   @include border-bottom-start-radius(42px 66px);
+///   // border-bottom-left-radius: 42px 66px;
+/// @group mixins
+/// @link http://some.url
+/// @output A saída vai ser um border-bottom-left-radius com o $radius
+/// @param {Number} $radius [$border-radius] - Um conjunto ou um valor unitário númerico
+/// @since 1.0.0
+/// @see $enable-rounded
+/// @see $border-radius
+/// @see positive-value-radius
+/// @require positive-value-radius
+@mixin border-bottom-start-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-bottom-left-radius: positive-value-radius($radius);
+  }
+}
+
+
+.foo-class {
+  background-color: rgb(183, 0, 255);
+  @include border-top-radius(10px);
+}

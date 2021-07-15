@@ -13,3 +13,18 @@ export default {
 
 // export const Primary: React.VFC<{}> = () => <Button />;
 export const Primary: React.VFC<{}> = () => <button type="button" className="btn btn-primary">Primary</button>;
+export const Primarasdy: React.VFC<{}> = () => {
+
+  // with hooks
+  // const containerStyles = useAtoms({
+  //  'foo-cairo': true, 
+  // })
+
+  return (
+    <div className={` foo-class`} style={{
+      // backgroundColor: '#f4e099',
+      padding: '50px 100px'
+    }}>
+    </div>
+  )
+}
