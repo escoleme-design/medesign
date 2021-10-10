@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "commonjs",
+      "allowJs": true,
+      "checkJs": false,
+      "jsx": "preserve",
+      "declaration": true,
+      "outDir": "./dist/es",
+      "emitDeclarationOnly": true,
+      "strict": true,
+      "moduleResolution": "node",
+      "rootDirs": ["src"],
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "typeRoots": ["./node_modules/@types", "./@types"]
+    },
+    "exclude": ["node_modules", "**/dist/**/*", "**/*.spec.*", "**/*.stories.*"],
+    "typeRoots": ["./node_modules/@types", "./types/"]
+  }

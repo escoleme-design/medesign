@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = {
+export type style = {
   palette: {
     primary: "#0d47a1",
     secondary: "#311b92",
@@ -13,3 +13,5 @@ module.exports = {
     large: 24
   }
 };
+
+export default style
