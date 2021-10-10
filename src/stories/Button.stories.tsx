@@ -1,18 +1,21 @@
 // Button.stories.tsx
-import './../sass/main.scss'
+// import './../sass/main.scss'
+// import './../sass/taiiilwind.scss'
+// import './../sass/tailwind.css'
+// import './index.css'
 
 import React from 'react';
 
 import { Meta } from '@storybook/react';
 
-import Button from './../components/atoms/button'
+import { Button } from './../index'
 
 export default {
   title: 'Components/Button',
 } as Meta;
 
 // export const Primary: React.VFC<{}> = () => <Button />;
-export const Primary: React.VFC<{}> = () => <button type="button" className="btn btn-primary">Primary</button>;
+export const Primary: React.VFC<{}> = () => <Button>oi</Button>;
 export const Primarasdy: React.VFC<{}> = () => {
 
   // with hooks

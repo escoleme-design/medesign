@@ -10,6 +10,7 @@ import scss from 'rollup-plugin-scss'
 import env from 'postcss-preset-env'
 import alias from '@rollup/plugin-alias';
 import path from "path";
+import tailwindcss from 'tailwindcss'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
@@ -52,6 +53,18 @@ const plugins = [
     })
   }),
   visualizer({sourcemap: true}),
+  postcss({
+    config: {
+      path: "./postcss.config.js",
+    },
+    extensions: [".css"],
+    minimize: true,
+    modules: false,
+    extract: true,
+    inject: {
+      insertAt: "top",
+    },
+  }),
 ]
 
 export default [
