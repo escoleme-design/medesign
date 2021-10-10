@@ -3,14 +3,9 @@ import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import {terser} from 'rollup-plugin-terser'
 import {visualizer} from 'rollup-plugin-visualizer'
-import postcss from 'rollup-plugin-postcss-modules';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import autoprefixer from 'autoprefixer'
-import scss from 'rollup-plugin-scss'
-import env from 'postcss-preset-env'
 import alias from '@rollup/plugin-alias';
 import path from "path";
-import tailwindcss from 'tailwindcss'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
@@ -42,29 +37,7 @@ const plugins = [
   }),
   terser(),
   peerDepsExternal(),
-  scss({
-    process: css => postcss({
-      extract: true,
-      writeDefinitions: true,
-      plugins: [
-        env(),
-        autoprefixer(),
-      ],
-    })
-  }),
   visualizer({sourcemap: true}),
-  postcss({
-    config: {
-      path: "./postcss.config.js",
-    },
-    extensions: [".css"],
-    minimize: true,
-    modules: false,
-    extract: true,
-    inject: {
-      insertAt: "top",
-    },
-  }),
 ]
 
 export default [
@@ -76,7 +49,7 @@ export default [
       file: `dist/browser.${format}.js`,
       format,
       sourcemap: true,
-      name: 'cairo-atoms',
+      name: 'medesign',
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
