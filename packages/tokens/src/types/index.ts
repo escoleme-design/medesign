@@ -310,3 +310,12 @@ export type IconSizes = {
     lg: string;
     xl: string;
 }
+
+export type BorderRadius = {
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
+    xxxl: string;
+}
