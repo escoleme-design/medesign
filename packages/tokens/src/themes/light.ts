@@ -33,16 +33,16 @@ const pinks = {
 }
 
 const purples = {
-    purple50: '#',
-    purple100: '#',
-    purple200: '#',
-    purple300: '#',
-    purple400: '#',
-    purple500: '#',
-    purple600: '#',
-    purple700: '#',
-    purple800: '#',
-    purple900: '#',
+    purple50: '#F3E5F5',
+    purple100: '#E1BEE7',
+    purple200: '#CE93D8',
+    purple300: '#BA68C8',
+    purple400: '#AB47BC',
+    purple500: '#9C27B0',
+    purple600: '#8E24AA',
+    purple700: '#7B1FA2',
+    purple800: '#6A1B9A',
+    purple900: '#4A148C',
 }
 
 const deepPurples = {
