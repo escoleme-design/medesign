@@ -15,6 +15,44 @@ import {
 } from '../types';
 import { createMediaQueries } from '../utils/media-queries';
 
+export const spacings: Spacings = {
+    s1: '0px',
+    s2: '1px',
+    s3: '2px',
+    s4: '4px',
+    s5: '6px',
+    s6: '8px',
+    s7: '10px',
+    s8: '12px',
+    s9: '14px',
+    s10: '16px',
+    s11: '20px',
+    s12: '24px',
+    s13: '28px',
+    s14: '32px',
+    s15: '36px',
+    s16: '40px',
+    s17: '44px',
+    s18: '48px',
+    s19: '56px',
+    s20: '64px',
+    s21: '80px',
+    s22: '96px',
+    s23: '112px',
+    s24: '128px',
+    s25: '144px',
+    s26: '160px',
+    s27: '176px',
+    s28: '192px',
+    s29: '208px',
+    s30: '224px',
+    s31: '240px',
+    s32: '256px',
+    s33: '288px',
+    s34: '320px',
+    s35: '384px'
+};
+
 export const spacingsInPx: Spacings = {
     s1: '0px',
     s2: '1px',
@@ -51,7 +89,7 @@ export const spacingsInPx: Spacings = {
     s33: '288px',
     s34: '320px',
     s35: '384px'
-  };
+};
 
 export const spacingsInRem: Spacings = {
     s1: '0rem',
@@ -89,7 +127,7 @@ export const spacingsInRem: Spacings = {
     s33: '18rem',
     s34: '20rem',
     s35: '24rem'
-  };
+};
   
 export const iconSizes: IconSizes = {
     sm: '16px',

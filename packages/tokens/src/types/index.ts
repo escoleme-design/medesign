@@ -308,11 +308,11 @@ export type Case =
   | 'full-width';
 
 export type Typography = {
-    font: Typeface;
-    fontWeight: FontWeight;
+    font: string;
+    fontWeight: string;
     fontSize: string;
     letterSpacing: string;
-    case: Case;
+    case: string;
 }
 
 type Breakpoint =
