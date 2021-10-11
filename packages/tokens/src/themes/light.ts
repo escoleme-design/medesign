@@ -189,16 +189,16 @@ const ambers = {
 }
 
 const oranges = {
-    orange50: '#',
-    orange100: '#',
-    orange200: '#',
-    orange300: '#',
-    orange400: '#',
-    orange500: '#',
-    orange600: '#',
-    orange700: '#',
-    orange800: '#',
-    orange900: '#',
+    orange50: '#FFF3E0',
+    orange100: '#FFE0B2',
+    orange200: '#FFCC80',
+    orange300: '#FFB74D',
+    orange400: '#FFA726',
+    orange500: '#FF9800',
+    orange600: '#FB8C00',
+    orange700: '#F57C00',
+    orange800: '#EF6C00',
+    orange900: '#E65100',
 }
 
 const deepOranges = {
