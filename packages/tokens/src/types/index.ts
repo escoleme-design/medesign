@@ -394,3 +394,40 @@ export type ZIndex = {
     backdrop: number;
     modal: number;
 };
+
+export interface Theme {
+    colors: Colors;
+    spacingsRem: SpacingsRem;
+    spacingsPx: SpacingsPx;
+    iconSizes: IconSizes;
+    borderRadius: BorderRadius;
+    borderWidth: BorderWidth;
+    typeface: Typeface;
+    typography: {
+        headline: {
+            one: Typography;
+            two: Typography;
+            three: Typography;
+            four: Typography;
+            five: Typography;
+            six: Typography;
+        };
+        subtitle: {
+            one: Typography;
+            two: Typography;
+        };
+        body: {
+            one: Typography;
+            two: Typography;
+        };
+        button: Typography;
+        caption: Typography;
+        overline: Typography;
+    };
+    fontWeight: FontWeight;
+    breakpoints: Breakpoints;
+    mq: MediaQueries;
+    grid: Grid;
+    transitions: Transitions;
+    zIndex: ZIndex;
+}
