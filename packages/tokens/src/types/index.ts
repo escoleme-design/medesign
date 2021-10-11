@@ -374,3 +374,7 @@ export type Grid = {
         gutter: string;
     };
 };
+
+export type MediaQueries = {
+    [key in Breakpoint]: string;
+};
