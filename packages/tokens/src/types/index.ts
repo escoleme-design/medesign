@@ -378,3 +378,9 @@ export type Grid = {
 export type MediaQueries = {
     [key in Breakpoint]: string;
 };
+
+export type Transitions = {
+    default: string;
+    slow: string;
+  };
+  
