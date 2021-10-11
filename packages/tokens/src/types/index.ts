@@ -382,5 +382,15 @@ export type MediaQueries = {
 export type Transitions = {
     default: string;
     slow: string;
-  };
+};
   
+export type ZIndex = {
+    default: number;
+    absolute: number;
+    input: number;
+    popover: number;
+    tooltip: number;
+    header: number;
+    backdrop: number;
+    modal: number;
+};
