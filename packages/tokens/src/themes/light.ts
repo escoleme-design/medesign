@@ -98,29 +98,29 @@ const lightBlues = {
 }
 
 const cyans = {
-    cyan50: '#',
-    cyan100: '#',
-    cyan200: '#',
-    cyan300: '#',
-    cyan400: '#',
-    cyan500: '#',
-    cyan600: '#',
-    cyan700: '#',
-    cyan800: '#',
-    cyan900: '#',
+    cyan50: '#E0F7FA',
+    cyan100: '#B2EBF2',
+    cyan200: '#80DEEA',
+    cyan300: '#4DD0E1',
+    cyan400: '#26C6DA',
+    cyan500: '#00BCD4',
+    cyan600: '#00ACC1',
+    cyan700: '#0097A7',
+    cyan800: '#00838F',
+    cyan900: '#006064',
 }
 
 const teals = {
-    teal50: '#',
-    teal100: '#',
-    teal200: '#',
-    teal300: '#',
-    teal400: '#',
-    teal500: '#',
-    teal600: '#',
-    teal700: '#',
-    teal800: '#',
-    teal900: '#',
+    teal50: '#E0F2F1',
+    teal100: '#B2DFDB',
+    teal200: '#80CBC4',
+    teal300: '#4DB6AC',
+    teal400: '#26A69A',
+    teal500: '#009688',
+    teal600: '#00897B',
+    teal700: '#00796B',
+    teal800: '#00695C',
+    teal900: '#004D40',
 }
 
 const greens = {
