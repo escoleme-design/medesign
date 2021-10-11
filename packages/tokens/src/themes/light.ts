@@ -124,16 +124,16 @@ const teals = {
 }
 
 const greens = {
-    green50: '#',
-    green100: '#',
-    green200: '#',
-    green300: '#',
-    green400: '#',
-    green500: '#',
-    green600: '#',
-    green700: '#',
-    green800: '#',
-    green900: '#',
+    green50: '#E8F5E9',
+    green100: '#C8E6C9',
+    green200: '#A5D6A7',
+    green300: '#81C784',
+    green400: '#66BB6A',
+    green500: '#4CAF50',
+    green600: '#43A047',
+    green700: '#388E3C',
+    green800: '#2E7D32',
+    green900: '#1B5E20',
 }
 
 const lightGreens = {
