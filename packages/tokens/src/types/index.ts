@@ -319,3 +319,9 @@ export type BorderRadius = {
     xxl: string;
     xxxl: string;
 }
+
+export type BorderWidth = {
+    sm: string;
+    md: string;
+    lg: string;
+}
