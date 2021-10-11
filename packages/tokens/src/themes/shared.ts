@@ -6,6 +6,7 @@ import {
   Typeface,
   Typography,
   Transitions,
+  Case,
   FontWeight,
   Grid,
   Breakpoints,
@@ -106,7 +107,119 @@ export const borderRadius: BorderRadius = {
 };
 
 export const borderWidth: BorderWidth = {
-  sm: "1px",
-  md: "2px",
-  lg: "3px"
+    sm: "1px",
+    md: "2px",
+    lg: "3px"
+};
+
+export const typeface: Typeface = {
+    primary: 'Roboto',
+    secondary: 'Helvetica'
+};
+  
+export const fontWeight: FontWeight = {
+    normal: '400',
+    thin: '200',
+    extraBold: '900',
+    bold: '700',
+};
+
+export const typography = {
+    headline: {
+        one: {
+            font: typeface.primary,
+            fontWeight: 'lighter',
+            fontSize: spacingsInRem.s22,
+            letterSpacing: '-1.5px',
+            case: 'none',
+        },
+        two: {
+            font: typeface.primary,
+            fontWeight: 'lighter',
+            fontSize: spacingsInRem.s20,
+            letterSpacing: '-0.5px',
+            case: 'none',
+        },
+        three: {
+            font: typeface.primary,
+            fontWeight: 'normal',
+            fontSize: spacingsInRem.s18,
+            letterSpacing: '0px',
+            case: 'none',
+        },
+        four: {
+            font: typeface.primary,
+            fontWeight: 'normal',
+            fontSize: spacingsInRem.s15,
+            letterSpacing: '0.25px',
+            case: 'none',
+        },
+        five: {
+            font: typeface.primary,
+            fontWeight: 'normal',
+            fontSize: spacingsInRem.s12,
+            letterSpacing: '0px',
+            case: 'none',
+        },
+        six: {
+            font: typeface.primary,
+            fontWeight: '500',
+            fontSize: spacingsInRem.s11,
+            letterSpacing: '0.15',
+            case: 'none',
+        },
+    },
+    subtitle: {
+        one: {
+            font: typeface.primary,
+            fontWeight: 'normal',
+            fontSize: spacingsInRem.s10,
+            letterSpacing: '0.15px',
+            case: 'none',
+        },
+        two: {
+            font: typeface.primary,
+            fontWeight: '500',
+            fontSize: spacingsInRem.s9,
+            letterSpacing: '0.1px',
+            case: 'none',
+        },
+    },
+    body: {
+        one: {
+            font: typeface.primary,
+            fontWeight: 'normal',
+            fontSize: spacingsInRem.s10,
+            letterSpacing: '0.5px',
+            case: 'none',
+        },
+        two: {
+            font: typeface.primary,
+            fontWeight: 'normal',
+            fontSize: spacingsInRem.s9,
+            letterSpacing: '0.25px',
+            case: 'none',
+        },
+    },
+    button: {
+        font: typeface.primary,
+        fontWeight: '500',
+        fontSize: spacingsInRem.s9,
+        letterSpacing: '1.25px',
+        case: 'uppercase',
+    },
+    caption: {
+        font: typeface.primary,
+        fontWeight: 'normal',
+        fontSize: spacingsInRem.s8,
+        letterSpacing: '0.4px',
+        case: 'none',
+    },
+    overline: {
+        font: typeface.primary,
+        fontWeight: 'normal',
+        fontSize: spacingsInRem.s7,
+        letterSpacing: '1.5px',
+        case: 'uppercase',
+    },
 };

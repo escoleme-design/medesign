@@ -300,12 +300,19 @@ export type FontWeight = {
     extraBold: string;
 }
 
+export type Case =
+  | 'capitalize'
+  | 'uppercase'
+  | 'lowercase'
+  | 'none'
+  | 'full-width';
+
 export type Typography = {
     font: Typeface;
     fontWeight: FontWeight;
     fontSize: string;
     letterSpacing: string;
-    case: string;
+    case: Case;
 }
 
 type Breakpoint =
