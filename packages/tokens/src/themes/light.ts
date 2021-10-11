@@ -85,16 +85,16 @@ const blues = {
 }
 
 const lightBlues = {
-    lightBlue50: '#',
-    lightBlue100: '#',
-    lightBlue200: '#',
-    lightBlue300: '#',
-    lightBlue400: '#',
-    lightBlue500: '#',
-    lightBlue600: '#',
-    lightBlue700: '#',
-    lightBlue800: '#',
-    lightBlue900: '#',
+    lightBlue50: '#E1F5FE',
+    lightBlue100: '#B3E5FC',
+    lightBlue200: '#81D4FA',
+    lightBlue300: '#4FC3F7',
+    lightBlue400: '#29B6F6',
+    lightBlue500: '#03A9F4',
+    lightBlue600: '#039BE5',
+    lightBlue700: '#0288D1',
+    lightBlue800: '#0277BD',
+    lightBlue900: '#01579B',
 }
 
 const cyans = {
