@@ -202,16 +202,16 @@ const oranges = {
 }
 
 const deepOranges = {
-    deepOrange50: '#',
-    deepOrange100: '#',
-    deepOrange200: '#',
-    deepOrange300: '#',
-    deepOrange400: '#',
-    deepOrange500: '#',
-    deepOrange600: '#',
-    deepOrange700: '#',
-    deepOrange800: '#',
-    deepOrange900: '#',
+    deepOrange50: '#FBE9E7',
+    deepOrange100: '#FFCCBC',
+    deepOrange200: '#FFAB91',
+    deepOrange300: '#FF8A65',
+    deepOrange400: '#FF7043',
+    deepOrange500: '#FF5722',
+    deepOrange600: '#F4511E',
+    deepOrange700: '#E64A19',
+    deepOrange800: '#D84315',
+    deepOrange900: '#BF360C',
 }
 
 const browns = {
