@@ -223,3 +223,48 @@ export const typography = {
         case: 'uppercase',
     },
 };
+
+export const grid: Grid = {
+    default: {
+      priority: 0,
+      breakpoint: 'default',
+      cols: 12,
+      maxWidth: '880px',
+      gutter: spacingsInPx.s10,
+    },
+    sm: {
+      priority: 1,
+      breakpoint: 'sm',
+      cols: 12,
+      maxWidth: '400px',
+      gutter: spacingsInPx.s6,
+    },
+    md: {
+      priority: 2,
+      breakpoint: 'md',
+      cols: 12,
+      maxWidth: '600px',
+      gutter: spacingsInPx.s10,
+    },
+    lg: {
+      priority: 3,
+      breakpoint: 'lg',
+      cols: 12,
+      maxWidth: '760px',
+      gutter: spacingsInPx.s12,
+    },
+    xl: {
+      priority: 4,
+      breakpoint: 'xl',
+      cols: 12,
+      maxWidth: '880px',
+      gutter: spacingsInPx.s12,
+    },
+    xxl: {
+      priority: 5,
+      breakpoint: 'xxl',
+      cols: 12,
+      maxWidth: '1200px',
+      gutter: spacingsInPx.s12,
+    },
+};

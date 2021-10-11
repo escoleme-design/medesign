@@ -332,7 +332,7 @@ type GridBreakpoint =
   | 'md'
   | 'lg'
   | 'xl'
-  | 'xll';
+  | 'xxl';
   
 export type Grid = {
     [key in GridBreakpoint]: {
