@@ -325,3 +325,24 @@ export type BorderWidth = {
     md: string;
     lg: string;
 }
+
+export type Typeface = {
+    primary: string;
+    secondary: string;
+}
+
+export type FontWeight = {
+    normal: string;
+    thin: string;
+    bold: string;
+    extraBold: string;
+}
+
+export type Typography = {
+    font: Typeface;
+    fontWeight: FontWeight;
+    fontSize: string;
+    letterSpacing: string;
+    case: string;
+
+}
