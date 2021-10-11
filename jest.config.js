@@ -1,7 +1,16 @@
-/* eslint-disable github/unescaped-html-literal */
+const baseConfig = require('./jest.config.base');
+
 module.exports = {
-  cacheDirectory: '.test',
-  collectCoverage: true,
-  collectCoverageFrom: ['src/*.js'],
-  setupFilesAfterEnv: ['<rootDir>/src/utils/test-matchers.tsx', '<rootDir>/src/utils/test-deprecations.tsx']
-}
+  ...baseConfig,
+  projects: ['<rootDir>/packages/*/jest.config.js'],
+  coverageDirectory: '<rootDir>/__coverage__',
+  collectCoverageFrom: [
+    '<rootDir>/packages/**/*.{ts,tsx,js,jsx}',
+    '!<rootDir>/packages/**/node_modules/**/*.{ts,tsx,js,jsx}',
+    '!<rootDir>/packages/**/dist/**/*.{ts,tsx,js,jsx}',
+    '!<rootDir>/packages/**/__testfixtures__/**/*',
+    '!<rootDir>/packages/**/index.{ts,tsx,js,jsx}',
+    '!<rootDir>/packages/**/*.stories.{ts,tsx,js,jsx}',
+    '!<rootDir>/packages/**/*.docs.mdx',
+  ],
+};
