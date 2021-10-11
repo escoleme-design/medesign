@@ -13,6 +13,7 @@ import {
   MediaQueries,
   ZIndex,
 } from '../types';
+import { createMediaQueries } from '../utils/media-queries';
 
 export const spacingsInPx: Spacings = {
     s1: '0px',
@@ -234,37 +235,60 @@ export const grid: Grid = {
     },
     sm: {
       priority: 1,
-      breakpoint: 'sm',
+      breakpoint: 'smDown',
       cols: 12,
       maxWidth: '400px',
       gutter: spacingsInPx.s6,
     },
     md: {
       priority: 2,
-      breakpoint: 'md',
+      breakpoint: 'mdUp',
       cols: 12,
       maxWidth: '600px',
       gutter: spacingsInPx.s10,
     },
     lg: {
       priority: 3,
-      breakpoint: 'lg',
+      breakpoint: 'lgUp',
       cols: 12,
       maxWidth: '760px',
       gutter: spacingsInPx.s12,
     },
     xl: {
       priority: 4,
-      breakpoint: 'xl',
+      breakpoint: 'xlUp',
       cols: 12,
       maxWidth: '880px',
       gutter: spacingsInPx.s12,
     },
     xxl: {
       priority: 5,
-      breakpoint: 'xxl',
+      breakpoint: 'xxlUp',
       cols: 12,
       maxWidth: '1200px',
       gutter: spacingsInPx.s12,
     },
 };
+
+export const breakpoints: Breakpoints = {
+    'smDown':   '(max-width: 575.98px)',
+    'smUp':     '(min-width: 576px)',
+    'smOnly':   '(min-width: 576px) and (max-width: 767.98px)',
+
+    'mdDown':   '(max-width: 767.98px)',
+    'mdUp':     '(min-width: 768px)',
+    'mdOnly':   '(min-width: 768px) and (max-width: 991.98px)',
+
+    'lgDown':   '(max-width: 991.98px)',
+    'lgUp':     '(min-width: 992px)',
+    'lgOnly':   '(min-width: 992px) and (max-width: 1199.98px)',
+
+    'xlDown':   '(max-width: 1199.98px)',
+    'xlUp':     '(min-width: 1200px)',
+    'xlOnly':   '(min-width: 1200px) and (max-width: 1399.98px)',
+
+    'xxlDown':  '(max-width: 1399.98px)',
+    'xxlUp':    '(min-width: 1400px)'
+};
+
+export const mq: MediaQueries = createMediaQueries(breakpoints);

@@ -316,11 +316,20 @@ export type Typography = {
 }
 
 type Breakpoint =
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | 'xxl';
+  | 'smDown'
+  | 'smUp'
+  | 'smOnly'
+  | 'mdDown'
+  | 'mdUp'
+  | 'mdOnly'
+  | 'lgDown'
+  | 'lgUp'
+  | 'lgOnly'
+  | 'xlDown'
+  | 'xlUp'
+  | 'xlOnly'
+  | 'xxlDown'
+  | 'xxlUp';
 
 export type Breakpoints = {
     [key in Breakpoint]: string;
