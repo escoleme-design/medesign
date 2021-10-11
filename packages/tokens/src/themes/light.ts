@@ -176,16 +176,16 @@ const yellows = {
 }
 
 const ambers = {
-    amber50: '#',
-    amber100: '#',
-    amber200: '#',
-    amber300: '#',
-    amber400: '#',
-    amber500: '#',
-    amber600: '#',
-    amber700: '#',
-    amber800: '#',
-    amber900: '#',
+    amber50: '#FFF8E1',
+    amber100: '#FFECB3',
+    amber200: '#FFE082',
+    amber300: '#FFD54F',
+    amber400: '#FFCA28',
+    amber500: '#FFC107',
+    amber600: '#FFB300',
+    amber700: '#FFA000',
+    amber800: '#FF8F00',
+    amber900: '#FF6F0',
 }
 
 const oranges = {
