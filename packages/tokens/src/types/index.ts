@@ -344,5 +344,15 @@ export type Typography = {
     fontSize: string;
     letterSpacing: string;
     case: string;
+}
 
+type Breakpoint =
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | 'xxl';
+
+export type Breakpoints = {
+    [key in Breakpoint]: string;
 }
