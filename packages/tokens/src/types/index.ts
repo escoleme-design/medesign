@@ -226,6 +226,19 @@ export type Colors = {
     blueGray700: string;
     blueGray800: string;
     blueGray900: string;
+    // Baseline
+    primary: string;
+    primaryVariant: string;
+    secondary: string;
+    secondaryVariant: string;
+    background: string;
+    surface: string;
+    error: string;
+    onPrimary: string;
+    onSecondary: string;
+    onBackground: string;
+    onSurface: string;
+    onError: string;
 }
 
 export type Spacings = {

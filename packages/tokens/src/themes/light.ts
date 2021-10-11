@@ -6,6 +6,21 @@ const transparent = 'transparent';
 const white = '#FFF';
 const black = '#000';
 
+const baselineColors = {
+    primary: '#311B92',
+    primaryVariant: '#231367',
+    secondary: '#EF2D56',
+    secondaryVariant: '#d9103b',
+    background: white,
+    surface: white,
+    error: '#B00020',
+    onPrimary: white,
+    onSecondary: black,
+    onBackground: black,
+    onSurface: black,
+    onError: white,
+}
+
 const reds = {
     red50: '#FFEBEE',
     red100: '#FFCDD2',
@@ -277,6 +292,7 @@ export const colors: Colors = {
     ...browns,
     ...grays,
     ...blueGrays,
+    ...baselineColors,
 };
   
 export * from './shared';
