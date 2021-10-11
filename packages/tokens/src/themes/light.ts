@@ -46,29 +46,29 @@ const purples = {
 }
 
 const deepPurples = {
-    deepPurple50: '#',
-    deepPurple100: '#',
-    deepPurple200: '#',
-    deepPurple300: '#',
-    deepPurple400: '#',
-    deepPurple500: '#',
-    deepPurple600: '#',
-    deepPurple700: '#',
-    deepPurple800: '#',
-    deepPurple900: '#',
+    deepPurple50: '#EDE7F6',
+    deepPurple100: '#D1C4E9',
+    deepPurple200: '#B39DDB',
+    deepPurple300: '#9575CD',
+    deepPurple400: '#7E57C2',
+    deepPurple500: '#673AB7',
+    deepPurple600: '#5E35B1',
+    deepPurple700: '#512DA8',
+    deepPurple800: '#4527A0',
+    deepPurple900: '#311B92',
 }
 
 const indigos = {
-    indigo50: '#',
-    indigo100: '#',
-    indigo200: '#',
-    indigo300: '#',
-    indigo400: '#',
-    indigo500: '#',
-    indigo600: '#',
-    indigo700: '#',
-    indigo800: '#',
-    indigo900: '#',
+    indigo50: '#E8EAF6',
+    indigo100: '#C5CAE9',
+    indigo200: '#9FA8DA',
+    indigo300: '#7986CB',
+    indigo400: '#5C6BC0',
+    indigo500: '#3F51B5',
+    indigo600: '#3949AB',
+    indigo700: '#303F9F',
+    indigo800: '#283593',
+    indigo900: '#1A237E',
 }
 
 const blues = {
