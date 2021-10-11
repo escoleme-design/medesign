@@ -1,4 +1,4 @@
-import { Colors } from '../types';
+import { Colors, States } from '../types';
 
 export const type = 'light';
 
@@ -294,5 +294,15 @@ export const colors: Colors = {
     ...blueGrays,
     ...baselineColors,
 };
+
+export const statesLightTheme: States = {
+    enabled:    'rgba(0, 0, 0, 0)',
+    hover:      'rgba(0, 0, 0, 0.04)',
+    focus:      'rgba(0, 0, 0, 0.12)',
+    selected:   'rgba(98, 0, 232, 0.08)',
+    activated:  'rgba(98, 0, 232, 0.12);',
+    pressed:    'rgba(0, 0, 0, 0.16)',
+    dragged:    'rgba(0, 0, 0, 0.08)'
+}
   
 export * from './shared';

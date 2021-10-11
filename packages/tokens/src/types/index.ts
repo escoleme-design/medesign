@@ -414,6 +414,16 @@ export type Elevation = {
     density24: string;
 }
 
+export type States = {
+    enabled: string;
+    hover: string;
+    focus: string;
+    selected: string;
+    activated: string;
+    pressed: string;
+    dragged: string;
+};
+
 export interface Theme {
     colors: Colors;
     spacings: Spacings;
@@ -449,4 +459,6 @@ export interface Theme {
     transitions: Transitions;
     zIndex: ZIndex;
     elevation: Elevation;
+    statesLightTheme: States;
+    statesPrimary: States;
 }

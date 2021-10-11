@@ -10,6 +10,7 @@ import {
   MediaQueries,
   ZIndex,
   Elevation,
+  States,
 } from '../types';
 import { createMediaQueries } from '../utils/media-queries';
 
@@ -371,4 +372,14 @@ export const elevation: Elevation = {
     density22: '0px 10px 14px -6px rgba(0, 0, 0, 0.2), 0px 22px 35px 3px rgba(0, 0, 0, 0.14), 0px 8px 42px 7px rgba(0, 0, 0, 0.12)',
     density23: '0px 11px 14px -7px rgba(0, 0, 0, 0.2), 0px 23px 36px 3px rgba(0, 0, 0, 0.14), 0px 9px 44px 8px rgba(0, 0, 0, 0.12)',
     density24: '0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12)',
+}
+
+export const statesPrimary: States = {
+    enabled:    'rgba(255, 255, 255, 0)',
+    hover:      'rgba(255, 255, 255, 0.08)',
+    focus:      'rgba(255, 255, 255, 0.24)',
+    selected:   'rgba(255, 255, 255, 0.16)',
+    activated:  'rgba(255, 255, 255, 0.24)',
+    pressed:    'rgba(255, 255, 255, 0.32)',
+    dragged:    'rgba(255, 255, 255, 0.16)',
 }
