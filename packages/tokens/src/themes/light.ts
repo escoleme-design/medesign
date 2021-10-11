@@ -7,16 +7,16 @@ const white = '#FFF';
 const black = '#000';
 
 const reds = {
-    red50: '#',
-    red100: '#',
-    red200: '#',
-    red300: '#',
-    red400: '#',
-    red500: '#',
-    red600: '#',
-    red700: '#',
-    red800: '#',
-    red900: '#',
+    red50: '#FFEBEE',
+    red100: '#FFCDD2',
+    red200: '#EF9A9A',
+    red300: '#E57373',
+    red400: '#EF5350',
+    red500: '#F44336',
+    red600: '#E53935',
+    red700: '#D32F2F',
+    red800: '#C62828',
+    red900: '#B71C1C',
 }
 
 const pinks = {
