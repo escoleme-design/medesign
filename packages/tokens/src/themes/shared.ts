@@ -104,3 +104,9 @@ export const borderRadius: BorderRadius = {
     circle: '100%',
     pill: '999999px',
 };
+
+export const borderWidth: BorderWidth = {
+  sm: "1px",
+  md: "2px",
+  lg: "3px"
+};
