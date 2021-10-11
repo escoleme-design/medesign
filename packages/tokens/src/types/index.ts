@@ -228,45 +228,7 @@ export type Colors = {
     blueGray900: string;
 }
 
-export type SpacingsRem = {
-    s1: string;
-    s2: string;
-    s3: string;
-    s4: string;
-    s5: string;
-    s6: string;
-    s7: string;
-    s8: string;
-    s9: string;
-    s10: string;
-    s11: string;
-    s12: string;
-    s13: string;
-    s14: string;
-    s15: string;
-    s16: string;
-    s17: string;
-    s18: string;
-    s19: string;
-    s20: string;
-    s21: string;
-    s22: string;
-    s23: string;
-    s24: string;
-    s25: string;
-    s26: string;
-    s27: string;
-    s28: string;
-    s29: string;
-    s30: string;
-    s31: string;
-    s32: string;
-    s33: string;
-    s34: string;
-    s35: string;
-}
-
-export type SpacingsPx = {
+export type Spacings = {
     s1: string;
     s2: string;
     s3: string;
@@ -397,8 +359,7 @@ export type ZIndex = {
 
 export interface Theme {
     colors: Colors;
-    spacingsRem: SpacingsRem;
-    spacingsPx: SpacingsPx;
+    spacings: Spacings;
     iconSizes: IconSizes;
     borderRadius: BorderRadius;
     borderWidth: BorderWidth;
