@@ -356,3 +356,21 @@ type Breakpoint =
 export type Breakpoints = {
     [key in Breakpoint]: string;
 }
+
+type GridBreakpoint =
+  | 'default'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | 'xll';
+  
+export type Grid = {
+    [key in GridBreakpoint]: {
+        priority: number;
+        breakpoint: Breakpoint | 'default';
+        cols: number;
+        maxWidth: string;
+        gutter: string;
+    };
+};
