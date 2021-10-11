@@ -150,16 +150,16 @@ const lightGreens = {
 }
 
 const limes = {
-    lime50: '#',
-    lime100: '#',
-    lime200: '#',
-    lime300: '#',
-    lime400: '#',
-    lime500: '#',
-    lime600: '#',
-    lime700: '#',
-    lime800: '#',
-    lime900: '#',
+    lime50: '#F9FBE7',
+    lime100: '#F0F4C3',
+    lime200: '#E6EE9C',
+    lime300: '#DCE775',
+    lime400: '#D4E157',
+    lime500: '#CDDC39',
+    lime600: '#C0CA33',
+    lime700: '#AFB42B',
+    lime800: '#9E9D24',
+    lime900: '#827717',
 }
 
 const yellows = {
