@@ -137,16 +137,16 @@ const greens = {
 }
 
 const lightGreens = {
-    lightGreen50: '#',
-    lightGreen100: '#',
-    lightGreen200: '#',
-    lightGreen300: '#',
-    lightGreen400: '#',
-    lightGreen500: '#',
-    lightGreen600: '#',
-    lightGreen700: '#',
-    lightGreen800: '#',
-    lightGreen900: '#',
+    lightGreen50: '#F1F8E9',
+    lightGreen100: '#DCEDC8',
+    lightGreen200: '#C5E1A5',
+    lightGreen300: '#AED581',
+    lightGreen400: '#9CCC65',
+    lightGreen500: '#8BC34A',
+    lightGreen600: '#7CB342',
+    lightGreen700: '#689F38',
+    lightGreen800: '#558B2F',
+    lightGreen900: '#33691E',
 }
 
 const limes = {
