@@ -292,3 +292,19 @@ export const breakpoints: Breakpoints = {
 };
 
 export const mq: MediaQueries = createMediaQueries(breakpoints);
+
+export const transitions = {
+    default: '120ms ease-in-out',
+    slow: '300ms ease-in-out',
+  };
+  
+export const zIndex: ZIndex = {
+    default: 0,
+    absolute: 1,
+    input: 20,
+    popover: 30,
+    tooltip: 40,
+    header: 600,
+    backdrop: 700,
+    modal: 1000,
+};
