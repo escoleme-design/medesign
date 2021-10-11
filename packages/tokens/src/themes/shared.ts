@@ -95,3 +95,12 @@ export const iconSizes: IconSizes = {
     lg: '32px',
     xl: '48px'
 };
+
+export const borderRadius: BorderRadius = {
+    sm: '4px',
+    md: '8px',
+    lg: '12px',
+    xl: '16px',
+    circle: '100%',
+    pill: '999999px',
+};
