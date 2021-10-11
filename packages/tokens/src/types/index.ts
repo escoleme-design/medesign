@@ -226,6 +226,19 @@ export type Colors = {
     blueGray700: string;
     blueGray800: string;
     blueGray900: string;
+    // Baseline
+    primary: string;
+    primaryVariant: string;
+    secondary: string;
+    secondaryVariant: string;
+    background: string;
+    surface: string;
+    error: string;
+    onPrimary: string;
+    onSecondary: string;
+    onBackground: string;
+    onSurface: string;
+    onError: string;
 }
 
 export type Spacings = {
@@ -373,6 +386,44 @@ export type ZIndex = {
     modal: number;
 };
 
+export type Elevation = {
+    density0: string;
+    density1: string;
+    density2: string;
+    density3: string;
+    density4: string;
+    density5: string;
+    density6: string;
+    density7: string;
+    density8: string;
+    density9: string;
+    density10: string;
+    density11: string;
+    density12: string;
+    density13: string;
+    density14: string;
+    density15: string;
+    density16: string;
+    density17: string;
+    density18: string;
+    density19: string;
+    density20: string;
+    density21: string;
+    density22: string;
+    density23: string;
+    density24: string;
+}
+
+export type States = {
+    enabled: string;
+    hover: string;
+    focus: string;
+    selected: string;
+    activated: string;
+    pressed: string;
+    dragged: string;
+};
+
 export interface Theme {
     colors: Colors;
     spacings: Spacings;
@@ -407,4 +458,7 @@ export interface Theme {
     grid: Grid;
     transitions: Transitions;
     zIndex: ZIndex;
+    elevation: Elevation;
+    statesLightTheme: States;
+    statesPrimary: States;
 }

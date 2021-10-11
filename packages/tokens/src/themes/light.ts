@@ -1,10 +1,25 @@
-import { Colors } from '../types';
+import { Colors, States } from '../types';
 
 export const type = 'light';
 
 const transparent = 'transparent';
 const white = '#FFF';
 const black = '#000';
+
+const baselineColors = {
+    primary: '#311B92',
+    primaryVariant: '#231367',
+    secondary: '#EF2D56',
+    secondaryVariant: '#d9103b',
+    background: white,
+    surface: white,
+    error: '#B00020',
+    onPrimary: white,
+    onSecondary: black,
+    onBackground: black,
+    onSurface: black,
+    onError: white,
+}
 
 const reds = {
     red50: '#FFEBEE',
@@ -277,6 +292,17 @@ export const colors: Colors = {
     ...browns,
     ...grays,
     ...blueGrays,
+    ...baselineColors,
 };
+
+export const statesLightTheme: States = {
+    enabled:    'rgba(0, 0, 0, 0)',
+    hover:      'rgba(0, 0, 0, 0.04)',
+    focus:      'rgba(0, 0, 0, 0.12)',
+    selected:   'rgba(98, 0, 232, 0.08)',
+    activated:  'rgba(98, 0, 232, 0.12);',
+    pressed:    'rgba(0, 0, 0, 0.16)',
+    dragged:    'rgba(0, 0, 0, 0.08)'
+}
   
 export * from './shared';
