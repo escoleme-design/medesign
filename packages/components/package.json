@@ -5,7 +5,7 @@
   "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "homepage": "https://github.com/Cairo-design-system/cairo-react#readme",
   "license": "ISC",
-  "main": "lib/medesign-components.js",
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
