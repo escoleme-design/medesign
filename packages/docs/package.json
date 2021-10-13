@@ -1,6 +1,6 @@
 {
   "name": "@escoleme/medocs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "homepage": "https://github.com/Cairo-design-system/cairo-react#readme",
@@ -22,7 +22,7 @@
     "docs:dev": "npm run storybook"
   },
   "dependencies": {
-    "@escoleme/mecomponents": "^1.0.2",
+    "@escoleme/mecomponents": "^1.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
