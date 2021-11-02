@@ -53,7 +53,7 @@ type Color = {
     // Neutral Variant
     surfaceVariant: string;
     onSurfaceVariant: string;
-    outine: string;
+    outline: string;
 
     // Error
     error: string;
@@ -72,6 +72,14 @@ type Color = {
     onSuccess: string;
     successContainer: string;
     onSuccessContainer: string;
+
+    // Inverse
+    inverseSurface: string;
+    inverseOnSurface: string;
+    inversePrimary: string;
+
+    // Shadow
+    shadow: string;
 }
 
 export type Reference = {

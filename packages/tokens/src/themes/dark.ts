@@ -1,4 +1,4 @@
-import { Reference, System } from '../types'
+import { System } from '../types'
 import { ref } from './shared'
 
 export const sys: System = {
@@ -30,7 +30,7 @@ export const sys: System = {
         // Neutral Variant
         surfaceVariant: ref.palette.neutralVariant['30'],
         onSurfaceVariant: ref.palette.neutralVariant['80'],
-        outine: ref.palette.neutralVariant['60'],
+        outline: ref.palette.neutralVariant['60'],
         
         // Error
         error: ref.palette.error['80'],
@@ -49,6 +49,14 @@ export const sys: System = {
         onSuccess: ref.palette.success['20'],
         successContainer: ref.palette.success['30'],
         onSuccessContainer: ref.palette.success['90'],
+
+        // Inverse
+        inverseSurface: ref.palette.neutral['90'],
+        inverseOnSurface: ref.palette.neutral['20'],
+        inversePrimary: ref.palette.primary['40'],
+
+        // Shadow
+        shadow: ref.palette.neutral['0'],
     }
 }
 
