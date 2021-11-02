@@ -45,16 +45,15 @@ type Color = {
     onTertiaryContainer: string;
 
     // Neutral
-    neutral: string;
-    onNeutral: string;
-    neutralContainer: string;
-    onNeutralContainer: string;
+    background: string;
+    onBackground: string;
+    surface: string;
+    onSurface: string;
 
     // Neutral Variant
-    neutralVariant: string;
-    onNeutralVariant: string;
-    neutralVariantContainer: string;
-    onNeutralVariantContainer: string;
+    surfaceVariant: string;
+    onSurfaceVariant: string;
+    outine: string;
 
     // Error
     error: string;

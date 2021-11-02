@@ -4,52 +4,51 @@ import { ref } from './shared'
 export const sys: System = {
     color: {
         // Primary
-        primary: ref.palette.primary['80'],
-        onPrimary: ref.palette.primary['20'],
-        primaryContainer: ref.palette.primary['30'],
-        onPrimaryContainer: ref.palette.primary['90'],
+        primary: ref.palette.primary['40'],
+        onPrimary: ref.palette.primary['100'],
+        primaryContainer: ref.palette.primary['90'],
+        onPrimaryContainer: ref.palette.primary['10'],
         
         // Secondary
-        secondary: ref.palette.success['80'],
-        onSecondary: ref.palette.success['20'],
-        secondaryContainer: ref.palette.success['30'],
-        onSecondaryContainer: ref.palette.success['90'],
+        secondary: ref.palette.success['40'],
+        onSecondary: ref.palette.success['100'],
+        secondaryContainer: ref.palette.success['90'],
+        onSecondaryContainer: ref.palette.success['10'],
 
         // Tertiary
-        tertiary: ref.palette.tertiary['80'],
-        onTertiary: ref.palette.tertiary['20'],
-        tertiaryContainer: ref.palette.tertiary['30'],
-        onTertiaryContainer: ref.palette.tertiary['90'],
+        tertiary: ref.palette.tertiary['40'],
+        onTertiary: ref.palette.tertiary['100'],
+        tertiaryContainer: ref.palette.tertiary['90'],
+        onTertiaryContainer: ref.palette.tertiary['10'],
 
         // Neutral
-        neutral: ref.palette.neutral['80'],
-        onNeutral: ref.palette.neutral['20'],
-        neutralContainer: ref.palette.neutral['30'],
-        onNeutralContainer: ref.palette.neutral['90'],
+        background: ref.palette.neutral['99'],
+        onBackground: ref.palette.neutral['10'],
+        surface: ref.palette.neutral['99'],
+        onSurface: ref.palette.neutral['10'],
 
         // Neutral Variant
-        neutralVariant: ref.palette.neutralVariant['80'],
-        onNeutralVariant: ref.palette.neutralVariant['20'],
-        neutralVariantContainer: ref.palette.neutralVariant['30'],
-        onNeutralVariantContainer: ref.palette.neutralVariant['90'],
+        surfaceVariant: ref.palette.neutralVariant['90'],
+        onSurfaceVariant: ref.palette.neutralVariant['90'],
+        outine: ref.palette.neutralVariant['50'],
 
         // Error
-        error: ref.palette.error['80'],
-        onRrror: ref.palette.error['20'],
-        errorContainer: ref.palette.error['30'],
-        onRrrorContainer: ref.palette.error['90'],
+        error: ref.palette.error['40'],
+        onRrror: ref.palette.error['100'],
+        errorContainer: ref.palette.error['90'],
+        onRrrorContainer: ref.palette.error['10'],
 
         // Warning
-        warning: ref.palette.warning['80'],
-        onWarning: ref.palette.warning['20'],
-        warningContainer: ref.palette.warning['30'],
-        onWarningContainer: ref.palette.warning['90'],
+        warning: ref.palette.warning['40'],
+        onWarning: ref.palette.warning['100'],
+        warningContainer: ref.palette.warning['90'],
+        onWarningContainer: ref.palette.warning['10'],
 
         // Success
-        success: ref.palette.success['80'],
-        onSuccess: ref.palette.success['20'],
-        successContainer: ref.palette.success['30'],
-        onSuccessContainer: ref.palette.success['90'],
+        success: ref.palette.success['40'],
+        onSuccess: ref.palette.success['100'],
+        successContainer: ref.palette.success['90'],
+        onSuccessContainer: ref.palette.success['10'],
     }
 }
 
