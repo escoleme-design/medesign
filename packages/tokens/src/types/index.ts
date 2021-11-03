@@ -14,7 +14,7 @@ type Tones = {
     '100': string;
 }
 
-type Palette = {
+export type Palette = {
     primary: Tones;
     secondary: Tones;
     tertiary: Tones;
@@ -23,9 +23,11 @@ type Palette = {
     error: Tones;
     success: Tones;
     warning: Tones;
+    white: string;
+    black: string;
 }
 
-type Color = {
+export type Color = {
     // Primary
     primary: string;
     onPrimary: string;
@@ -82,15 +84,68 @@ type Color = {
     shadow: string;
 }
 
+type SurfaceTone = {
+    surface: string,
+    contentLayer: string,
+    opacity: number
+}
+
+export type SurfaceTones = {
+    '1': SurfaceTone,
+    '2': SurfaceTone,
+    '3': SurfaceTone,
+    '4': SurfaceTone,
+    '5': SurfaceTone,
+}
+
+type ShadowOffset = {
+    x: number,
+    y: number,
+}
+
+type Shadow = {
+    shadowOffset: ShadowOffset,
+    blur: number,
+    spread: number,
+    opacity: number,
+    color: string
+}
+
+type ElevationLevel = {
+    surfaceTones: SurfaceTone,
+    elevation: number,
+    shadow: Shadow[],
+}
+
+export type Elevation = {
+    level1: ElevationLevel,
+    level2: ElevationLevel,
+    level3: ElevationLevel,
+    level4: ElevationLevel,
+    level5: ElevationLevel,
+}
+
 export type Reference = {
-    palette: Palette
+    palette: Palette,
+    surfaceTones: SurfaceTones,
 }
 
 export type System = {
-    color: Color
+    color: Color,
+    elevation: Elevation,
+    // state: {
+    //     hover: {},
+    //     focus: {},
+    //     pressed: {},
+    //     dragged: {},
+    // },
+    // typescale: {
+
+    // }
 }
 
 export interface Theme {
     ref: Reference,
     sys: System,
+    comp: object,
 }

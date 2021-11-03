@@ -3,11 +3,35 @@ import * as lightBase from './themes/light';
 import * as darkBase from './themes/dark';
 
 const light: Types.Theme = {
-    ...lightBase
+    ref: {
+        palette: lightBase.palette,
+        surfaceTones: lightBase.surfaceTones
+    },
+    sys: {
+        color: lightBase.color,
+        elevation: lightBase.elevation,
+    },
+    comp: {
+        button: {
+            
+        }
+    }
 };
 
 const dark: Types.Theme = {
-    ...darkBase
+    ref: {
+        palette: darkBase.palette,
+        surfaceTones: darkBase.surfaceTones
+    },
+    sys: {
+        color: darkBase.color,
+        elevation: darkBase.elevation,
+    },
+    comp: {
+        button: {
+            
+        }
+    }
 };
 
 export type Theme = Types.Theme;
