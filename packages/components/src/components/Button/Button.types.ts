@@ -2,8 +2,8 @@ import React from 'react';
 import { tupleString } from '../../helpers/utils';
 import { Theme, light } from '@escoleme/medesign-tokens'
 
-// const ButtonVariants = tupleString('default', 'primary', 'secondary', 'tertiary', 'dashed', 'link', 'text');
-// export type ButtonVariant = typeof ButtonVariants[number];
+const style = tupleString('filled', 'tonal', 'outlined', 'text');
+export type Style = typeof style[number];
 
 // const ButtonShapes = tupleString('default', 'circle', 'round');
 // export type ButtonShape = typeof ButtonShapes[number];
@@ -22,7 +22,7 @@ export interface IButtonProps {
     className?: string;
     size?: any;
     uppercase?: boolean;
-    variant?: any;
+    variant?: Style;
     href?: string;
     type?: ButtonHTMLType;
     target?: ButtonTarget;

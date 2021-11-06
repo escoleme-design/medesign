@@ -95,14 +95,22 @@ export const getStyles = ({
   return styles;
 }
 
-export const Element = styled.button`
+export const FilledButton = styled.button`
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
+
+
+    /* Size */
+    // min-width: 0px;
+    min-height: ${(props) => getStyles(props).style.layout.height}px;
+    height: ${(props) => getStyles(props).style.layout.height}px;
+    padding: 0 ${(props) => getStyles(props).style.layout.leftRightPadding}px;
+    border-radius: ${(props) => getStyles(props).style.layout.shape}px;
 `;
 
-export const LinkElement = styled(Element).attrs({ as: "a" })`
+export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
   text-decoration: none;
 `;
 

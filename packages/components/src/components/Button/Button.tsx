@@ -3,6 +3,7 @@ import React from 'react';
 import { Element, LinkElement } from './Button.styles'
 import { IButtonProps } from './Button.types';
 import { automationAttribute } from '../../helpers/utils';
+import { FilledButton } from './Button.filled.styles';
 
 const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = (props: IButtonProps, _ref) => {
   
@@ -45,13 +46,13 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = 
   const ButtonStyle = props.href ? LinkElement : Element;
 
   return (
-    <ButtonStyle
+    <FilledButton
       {...automationAttribute("button")}
       onClick={handleClick}
       {...props}
     >
       {content}
-    </ButtonStyle>
+    </FilledButton>
   );
 }
 

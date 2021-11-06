@@ -9,5 +9,5 @@ export default {
 
 export const Base: Story = (args: any) => <Button {...args} />
 Base.args = {
-  children: 'oi'
+  children: 'adaaoi'
 }
