@@ -1,5 +1,5 @@
 import {ThemeProvider} from '@escoleme/mecomponents';
-// import { light, dark } from '@escoleme/medesign-tokens'
+import { light, dark } from '@escoleme/medesign-tokens'
 import { addDecorator } from '@storybook/react'
 import { withThemes } from '@react-theming/storybook-addon';
 import { Suspense } from 'react'
