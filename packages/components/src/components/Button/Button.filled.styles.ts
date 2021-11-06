@@ -119,11 +119,20 @@ export const FilledButton = styled.button`
     line-height: ${(props) => getStyles(props).style.state.enabled.labelText.lineHeight};
     font-size: ${(props) => getStyles(props).style.state.enabled.labelText.size}px;
     font-weight: ${(props) => getStyles(props).style.state.enabled.labelText.weight};
-    /* Appearance */
     
+    /* Appearance */
+
     background: ${(props) => getStyles(props).style.state.enabled.container.color};
     border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
-    color: ${props => getStyles(props).style.state.enabled.labelText.color};
+    color: ${props => getStyles(props).style.state.enabled.labelText};
+
+    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+    pointer-events: ${(props) => getStyles(props).pointerEvents};
+    transition: opacity 15ms linear,background-color 15ms linear;
+
+    > *:not(:last-child):not(:only-child) {
+        margin-right: 0;
+    }
 `;
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
