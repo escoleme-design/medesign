@@ -11,7 +11,7 @@ const light: Types.Theme = {
         color: lightBase.color,
         elevation: lightBase.elevation,
         state: lightBase.state,
-        typeface: darkBase.typescale,
+        typescale: darkBase.typescale,
     },
     comp: {
         button: lightBase.button
@@ -27,7 +27,7 @@ const dark: Types.Theme = {
         color: darkBase.color,
         elevation: darkBase.elevation,
         state: darkBase.state,
-        typeface: darkBase.typescale,
+        typescale: darkBase.typescale,
     },
     comp: {
         button: darkBase.button

@@ -1,4 +1,5 @@
-import { Palette, Reference, Typeface } from "../types";
+import { Palette } from "../types/Reference/Palette"
+import { TypeScale } from "../types/System/Typescale"
 
 export const palette: Palette = {
     primary: {
@@ -125,7 +126,7 @@ export const palette: Palette = {
     black: 'black',
 }
 
-export const typescale: Typeface = {
+export const typescale: TypeScale = {
     // Display
     displayLarge: {
         font: 'Roboto',

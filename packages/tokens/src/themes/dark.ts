@@ -1,4 +1,8 @@
-import { Button, Color, Elevation, States, SurfaceTones, System } from '../types'
+import { Button } from '../types/Component/Button';
+import { SurfaceTones } from '../types/Reference/SurfaceTones';
+import { Color } from '../types/System/Color';
+import { Elevation } from '../types/System/Elevation';
+import { States } from '../types/System/State';
 import { palette, typescale } from './shared';
 
 export const color: Color = {
@@ -255,7 +259,6 @@ export const elevation: Elevation = {
         ],
     },
 }
-
 
 export const button: Button = {
     filled: {
