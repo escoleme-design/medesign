@@ -101,13 +101,29 @@ export const FilledButton = styled.button`
     align-items: center;
     justify-content: center;
 
-
     /* Size */
     // min-width: 0px;
     min-height: ${(props) => getStyles(props).style.layout.height}px;
     height: ${(props) => getStyles(props).style.layout.height}px;
     padding: 0 ${(props) => getStyles(props).style.layout.leftRightPadding}px;
     border-radius: ${(props) => getStyles(props).style.layout.shape}px;
+
+    /* Safari button margins reset */
+    /* See https://github.com/google/material-design-lite/issues/4008 */
+    margin-top: 0px;
+    margin-left: 0px;
+
+    /* Typograph */
+    white-space: nowrap;
+    font-familiy: ${(props) => getStyles(props).style.state.enabled.labelText.font};
+    line-height: ${(props) => getStyles(props).style.state.enabled.labelText.lineHeight};
+    font-size: ${(props) => getStyles(props).style.state.enabled.labelText.size}px;
+    font-weight: ${(props) => getStyles(props).style.state.enabled.labelText.weight};
+    /* Appearance */
+    
+    background: ${(props) => getStyles(props).style.state.enabled.container.color};
+    border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
+    color: ${props => getStyles(props).style.state.enabled.labelText.color};
 `;
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
