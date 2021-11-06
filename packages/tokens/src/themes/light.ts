@@ -1,5 +1,5 @@
-import { Color, Elevation, SurfaceTones, System } from '../types'
-import { palette } from './shared';
+import { Button, Color, Elevation, States, SurfaceTones, System } from '../types'
+import { palette, typescale } from './shared';
 
 export const color: Color = {
     // Primary
@@ -59,7 +59,39 @@ export const color: Color = {
 }
 
 
-export const surfaceTones: SurfaceTones = {
+export const state: States = {
+    hover: {
+        containerColor: color.primary,
+        contentColor: color.onPrimary,
+        stateLayerColor: color.onPrimary,
+        stateLayerOpacity: 0.08
+    },
+    focus: {
+        containerColor: color.primary,
+        contentColor: color.onPrimary,
+        stateLayerColor: color.onPrimary,
+        stateLayerOpacity: 0.12
+    },
+    pressed: {
+        containerColor: color.primary,
+        contentColor: color.onPrimary,
+        stateLayerColor: color.onPrimary,
+        stateLayerOpacity: 0.12
+    },
+    dragged: {
+        containerColor: color.primary,
+        contentColor: color.onPrimary,
+        stateLayerColor: color.onPrimary,
+        stateLayerOpacity: 0.16
+    },
+    disabled: {
+        color: color.onSurface,
+        contentOpacity: 0.38,
+        containerOpacity: 0.12,
+    }
+}
+
+ export const surfaceTones: SurfaceTones = {
     "1": {
         contentLayer: color.primary,
         surface: color.background,
@@ -88,6 +120,11 @@ export const surfaceTones: SurfaceTones = {
 }
 
 export const elevation: Elevation = {
+    level0: {
+        surfaceTones: null,
+        elevation: null,
+        shadow: null,
+    },
     level1: {
         surfaceTones: surfaceTones[1],
         elevation: 1,
@@ -217,6 +254,362 @@ export const elevation: Elevation = {
                 spread: 0
             },
         ],
+    },
+}
+
+export const button: Button = {
+    filled: {
+        color: {
+            container: color.primary,
+            labelText: color.onPrimary,
+            icon: color.onPrimary,
+        },
+        state: {
+            enabled: {
+                container: {
+                    color: color.primary,
+                    shadowColor: color.shadow,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.onPrimary,
+                    font: typescale.labelLarge.font,
+                    lineHeight: typescale.labelLarge.lineHeight,
+                    size: typescale.labelLarge.size,
+                    tracking: typescale.labelLarge.tracking,
+                    weight: typescale.labelLarge.weight,
+                },
+                icon: {
+                    color: color.onSurface,
+                }
+            },
+            disabled: {
+                container: {
+                    color: color.onPrimary,
+                    elevation: elevation.level0,
+                    opacity: 0.12,
+                },
+                labelText: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                },
+                icon: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                }
+            },
+            hovered: {
+                container: {
+                    stateLayerColor: color.onPrimary,
+                    stateLayerOpacity: state.hover.stateLayerOpacity,
+                    elevation: elevation.level1,
+                },
+                labelText: {
+                    color: color.onPrimary,
+                },
+                icon: {
+                    color: color.onPrimary,
+                }
+            },
+            focused: {
+                container: {
+                    stateLayerColor: color.onPrimary,
+                    stateLayerOpacity: state.focus.stateLayerOpacity,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.onPrimary,
+                },
+                icon: {
+                    color: color.onPrimary,
+                }
+            },
+            pressed: {
+                container: {
+                    stateLayerColor: color.onPrimary,
+                    stateLayerOpacity: state.hover.stateLayerOpacity,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.onPrimary,
+                },
+                icon: {
+                    color: color.onPrimary,
+                }
+            },
+        },
+        layout: {
+            height: 40,
+            shape: 20,
+            iconSize: 18,
+            leftRightPadding: 24,
+            LeftPaddingWithIcon: 16,
+            rightPaddingWithIcon: 24,
+            paddingBetweenElements: 8,
+            labelTextAlignment: 'center',
+        },
+    },
+    tonal: {
+        color: {
+            container: color.secondaryContainer,
+            labelText: color.onSecondaryContainer,
+            icon: color.onSecondaryContainer,
+        },
+        state: {
+            enabled: {
+                container: {
+                    color: color.secondaryContainer,
+                    shadowColor: color.shadow,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.onSecondaryContainer,
+                    font: typescale.labelLarge.font,
+                    lineHeight: typescale.labelLarge.lineHeight,
+                    size: typescale.labelLarge.size,
+                    tracking: typescale.labelLarge.tracking,
+                    weight: typescale.labelLarge.weight,
+                },
+                icon: {
+                    color: color.onSecondaryContainer,
+                }
+            },
+            disabled: {
+                container: {
+                    color: color.onSurface,
+                    opacity: 0.12,
+                },
+                labelText: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                },
+                icon: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                }
+            },
+            hovered: {
+                container: {
+                    stateLayerColor: color.onSecondaryContainer,
+                    stateLayerOpacity: state.hover.stateLayerOpacity,
+                    elevation: elevation.level1,
+                },
+                labelText: {
+                    color: color.onSecondaryContainer,
+                },
+                icon: {
+                    color: color.onSecondaryContainer,
+                }
+            },
+            focused: {
+                container: {
+                    stateLayerColor: color.onSecondaryContainer,
+                    stateLayerOpacity: state.focus.stateLayerOpacity,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.onSecondaryContainer,
+                },
+                icon: {
+                    color: color.onSecondaryContainer,
+                }
+            },
+            pressed: {
+                container: {
+                    stateLayerColor: color.onSecondaryContainer,
+                    stateLayerOpacity: state.pressed.stateLayerOpacity,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.onSecondaryContainer,
+                },
+                icon: {
+                    color: color.onSecondaryContainer,
+                }
+            },
+        },
+        layout: {
+            height: 40,
+            shape: 20,
+            iconSize: 18,
+            leftRightPadding: 24,
+            LeftPaddingWithIcon: 16,
+            rightPaddingWithIcon: 24,
+            paddingBetweenElements: 8,
+            labelTextAlignment: 'center',
+        },
+    },
+    outlined: {
+        color: {
+            container: color.surface,
+            containerOutline: color.outline,
+            labelText: color.primary,
+            icon: color.primary,
+        },
+        state: {
+            enabled: {
+                container: {
+                    outlineColor: color.outline,
+                    outlineWidth: 1,
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.primary,
+                    font: typescale.labelLarge.font,
+                    lineHeight: typescale.labelLarge.lineHeight,
+                    size: typescale.labelLarge.size,
+                    tracking: typescale.labelLarge.tracking,
+                    weight: typescale.labelLarge.weight,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+            disabled: {
+                container: {
+                    outlineColor: color.onSurface,
+                    outlineOpacity: 0.12,
+                },
+                labelText: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                },
+                icon: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                }
+            },
+            hovered: {
+                container: {
+                    outlineColor: color.outline,
+                    stateLayerColor: color.primary,
+                    StateLayerOpacity: state.hover.stateLayerOpacity,
+                },
+                labelText: {
+                    color: color.primary,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+            focused: {
+                container: {
+                    outlineColor: color.primary,
+                    stateLayerColor: color.primary,
+                    elevation: state.focus.stateLayerOpacity,
+                },
+                labelText: {
+                    color: color.primary,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+            pressed: {
+                container: {
+                    outlineColor: color.outline,
+                    stateLayerColor: color.primary,
+                    stateLayerOpacity: state.pressed.stateLayerOpacity,
+                },
+                labelText: {
+                    color: color.primary,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+        },
+        layout: {
+            height: 40,
+            shape: 20,
+            iconSize: 18,
+            leftRightPadding: 24,
+            LeftPaddingWithIcon: 16,
+            rightPaddingWithIcon: 24,
+            paddingBetweenElements: 8,
+            labelTextAlignment: 'center',
+        },
+    },
+    text: {
+        color: {
+            labelText: color.primary,
+            icon: color.primary,
+        },
+        state: {
+            enabled: {
+                container: {
+                    elevation: elevation.level0,
+                },
+                labelText: {
+                    color: color.primary,
+                    font: typescale.labelLarge.font,
+                    lineHeight: typescale.labelLarge.lineHeight,
+                    size: typescale.labelLarge.size,
+                    tracking: typescale.labelLarge.tracking,
+                    weight: typescale.labelLarge.weight,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+            disabled: {
+                labelText: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                },
+                icon: {
+                    color: color.onSurface,
+                    opacity: 0.38,
+                }
+            },
+            hovered: {
+                container: {
+                    stateLayerColor: color.primary,
+                    StateLayerOpacity: state.hover.stateLayerOpacity,
+                },
+                labelText: {
+                    color: color.primary,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+            focused: {
+                container: {
+                    stateLayerColor: color.primary,
+                    stateLayerOpacity: state.focus.stateLayerOpacity,
+                },
+                labelText: {
+                    color: color.primary,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+            pressed: {
+                container: {
+                    stateLayerColor: color.primary,
+                    stateLayerOpacity: state.pressed.stateLayerOpacity,
+                },
+                labelText: {
+                    color: color.primary,
+                },
+                icon: {
+                    color: color.primary,
+                }
+            },
+        },
+        layout: {
+            height: 40,
+            shape: 20,
+            iconSize: 18,
+            containerWidth: 48,
+            leftRightPadding: 12,
+            LeftPaddingWithIcon: 12,
+            rightPaddingWithIcon: 16,
+            paddingBetweenElements: 8,
+            labelTextAlignment: 'center'
+        },
     },
 }
 

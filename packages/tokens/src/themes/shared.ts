@@ -1,4 +1,4 @@
-import { Palette, Reference } from "../types";
+import { Palette, Reference, Typeface } from "../types";
 
 export const palette: Palette = {
     primary: {
@@ -123,4 +123,117 @@ export const palette: Palette = {
     },
     white: 'white',
     black: 'black',
+}
+
+export const typescale: Typeface = {
+    // Display
+    displayLarge: {
+        font: 'Roboto',
+        lineHeight: 64,
+        size: 57,
+        tracking: 0,
+        weight: 400,
+    },
+    displayMedium: {
+        font: 'Roboto',
+        lineHeight: 52,
+        size: 45,
+        tracking: 0,
+        weight: 400,
+    },
+    displaySmall: {
+        font: 'Roboto',
+        lineHeight: 44,
+        size: 36,
+        tracking: 0,
+        weight: 400,
+    },
+    // Headline
+    headlineLarge: {
+        font: 'Roboto',
+        lineHeight: 40,
+        size: 32,
+        tracking: 0,
+        weight: 400,
+    },
+    headlineMedium: {
+        font: 'Roboto',
+        lineHeight: 36,
+        size: 28,
+        tracking: 0,
+        weight: 400,
+    },
+    headlineSmall: {
+        font: 'Roboto',
+        lineHeight: 32,
+        size: 24,
+        tracking: 0,
+        weight: 400,
+    },
+    // Title
+    titleLarge: {
+        font: 'Roboto',
+        lineHeight: 28,
+        size: 22,
+        tracking: 0,
+        weight: 400,
+    },
+    titleMedium: {
+        font: 'Roboto',
+        lineHeight: 24,
+        size: 16,
+        tracking: 0.15,
+        weight: 500,
+    },
+    titleSmall: {
+        font: 'Roboto',
+        lineHeight: 20,
+        size: 14,
+        tracking: 0.1,
+        weight: 500,
+    },
+    // Label
+    labelLarge: {
+        font: 'Roboto',
+        lineHeight: 20,
+        size: 14,
+        tracking: 0.1,
+        weight: 500,
+    },
+    labelMedium: {
+        font: 'Roboto',
+        lineHeight: 16,
+        size: 12,
+        tracking: 0.5,
+        weight: 500,
+    },
+    labelSmall: {
+        font: 'Roboto',
+        lineHeight: 6,
+        size: 11,
+        tracking: 0.5,
+        weight: 500,
+    },
+    // Body
+    bodyLarge: {
+        font: 'Roboto',
+        lineHeight: 24,
+        size: 16,
+        tracking: 0.15,
+        weight: 500,
+    },
+    bodyMedium: {
+        font: 'Roboto',
+        lineHeight: 20,
+        size: 14,
+        tracking: 0.25,
+        weight: 500,
+    },
+    bodySmall: {
+        font: 'Roboto',
+        lineHeight: 16,
+        size: 12,
+        tracking: 0.4,
+        weight: 500,
+    },
 }

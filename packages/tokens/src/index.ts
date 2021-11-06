@@ -10,11 +10,11 @@ const light: Types.Theme = {
     sys: {
         color: lightBase.color,
         elevation: lightBase.elevation,
+        state: lightBase.state,
+        typeface: darkBase.typescale,
     },
     comp: {
-        button: {
-            
-        }
+        button: lightBase.button
     }
 };
 
@@ -26,11 +26,11 @@ const dark: Types.Theme = {
     sys: {
         color: darkBase.color,
         elevation: darkBase.elevation,
+        state: darkBase.state,
+        typeface: darkBase.typescale,
     },
     comp: {
-        button: {
-            
-        }
+        button: darkBase.button
     }
 };
 
