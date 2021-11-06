@@ -6,9 +6,12 @@ import { terser } from 'rollup-plugin-terser';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import dts from "rollup-plugin-dts";
+
+
+// \/
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-// import typescript from 'rollup-plugin-typescript2';
 const styledComponentsTransformer = createStyledComponentsTransformer();
+// import typescript from 'rollup-plugin-typescript2';
 
 const plugins = [
   babel({ exclude: "node_modules/**" }),

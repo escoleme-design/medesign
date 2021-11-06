@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Wrapper } from './Button.styles'
 import { ButtonProps } from './Button.types';
 
-const Button: FC<ButtonProps> = ({ type, text, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ onClick }) => {
     return (
         <Wrapper>
             <button type="button" onClick={onClick}>
-            {text}
+            sadasd
         </button>
         </Wrapper>
     )

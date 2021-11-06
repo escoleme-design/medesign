@@ -1,12 +1,21 @@
+const path = require('path');
+
 module.exports = {
-  addons: ['@storybook/addon-postcss'],
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+  stories: [
+    '../packages/components/src/**/*.stories.@(js|ts|tsx|mdx)',
   ],
   "addons": [
+    {
+      name: '@storybook/preset-typescript',
+      options: { transpileManager: true },
+    },
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    '@storybook/preset-scss'
-  ]
+    '@react-theming/storybook-addon',
+    '@storybook/addon-storysource',
+    '@storybook/addon-actions',
+  ],
+  typescript: {
+    reactDocgen: 'none',
+  },
 }
