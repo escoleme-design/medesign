@@ -13,7 +13,7 @@ export default (props) => {
             justifyContent: 'center',
             alignItems: 'center',
             gap: '1rem',
-            padding: '24px 0px',
+            padding: '80px 0px',
             background: sys.color.background
         }}>
             {props.children}
