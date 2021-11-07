@@ -1,6 +1,11 @@
-import React from "react"
+import { Theme } from "@escoleme/medesign-tokens";
+import React, { useContext } from "react";
+import styled, {ThemeContext} from "styled-components";
 
 export default (props) => {
+    
+    const { sys } = useContext<Theme>(ThemeContext);
+
     return (
         <div style={{
             display: 'flex',
@@ -8,6 +13,8 @@ export default (props) => {
             justifyContent: 'center',
             alignItems: 'center',
             gap: '1rem',
+            padding: '24px 0px',
+            background: sys.color.background
         }}>
             {props.children}
         </div>

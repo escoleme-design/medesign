@@ -289,7 +289,7 @@ export const button: Button = {
             },
             disabled: {
                 container: {
-                    color: color.onPrimary,
+                    color: color.onSurface,
                     elevation: elevation.level0,
                     opacity: 0.12,
                 },

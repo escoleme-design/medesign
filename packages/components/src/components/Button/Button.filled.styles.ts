@@ -13,7 +13,7 @@ export const getStyles = ({
 
   const { comp } = useContext(ThemeContext);
   const button = comp.button;
-
+  
 
 //   const {
 //     buttonSizes,
@@ -167,7 +167,45 @@ export const FilledButton = styled.button<IButtonProps>`
         border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
         color: ${props => getStyles(props).style.state.enabled.labelText.color};
     }
-`;
+
+    ${props => {
+      if (props.disabled) {
+        return (`
+          color: ${() => {
+            const opacity = getStyles(props).style.state.disabled.labelText.opacity;
+            const stateLayerColor = getStyles(props).style.state.disabled.labelText.color;
+            const [red, green, blue] = chroma(stateLayerColor).rgb()
+            return `rgba(${red},${green},${blue},${opacity})`;
+          }};
+          background: ${() => {
+            const opacity = getStyles(props).style.state.disabled.container.opacity;
+            const stateLayerColor = getStyles(props).style.state.disabled.container.color;
+            const [red, green, blue] = chroma(stateLayerColor).rgb()
+            return `rgba(${red},${green},${blue},${opacity})`;
+          }};
+          border: none;
+          outline: none;
+        `);
+      }
+    }}
+
+    &:disabled {
+      color: ${props => {
+        const opacity = getStyles(props).style.state.disabled.labelText.opacity;
+        const stateLayerColor = getStyles(props).style.state.disabled.labelText.color;
+        const [red, green, blue] = chroma(stateLayerColor).rgb()
+        return `rgba(${red},${green},${blue},${opacity})`;
+      }};
+      background: ${props => {
+        const opacity = getStyles(props).style.state.disabled.container.opacity;
+        const stateLayerColor = getStyles(props).style.state.disabled.container.color;
+        const [red, green, blue] = chroma(stateLayerColor).rgb()
+        return `rgba(${red},${green},${blue},${opacity})`;
+      }};
+      border: none;
+      outline: none;
+    }
+`; 
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
   text-decoration: none;
