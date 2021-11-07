@@ -5,15 +5,27 @@ import Button from ".";
 import { IButtonProps } from "./Button.types";
 import chroma from 'chroma-js'
 
+const getBackgroundOverlay = (background: string, opacity: number, stateLayer: string) => {
+  const [red, green, blue] = chroma(stateLayer).rgb();
+  const layerOpacity = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
+  return `linear-gradient(0deg, ${layerOpacity}, ${layerOpacity}), ${background}`;
+}
+
+const getBackgroundOpacity = (opacity: number, background: string) => {
+  const [red, green, blue] = chroma(background).rgb()
+  return `rgba(${red},${green},${blue},${opacity})`;
+}
+
 export const getStyles = ({
     size = "normal",
     variant = "filled",
     ...props
 }: IButtonProps) => {
 
-  const { comp } = useContext(ThemeContext);
+  const { comp, sys } = useContext(ThemeContext);
   const button = comp.button;
-  
+  const { color } = sys;
+
 
 //   const {
 //     buttonSizes,
@@ -25,11 +37,52 @@ export const getStyles = ({
 
   const variantStyles = button.filled;
 
+  
+
 //   const sizeStyles = buttonSizes[size] ? buttonSizes[size] : buttonSizes.normal;
 
-  let styles = {
+let styles = {
     style: variantStyles,
-    pointerEvents: "auto"
+    minHeight: `${variantStyles.layout.height}px`,
+    height: `${variantStyles.layout.height}px`,
+    padding: `0 ${variantStyles.layout.leftRightPadding}px`,
+    borderRadius: `${variantStyles.layout.shape}px`,
+    fontFamily: `${variantStyles.state.enabled.labelText.font}`,
+    lineHeight: `${variantStyles.state.enabled.labelText.lineHeight}`,
+    fontSize: `${variantStyles.state.enabled.labelText.size}px`,
+    fontWeight: `${variantStyles.state.enabled.labelText.weight}`,
+    pointerEvents: `auto`,
+    transtion: ``,
+    states: {
+      enabled: {
+        background: `${variantStyles.state.enabled.container.color}`,
+        border: `none`,
+        color: `${variantStyles.state.enabled.labelText.color}`,
+        cursor: `${props.disabled ? "not-allowed" : "pointer"}`,
+        transition: ``,
+      },
+      hover: {
+        color: `${variantStyles.state.hovered.labelText.color}`,
+        background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.state.hovered.container.stateLayerColor),
+      },
+      focus: {
+        color: `${variantStyles.state.focused.labelText.color}`,
+        background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.focused.container.stateLayerOpacity, variantStyles.state.focused.container.stateLayerColor),
+        borderColor: `none`,
+        outline: `none`,
+      },
+      active: {
+        background: `${variantStyles.state.enabled.container.color}`,
+        border: `none`,
+        color: `${variantStyles.state.enabled.labelText.color}`,
+      },
+      disabled: {
+        color: getBackgroundOpacity(variantStyles.state.disabled.labelText.opacity, variantStyles.state.disabled.labelText.color),
+        background: getBackgroundOpacity(variantStyles.state.disabled.container.opacity, variantStyles.state.disabled.container.color),
+        border: `none`,
+        outline: `none`,
+      }
+    },
   };
 
 //   let styles = {
@@ -59,10 +112,35 @@ export const getStyles = ({
 //     } };
 //   }
 
-//   // Botão com estado de "danger"
-//   if (props.danger) {
-//     styles = { ...styles, variantStyles: buttonStates.danger };
-//   }
+  // Botão com estado de "danger"
+  if (props.danger) {
+    styles = {
+      ...styles,
+      states: {
+        ...styles.states,
+        enabled: {
+          ...styles.states.enabled,
+          background: color.error,
+          color: color.onError,
+        },
+        hover: {
+          ...styles.states.hover,
+          color: `${color.onError}`,
+          background: getBackgroundOverlay(color.error, variantStyles.state.hovered.container.stateLayerOpacity, color.onError),
+        },
+        focus: {
+          ...styles.states.focus,
+          color: `${color.onError}`,
+          background: getBackgroundOverlay(color.error, variantStyles.state.focused.container.stateLayerOpacity, color.onError),
+        },
+        active: {
+          ...styles.states.active,
+          color: `${color.onError}`,
+          background: `${color.error}`,
+        }
+      }
+    };
+  }
 
 //   // Botão em uppercase
 //   if (props.uppercase) {
@@ -101,10 +179,10 @@ export const FilledButton = styled.button<IButtonProps>`
 
     // min-width: 0px;
     ${(props) => props.block && `min-width: 100%;`}
-    min-height: ${(props) => getStyles(props).style.layout.height}px;
-    height: ${(props) => getStyles(props).style.layout.height}px;
-    padding: 0 ${(props) => getStyles(props).style.layout.leftRightPadding}px;
-    border-radius: ${(props) => getStyles(props).style.layout.shape}px;
+    min-height: ${(props) => getStyles(props).minHeight};
+    height: ${(props) => getStyles(props).height};
+    padding: ${(props) => getStyles(props).padding};
+    border-radius: ${(props) => getStyles(props).borderRadius};
 
     /* Safari button margins reset */
     /* See https://github.com/google/material-design-lite/issues/4008 */
@@ -114,19 +192,19 @@ export const FilledButton = styled.button<IButtonProps>`
     /* Typograph */
 
     white-space: nowrap;
-    font-familiy: ${(props) => getStyles(props).style.state.enabled.labelText.font};
-    line-height: ${(props) => getStyles(props).style.state.enabled.labelText.lineHeight};
-    font-size: ${(props) => getStyles(props).style.state.enabled.labelText.size}px;
-    font-weight: ${(props) => getStyles(props).style.state.enabled.labelText.weight};
+    font-familiy: ${(props) => getStyles(props).fontFamily};
+    line-height: ${(props) => getStyles(props).lineHeight};
+    font-size: ${(props) => getStyles(props).fontSize};
+    font-weight: ${(props) => getStyles(props).fontWeight};
     
     /* Appearance */
 
-    background: ${(props) => getStyles(props).style.state.enabled.container.color};
-    border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
-    color: ${props => getStyles(props).style.state.enabled.labelText.color};
-
-    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+    background: ${(props) => getStyles(props).states.enabled.background};
+    border: ${props => getStyles(props).states.enabled.border};
+    color: ${props => getStyles(props).states.enabled.color};
+    cursor: ${(props) => getStyles(props).states.enabled.cursor};
     pointer-events: ${(props) => getStyles(props).pointerEvents};
+
     ///transition: opacity 15ms linear,background-color 15ms linear;
 
     > *:not(:last-child):not(:only-child) {
@@ -136,74 +214,40 @@ export const FilledButton = styled.button<IButtonProps>`
     /* States */
 
     &:hover {
-        color: ${props => getStyles(props).style.state.hovered.labelText.color};
-        background: ${props => {
-            const container = getStyles(props).style.color.container;
-            const stateLayerOpacity = getStyles(props).style.state.hovered.container.stateLayerOpacity;
-            const stateLayerColor = getStyles(props).style.state.hovered.container.stateLayerColor;
-            const [red, green, blue] = chroma(stateLayerColor).rgb()
-
-            return `linear-gradient(0deg, rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity}), rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity})), ${container}`;
-        }};
+        color: ${props => getStyles(props).states.hover.color};
+        background: ${props => getStyles(props).states.hover.background};
         border-color: ${props => getStyles(props).style.state.enabled.container.color};
     }
 
     &:focus {
-        color: ${props => getStyles(props).style.state.focused.labelText.color};
-        background: ${props => {
-            const container = getStyles(props).style.color.container;
-            const stateLayerOpacity = getStyles(props).style.state.focused.container.stateLayerOpacity;
-            const stateLayerColor = getStyles(props).style.state.focused.container.stateLayerColor;
-            const [red, green, blue] = chroma(stateLayerColor).rgb()
-
-            return `linear-gradient(0deg, rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity}), rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity})), ${container}`;
-        }};
-        border-color: ${props => getStyles(props).style.state.enabled.container.color};
-        outline: none;
+        color: ${props => getStyles(props).states.focus.color};
+        background: ${props => getStyles(props).states.focus.background};
+        border-color: ${props => getStyles(props).states.focus.borderColor};
+        outline: ${props => getStyles(props).states.focus.outline};
     }
 
     &:active {
-        background: ${(props) => getStyles(props).style.state.enabled.container.color};
-        border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
-        color: ${props => getStyles(props).style.state.enabled.labelText.color};
+        background: ${(props) => getStyles(props).states.active.background};
+        border: 1px solid ${props => getStyles(props).states.active.border};
+        color: ${props => getStyles(props).states.active.color};
     }
 
     ${props => {
       if (props.disabled) {
         return (`
-          color: ${() => {
-            const opacity = getStyles(props).style.state.disabled.labelText.opacity;
-            const stateLayerColor = getStyles(props).style.state.disabled.labelText.color;
-            const [red, green, blue] = chroma(stateLayerColor).rgb()
-            return `rgba(${red},${green},${blue},${opacity})`;
-          }};
-          background: ${() => {
-            const opacity = getStyles(props).style.state.disabled.container.opacity;
-            const stateLayerColor = getStyles(props).style.state.disabled.container.color;
-            const [red, green, blue] = chroma(stateLayerColor).rgb()
-            return `rgba(${red},${green},${blue},${opacity})`;
-          }};
-          border: none;
-          outline: none;
+          color: ${() => getStyles(props).states.disabled.color};
+          background: ${() => getStyles(props).states.disabled.background};
+          border: ${() => getStyles(props).states.disabled.border};
+          outline: ${() => getStyles(props).states.disabled.outline};
         `);
       }
     }}
 
     &:disabled {
-      color: ${props => {
-        const opacity = getStyles(props).style.state.disabled.labelText.opacity;
-        const stateLayerColor = getStyles(props).style.state.disabled.labelText.color;
-        const [red, green, blue] = chroma(stateLayerColor).rgb()
-        return `rgba(${red},${green},${blue},${opacity})`;
-      }};
-      background: ${props => {
-        const opacity = getStyles(props).style.state.disabled.container.opacity;
-        const stateLayerColor = getStyles(props).style.state.disabled.container.color;
-        const [red, green, blue] = chroma(stateLayerColor).rgb()
-        return `rgba(${red},${green},${blue},${opacity})`;
-      }};
-      border: none;
-      outline: none;
+      color: ${props => getStyles(props).states.disabled.color};
+      background: ${props => getStyles(props).states.disabled.background};
+      border: ${props => getStyles(props).states.disabled.border};
+      outline: ${props => getStyles(props).states.disabled.outline};
     }
 `; 
 

@@ -37,9 +37,9 @@ export const color: Color = {
 
     // Error
     error: palette.error['40'],
-    onRrror: palette.error['100'],
+    onError: palette.error['100'],
     errorContainer: palette.error['90'],
-    onRrrorContainer: palette.error['10'],
+    onErrorContainer: palette.error['10'],
 
     // Warning
     warning: palette.warning['40'],

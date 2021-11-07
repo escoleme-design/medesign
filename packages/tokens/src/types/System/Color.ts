@@ -30,9 +30,9 @@ export type Color = {
 
     // Error
     error: string;
-    onRrror: string;
+    onError: string;
     errorContainer: string;
-    onRrrorContainer: string;
+    onErrorContainer: string;
 
     // Warning
     warning: string;
