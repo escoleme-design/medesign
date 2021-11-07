@@ -124,28 +124,36 @@ export default {
 export const Base: Story<IButtonProps> = (args: IButtonProps) => <Button {...args} />
 
 Base.args = {
+  id: "OLHA_O_ID",
+  className: "OLHA_O_CLASSNAME",
+  // href: 'asdsd',
+  type: "submit",
+  target: '_black',
+  // disabled: true,
+  onClick: () => alert("oi"),
+  loading: false,
   children: 'Click me',
+  success: false,
+  danger: false,
+
+
+
+
+  variant: 'filled',
   // size: 'normal',
   // lowercase: false,
-  // href: '',
-  // target: '_black',
-  // disabled: false,
   // variant: 'Con',
-  // className: "",
-  // id: "",
-  loading: false,
-  // type: "button",
-  onClick: () => alert("oi"),
   // block: false,
-  // success: false,
   // loading: false,
-  // danger: false,
 }
 
 export const Variants = (args: IButtonProps) => (
   <>
-    <Button {...args}  variant="contained">
-      Contained
+    <Button {...args}  variant="filled">
+      Filled
+    </Button>
+    <Button {...args}  variant="tonal">
+      Filled Tonal
     </Button>
     <Button {...args}  variant="outlined">
       Outlined
@@ -160,7 +168,7 @@ Variants.parameters = {
   docs: {
     source: {
       code: dedent(`
-      <Button {...args} variant="contained">
+      <Button {...args} variant="filled">
         Contained
       </Button>
     
@@ -179,7 +187,7 @@ Variants.parameters = {
 
 export const Danger = (args: IButtonProps) => (
   <>
-    <Button {...args} danger variant="contained">
+    <Button {...args} danger variant="filled">
       Contained
     </Button>
     <Button {...args} danger variant="outlined">
@@ -218,7 +226,7 @@ export const Block = (args: IButtonProps) => (
 
 export const Disable = (args: IButtonProps) => (
   <>
-    <Button {...args} disabled variant="contained">
+    <Button {...args} disabled variant="filled">
       Contained
     </Button>
     <Button {...args} disabled variant="outlined">
@@ -232,7 +240,7 @@ export const Disable = (args: IButtonProps) => (
 
 export const Loading = (args: IButtonProps) => (
   <>
-    <Button {...args} loading variant="contained">
+    <Button {...args} loading variant="filled">
       Contained
     </Button>
     <Button {...args} loading variant="outlined">
@@ -246,7 +254,7 @@ export const Loading = (args: IButtonProps) => (
 
 export const Success = (args: IButtonProps) => (
   <>
-    <Button {...args} success variant="contained">
+    <Button {...args} success variant="filled">
       Contained
     </Button>
     <Button {...args} success variant="outlined">
@@ -260,7 +268,7 @@ export const Success = (args: IButtonProps) => (
 
 export const Type = (args: IButtonProps) => (
   <>
-    <Button {...args} success variant="contained">
+    <Button {...args} success variant="filled">
       Contained
     </Button>
     <Button {...args} success variant="outlined">
@@ -274,7 +282,7 @@ export const Type = (args: IButtonProps) => (
 
 export const Href = (args: IButtonProps) => (
   <>
-    <Button {...args} success variant="contained">
+    <Button {...args} success variant="filled">
       Contained
     </Button>
     <Button {...args} success variant="outlined">
@@ -325,7 +333,7 @@ export const OnColor = (args: IButtonProps) => (
 
 // export const Variants = (args: IButtonProps) => {
 //   <div>
-//     <Button {...args} type="button" variant="contained" />
+//     <Button {...args} type="button" variant="filled" />
 //     <Button {...args} type="button" variant="outlined" />
 //     <Button {...args} type="button" variant="text" />
 //   </div>

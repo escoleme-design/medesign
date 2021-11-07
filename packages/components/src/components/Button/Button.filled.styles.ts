@@ -1,7 +1,6 @@
 import { Theme, light } from "@escoleme/medesign-tokens";
 import React, { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import Button from ".";
 import { IButtonProps } from "./Button.types";
 import chroma from 'chroma-js'
 
@@ -26,18 +25,7 @@ export const getStyles = ({
   const button = comp.button;
   const { color } = sys;
 
-
-//   const {
-//     buttonSizes,
-//     componentVariants,
-//     buttonStates,
-//   } = useContext(ThemeContext);
-
-//   const { button } = componentVariants;
-
   const variantStyles = button.filled;
-
-  
 
 //   const sizeStyles = buttonSizes[size] ? buttonSizes[size] : buttonSizes.normal;
 
@@ -85,12 +73,6 @@ let styles = {
     },
   };
 
-//   let styles = {
-//     variantStyles,
-//     ...sizeStyles,
-//     pointerEvents: "auto",
-//   };
-
   // Botão com estado de bem-sucedido
   if (props.success) {
     styles = {
@@ -121,22 +103,6 @@ let styles = {
     };
   }
 
-//   // Botão com estado de carregando
-//   if (props.loading) {
-//     // styles = { ...styles, variantStyles: buttonStates.loading };
-//     styles = { ...styles, variantStyles: {
-//       ...styles.variantStyles,
-//       background: styles.variantStyles.hoverBackground,
-//       focusBackground: styles.variantStyles.hoverBackground,
-//       activeBackground: styles.variantStyles.hoverBackground,
-//       hoverBackground: styles.variantStyles.hoverBackground,
-//       activeBorder: styles.variantStyles.hoverBackground,
-//       border: styles.variantStyles.hoverBackground,
-//       focusBorder: styles.variantStyles.hoverBackground,
-//       hoverBorder: styles.variantStyles.hoverBackground,
-//     } };
-//   }
-
   // Botão com estado de "danger"
   if (props.danger) {
     styles = {
@@ -166,25 +132,6 @@ let styles = {
       }
     };
   }
-
-//   // Botão em uppercase
-//   if (props.uppercase) {
-//     styles = {
-//       ...styles,
-//       typography: {
-//         ...styles.typography,
-//         case: 'uppercase'
-//       }
-//     }
-//   } else {
-//     styles = {
-//       ...styles,
-//       typography: {
-//         ...styles.typography,
-//         case: 'normal'
-//       }
-//     }
-//   }
 
   // Desativando os pointer events
   if (props.disabled || props.loading || props.success) {
@@ -246,7 +193,7 @@ export const FilledButton = styled.button<IButtonProps>`
     /* Typograph */
 
     white-space: nowrap;
-    font-familiy: ${(props) => getStyles(props).fontFamily};
+    font-family: ${(props) => getStyles(props).fontFamily};
     line-height: ${(props) => getStyles(props).lineHeight};
     font-size: ${(props) => getStyles(props).fontSize};
     font-weight: ${(props) => getStyles(props).fontWeight};
@@ -307,14 +254,5 @@ export const FilledButton = styled.button<IButtonProps>`
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
   text-decoration: none;
+  ${(props) => props.block && `min-width: calc(100% - ${getStyles(props).style.layout.leftRightPadding*2}px);`}
 `;
-
-export const defaultProps = {
-  size: "default",
-  appearance: "default",
-  icon: null,
-  iconAlign: "left",
-  disabled: false,
-  loading: false,
-  success: false
-};

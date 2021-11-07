@@ -3,7 +3,7 @@ import React from 'react';
 import { Element, LinkElement } from './Button.styles'
 import { IButtonProps } from './Button.types';
 import { automationAttribute } from '../../helpers/utils';
-import { FilledButton } from './Button.filled.styles';
+import { FilledButton, LinkFilledButton } from './Button.filled.styles';
 
 // const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = (props: IButtonProps, _ref) => {
 const Button = (props: IButtonProps) => {
@@ -43,17 +43,22 @@ const Button = (props: IButtonProps) => {
     content.push(iconNode);
   }
 
-  // Se tiver a propriedade href então o botão vai ser um a senão vai ser um button.
-  const ButtonStyle = props.href ? LinkElement : Element;
+    // Se tiver a propriedade href então o botão vai ser um a senão vai ser um button.
+    let ButtonStyle;
+    if (props.variant === 'filled') {
+      ButtonStyle = props.href ? LinkFilledButton : FilledButton;
+    } else {
+      ButtonStyle = FilledButton;
+    }
 
   return (
-    <FilledButton
+    <ButtonStyle
       {...automationAttribute("button")}
       onClick={handleClick}
       {...props}
     >
       {content}
-    </FilledButton>
+    </ButtonStyle>
   );
 }
 
