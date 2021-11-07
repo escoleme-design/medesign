@@ -13,10 +13,10 @@ export const color: Color = {
     onPrimaryContainer: palette.primary['10'],
     
     // Secondary
-    secondary: palette.success['40'],
-    onSecondary: palette.success['100'],
-    secondaryContainer: palette.success['90'],
-    onSecondaryContainer: palette.success['10'],
+    secondary: palette.secondary['40'],
+    onSecondary: palette.secondary['100'],
+    secondaryContainer: palette.secondary['90'],
+    onSecondaryContainer: palette.secondary['10'],
 
     // Tertiary
     tertiary: palette.tertiary['40'],

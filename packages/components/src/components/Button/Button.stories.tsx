@@ -188,7 +188,10 @@ Variants.parameters = {
 export const Danger = (args: IButtonProps) => (
   <>
     <Button {...args} danger variant="filled">
-      Contained
+      Filled
+    </Button>
+    <Button {...args} danger  variant="tonal">
+      Filled Tonal
     </Button>
     <Button {...args} danger variant="outlined">
       Outlined
@@ -227,7 +230,10 @@ export const Block = (args: IButtonProps) => (
 export const Disable = (args: IButtonProps) => (
   <>
     <Button {...args} disabled variant="filled">
-      Contained
+      Filled
+    </Button>
+    <Button {...args} disabled variant="tonal">
+      Filled Tonal
     </Button>
     <Button {...args} disabled variant="outlined">
       Outlined
@@ -241,7 +247,10 @@ export const Disable = (args: IButtonProps) => (
 export const Loading = (args: IButtonProps) => (
   <>
     <Button {...args} loading variant="filled">
-      Contained
+      Filled
+    </Button>
+    <Button {...args} loading variant="tonal">
+      Filled Tonal
     </Button>
     <Button {...args} loading variant="outlined">
       Outlined
@@ -255,7 +264,10 @@ export const Loading = (args: IButtonProps) => (
 export const Success = (args: IButtonProps) => (
   <>
     <Button {...args} success variant="filled">
-      Contained
+      Filled
+    </Button>
+    <Button {...args} success variant="tonal">
+      Filled Tonal
     </Button>
     <Button {...args} success variant="outlined">
       Outlined
@@ -268,13 +280,16 @@ export const Success = (args: IButtonProps) => (
 
 export const Type = (args: IButtonProps) => (
   <>
-    <Button {...args} success variant="filled">
-      Contained
+    <Button {...args} type="submit" variant="filled">
+      Filled
     </Button>
-    <Button {...args} success variant="outlined">
+    <Button {...args} type="submit" variant="tonal">
+      Filled Tonal
+    </Button>
+    <Button {...args} type="submit" variant="outlined">
       Outlined
     </Button>
-    <Button {...args} success variant="text">
+    <Button {...args} type="submit" variant="text">
       Text
     </Button>
   </>
@@ -282,13 +297,16 @@ export const Type = (args: IButtonProps) => (
 
 export const Href = (args: IButtonProps) => (
   <>
-    <Button {...args} success variant="filled">
-      Contained
+    <Button {...args} href="#" variant="filled">
+      Filled
     </Button>
-    <Button {...args} success variant="outlined">
+    <Button {...args} href="#" variant="tonal">
+      Filled Tonal
+    </Button>
+    <Button {...args} href="#" variant="outlined">
       Outlined
     </Button>
-    <Button {...args} success variant="text">
+    <Button {...args} href="#" variant="text">
       Text
     </Button>
   </>
