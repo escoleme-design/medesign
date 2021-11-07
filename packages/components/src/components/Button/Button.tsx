@@ -5,7 +5,8 @@ import { IButtonProps } from './Button.types';
 import { automationAttribute } from '../../helpers/utils';
 import { FilledButton } from './Button.filled.styles';
 
-const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = (props: IButtonProps, _ref) => {
+// const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = (props: IButtonProps, _ref) => {
+const Button = (props: IButtonProps) => {
   
   const content: JSX.Element[] = [];
   const icon: React.ReactNode = props.success ? <>success</> : props.icon;

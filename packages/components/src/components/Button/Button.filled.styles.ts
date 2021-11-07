@@ -29,7 +29,7 @@ export const getStyles = ({
 
   let styles = {
     style: variantStyles,
-    pointerEvents: "auto",
+    pointerEvents: "auto"
   };
 
 //   let styles = {
@@ -83,11 +83,6 @@ export const getStyles = ({
 //     }
 //   }
 
-//   // Botão ocupando todo o width do componente pai
-//   if (props.block) {
-//     styles.minWidth = '100%'
-//   }
-
   // Desativando os pointer events
   if (props.disabled || props.loading || props.success) {
     styles.pointerEvents = 'none'
@@ -96,7 +91,7 @@ export const getStyles = ({
   return styles;
 }
 
-export const FilledButton = styled.button`
+export const FilledButton = styled.button<IButtonProps>`
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
@@ -105,6 +100,7 @@ export const FilledButton = styled.button`
     /* Size */
 
     // min-width: 0px;
+    ${(props) => props.block && `min-width: 100%;`}
     min-height: ${(props) => getStyles(props).style.layout.height}px;
     height: ${(props) => getStyles(props).style.layout.height}px;
     padding: 0 ${(props) => getStyles(props).style.layout.leftRightPadding}px;
