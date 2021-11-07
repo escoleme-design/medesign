@@ -151,6 +151,26 @@ export const FilledButton = styled.button`
         }};
         border-color: ${props => getStyles(props).style.state.enabled.container.color};
     }
+
+    &:focus {
+        color: ${props => getStyles(props).style.state.focused.labelText.color};
+        background: ${props => {
+            const container = getStyles(props).style.color.container;
+            const stateLayerOpacity = getStyles(props).style.state.focused.container.stateLayerOpacity;
+            const stateLayerColor = getStyles(props).style.state.focused.container.stateLayerColor;
+            const [red, green, blue] = chroma(stateLayerColor).rgb()
+
+            return `linear-gradient(0deg, rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity}), rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity})), ${container}`;
+        }};
+        border-color: ${props => getStyles(props).style.state.enabled.container.color};
+        outline: none;
+    }
+
+    &:active {
+        background: ${(props) => getStyles(props).style.state.enabled.container.color};
+        border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
+        color: ${props => getStyles(props).style.state.enabled.labelText.color};
+    }
 `;
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
