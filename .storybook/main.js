@@ -11,7 +11,9 @@ module.exports = {
     },
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    '@react-theming/storybook-addon',
+    // '@react-theming/storybook-addon',
+    
+    "themeprovider-storybook/register",
     '@storybook/addon-storysource',
     '@storybook/addon-actions',
   ],

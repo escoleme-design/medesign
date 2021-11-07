@@ -4,6 +4,8 @@ import {ThemeProvider} from 'styled-components'
 import { addDecorator } from '@storybook/react'
 import { withThemes } from '@react-theming/storybook-addon';
 import { Suspense } from 'react'
+import { withThemesProvider } from "themeprovider-storybook";
+import { DEFAULT_SETTINGS } from "themeprovider-storybook"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,13 +17,38 @@ export const parameters = {
   },
 }
 
+const themes = [
+  {
+    name: "Light theme",
+    ...light
+  },
+  {
+    name: "Dark theme",
+    ...dark
+  },
+]
+
+addDecorator(
+  withThemesProvider(
+    themes,
+    DEFAULT_SETTINGS,
+    ThemeProvider
+  )
+)
+
 // addDecorator((story) => (
 //   <ThemeProvider theme={light}>
 //     {story()}
 //   </ThemeProvider>
 // ));
 
-addDecorator(withThemes(ThemeProvider, [light]));
+// const providerFn = ({ theme, children }) => {
+//   return <ThemeProvider theme={light}>{children}</ThemeProvider>;
+// };
+
+// const themingDecorator = withThemes(null, [light], { providerFn });
+// addDecorator(themingDecorator)
+// addDecorator(withThemes(ThemeProvider, [light]));
 // 
 addDecorator((story, context) => (
   <Suspense fallback="Loading...">{story(context)}</Suspense>
