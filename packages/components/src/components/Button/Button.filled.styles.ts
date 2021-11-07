@@ -73,8 +73,8 @@ let styles = {
       },
       active: {
         background: `${variantStyles.state.enabled.container.color}`,
-        border: `none`,
         color: `${variantStyles.state.enabled.labelText.color}`,
+        border: `none`,
       },
       disabled: {
         color: getBackgroundOpacity(variantStyles.state.disabled.labelText.opacity, variantStyles.state.disabled.labelText.color),
@@ -189,6 +189,35 @@ let styles = {
   // Desativando os pointer events
   if (props.disabled || props.loading || props.success) {
     styles.pointerEvents = 'none'
+  }
+
+  if (props.onColor) {
+    styles = {
+      ...styles,
+      states: {
+        ...styles.states,
+        enabled: {
+          ...styles.states.enabled,
+          color: `${variantStyles.state.enabled.container.color}`,
+          background: `${variantStyles.state.enabled.labelText.color}`,
+        },
+        hover: {
+          ...styles.states.hover,
+          color: `${variantStyles.state.enabled.container.color}`,
+          background: getBackgroundOverlay(variantStyles.state.hovered.container.stateLayerColor, variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.color.container),
+        },
+        focus: {
+          ...styles.states.focus,
+          color: `${variantStyles.state.enabled.container.color}`,
+          background: getBackgroundOverlay(variantStyles.state.focused.container.stateLayerColor, variantStyles.state.focused.container.stateLayerOpacity, variantStyles.color.container),
+        },
+        active: {
+          ...styles.states.active,
+          background: `${variantStyles.state.enabled.labelText.color}`,
+          color: `${variantStyles.state.enabled.container.color}`,
+        }
+      }
+    };
   }
 
   return styles;
