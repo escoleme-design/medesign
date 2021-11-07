@@ -15,13 +15,13 @@ export const parameters = {
   },
 }
 
-addDecorator((story) => (
-  <ThemeProvider theme={light}>
-    {story()}
-  </ThemeProvider>
-));
+// addDecorator((story) => (
+//   <ThemeProvider theme={light}>
+//     {story()}
+//   </ThemeProvider>
+// ));
 
-// addDecorator(withThemes(ThemeProvider, [light]));
+addDecorator(withThemes(ThemeProvider, [light]));
 // 
 addDecorator((story, context) => (
   <Suspense fallback="Loading...">{story(context)}</Suspense>

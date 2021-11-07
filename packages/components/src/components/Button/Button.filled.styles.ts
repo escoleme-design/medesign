@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
 import Button from ".";
 import { IButtonProps } from "./Button.types";
+import chroma from 'chroma-js'
 
 export const getStyles = ({
     size = "normal",
@@ -102,6 +103,7 @@ export const FilledButton = styled.button`
     justify-content: center;
 
     /* Size */
+
     // min-width: 0px;
     min-height: ${(props) => getStyles(props).style.layout.height}px;
     height: ${(props) => getStyles(props).style.layout.height}px;
@@ -114,6 +116,7 @@ export const FilledButton = styled.button`
     margin-left: 0px;
 
     /* Typograph */
+
     white-space: nowrap;
     font-familiy: ${(props) => getStyles(props).style.state.enabled.labelText.font};
     line-height: ${(props) => getStyles(props).style.state.enabled.labelText.lineHeight};
@@ -124,14 +127,29 @@ export const FilledButton = styled.button`
 
     background: ${(props) => getStyles(props).style.state.enabled.container.color};
     border: 1px solid ${props => getStyles(props).style.state.enabled.container.color};
-    color: ${props => getStyles(props).style.state.enabled.labelText};
+    color: ${props => getStyles(props).style.state.enabled.labelText.color};
 
     cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
     pointer-events: ${(props) => getStyles(props).pointerEvents};
-    transition: opacity 15ms linear,background-color 15ms linear;
+    ///transition: opacity 15ms linear,background-color 15ms linear;
 
     > *:not(:last-child):not(:only-child) {
         margin-right: 0;
+    }
+
+    /* States */
+
+    &:hover {
+        color: ${props => getStyles(props).style.state.hovered.labelText.color};
+        background: ${props => {
+            const container = getStyles(props).style.color.container;
+            const stateLayerOpacity = getStyles(props).style.state.hovered.container.stateLayerOpacity;
+            const stateLayerColor = getStyles(props).style.state.hovered.container.stateLayerColor;
+            const [red, green, blue] = chroma(stateLayerColor).rgb()
+
+            return `linear-gradient(0deg, rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity}), rgba(${red}, ${green}, ${blue}, ${stateLayerOpacity})), ${container}`;
+        }};
+        border-color: ${props => getStyles(props).style.state.enabled.container.color};
     }
 `;
 
