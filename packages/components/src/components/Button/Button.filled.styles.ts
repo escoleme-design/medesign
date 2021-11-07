@@ -91,10 +91,35 @@ let styles = {
 //     pointerEvents: "auto",
 //   };
 
-//   // Botão com estado de bem-sucedido
-//   if (props.success) {
-//     styles = { ...styles, variantStyles: buttonStates.success };
-//   }
+  // Botão com estado de bem-sucedido
+  if (props.success) {
+    styles = {
+      ...styles,
+      states: {
+        ...styles.states,
+        enabled: {
+          ...styles.states.enabled,
+          background: color.success,
+          color: color.onSuccess,
+        },
+        hover: {
+          ...styles.states.hover,
+          color: `${color.onSuccess}`,
+          background: getBackgroundOverlay(color.success, variantStyles.state.hovered.container.stateLayerOpacity, color.onSuccess),
+        },
+        focus: {
+          ...styles.states.focus,
+          color: `${color.onSuccess}`,
+          background: getBackgroundOverlay(color.success, variantStyles.state.focused.container.stateLayerOpacity, color.onSuccess),
+        },
+        active: {
+          ...styles.states.active,
+          color: `${color.onSuccess}`,
+          background: `${color.success}`,
+        }
+      }
+    };
+  }
 
 //   // Botão com estado de carregando
 //   if (props.loading) {
