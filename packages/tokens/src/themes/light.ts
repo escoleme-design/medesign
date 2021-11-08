@@ -487,7 +487,7 @@ export const button: Button = {
                 container: {
                     outlineColor: color.outline,
                     stateLayerColor: color.primary,
-                    StateLayerOpacity: state.hover.stateLayerOpacity,
+                    stateLayerOpacity: state.hover.stateLayerOpacity,
                 },
                 labelText: {
                     color: color.primary,
@@ -500,7 +500,7 @@ export const button: Button = {
                 container: {
                     outlineColor: color.primary,
                     stateLayerColor: color.primary,
-                    elevation: state.focus.stateLayerOpacity,
+                    stateLayerOpacity: state.focus.stateLayerOpacity,
                 },
                 labelText: {
                     color: color.primary,
@@ -569,7 +569,7 @@ export const button: Button = {
             hovered: {
                 container: {
                     stateLayerColor: color.primary,
-                    StateLayerOpacity: state.hover.stateLayerOpacity,
+                    stateLayerOpacity: state.hover.stateLayerOpacity,
                 },
                 labelText: {
                     color: color.primary,

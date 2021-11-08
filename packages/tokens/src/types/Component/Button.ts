@@ -227,7 +227,7 @@ type OutlinedButton = {
             container: {
                 outlineColor: string,
                 stateLayerColor: string,
-                StateLayerOpacity: number,
+                stateLayerOpacity: number,
             },
             labelText: {
                 color: string,
@@ -240,7 +240,7 @@ type OutlinedButton = {
             container: {
                 outlineColor: string,
                 stateLayerColor: string,
-                elevation: number,
+                stateLayerOpacity: number,
             },
             labelText: {
                 color: string,
@@ -310,7 +310,7 @@ type TextButton = {
         hovered: {
             container: {
                 stateLayerColor: string,
-                StateLayerOpacity: number,
+                stateLayerOpacity: number,
             },
             labelText: {
                 color: string,

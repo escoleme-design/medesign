@@ -5,6 +5,7 @@ import { IButtonProps } from './Button.types';
 import { automationAttribute } from '../../helpers/utils';
 import { FilledButton, LinkFilledButton } from './Button.filled.styles';
 import { FilledTonalButton, LinkFilledTonalButton } from './Button.tonal.styles';
+import { LinkOutlinedButton, OutlinedButton } from './Button.outlined.styles';
 
 // const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = (props: IButtonProps, _ref) => {
 const Button = (props: IButtonProps) => {
@@ -50,6 +51,8 @@ const Button = (props: IButtonProps) => {
       ButtonStyle = props.href ? LinkFilledButton : FilledButton;
     } else if (props.variant === "tonal") {
       ButtonStyle = props.href ? LinkFilledTonalButton : FilledTonalButton;
+    } else if (props.variant === "outlined") {
+      ButtonStyle = props.href ? LinkOutlinedButton : OutlinedButton;
     } else {
       ButtonStyle = FilledButton;
     }
