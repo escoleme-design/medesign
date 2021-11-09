@@ -1,5 +1,4 @@
-import { Theme, light } from "@escoleme/medesign-tokens";
-import React, { useContext } from "react";
+import React from "react";
 import styled, {ThemeContext} from "styled-components";
 import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
 import { ButtonBase } from "./Button.styles";
@@ -12,7 +11,7 @@ export const getStyles = ({
     ...props
 }: IButtonProps) => {
 
-  const { comp, sys } = useContext(ThemeContext);
+  const { comp, sys } = React.useContext(ThemeContext);
   const button = comp.button;
   const { color } = sys;
 
@@ -80,93 +79,55 @@ export const getStyles = ({
 
   // Botão com estado de bem-sucedido
   if (props.success) {
-
     styles = merge(styles, {
-        states: {
-          enabled: {
-            background: color.success,
-            color: color.onSuccess,
-          },
-          hover: {
-            color: `${color.onSuccess}`,
-            background: getBackgroundOverlay(color.success, style.state.hovered.container.stateLayerOpacity, color.onSuccess),
-          },
-          focus: {
-            color: `${color.onSuccess}`,
-            background: getBackgroundOverlay(color.success, style.state.focused.container.stateLayerOpacity, color.onSuccess),
-          },
-          active: {
-            color: `${color.onSuccess}`,
-            background: `${color.success}`,
-          }
+      states: {
+        enabled: {
+          background: color.success,
+          color: color.onSuccess,
+        },
+        hover: {
+          color: `${color.onSuccess}`,
+          background: getBackgroundOverlay(color.success, style.state.hovered.container.stateLayerOpacity, color.onSuccess),
+        },
+        focus: {
+          color: `${color.onSuccess}`,
+          background: getBackgroundOverlay(color.success, style.state.focused.container.stateLayerOpacity, color.onSuccess),
+        },
+        active: {
+          color: `${color.onSuccess}`,
+          background: `${color.success}`,
         }
-      })
-    }
-
-    
+      }
+    })
+  }
 
   // Botão com estado de "danger"
   if (props.danger) {
-    styles = {
-      ...styles,
+    styles = merge(styles, {
       states: {
-        ...styles.states,
         enabled: {
-          ...styles.states.enabled,
           background: color.error,
           color: color.onError,
         },
         hover: {
-          ...styles.states.hover,
           color: `${color.onError}`,
           background: getBackgroundOverlay(color.error, style.state.hovered.container.stateLayerOpacity, color.onError),
         },
         focus: {
-          ...styles.states.focus,
           color: `${color.onError}`,
           background: getBackgroundOverlay(color.error, style.state.focused.container.stateLayerOpacity, color.onError),
         },
         active: {
-          ...styles.states.active,
           color: `${color.onError}`,
           background: `${color.error}`,
         }
       }
-    };
+    })
   }
 
   // Desativando os pointer events
   if (props.disabled || props.loading || props.success) {
     styles.pointerEvents = 'none'
-  }
-
-  if (props.onColor) {
-    styles = {
-      ...styles,
-      states: {
-        ...styles.states,
-        enabled: {
-          ...styles.states.enabled,
-          color: `${style.state.enabled.container.color}`,
-          background: `${style.state.enabled.labelText.color}`,
-        },
-        hover: {
-          ...styles.states.hover,
-          color: `${style.state.enabled.container.color}`,
-          background: getBackgroundOverlay(style.state.hovered.container.stateLayerColor, style.state.hovered.container.stateLayerOpacity, style.color.container),
-        },
-        focus: {
-          ...styles.states.focus,
-          color: `${style.state.enabled.container.color}`,
-          background: getBackgroundOverlay(style.state.focused.container.stateLayerColor, style.state.focused.container.stateLayerOpacity, style.color.container),
-        },
-        active: {
-          ...styles.states.active,
-          background: `${style.state.enabled.labelText.color}`,
-          color: `${style.state.enabled.container.color}`,
-        }
-      }
-    };
   }
 
   return styles;
