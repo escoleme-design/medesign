@@ -4,7 +4,7 @@ import Button from './Button';
 import {IButtonProps} from './Button.types';
 import docs from './Button.docs.mdx';
 import dedent from 'dedent'
-import { Wrapper } from '../../../../../.storybook/components';
+import Wrapper from '../../../../../.storybook/components/Wrapper';
 
 export default {
   title: 'Components/Button',

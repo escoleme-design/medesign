@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IButtonProps } from './Button.types';
+import { ButtonProps, IButtonProps } from './Button.types';
 import { automationAttribute } from '../../helpers/utils';
 import { FilledButton, LinkFilledButton } from './Button.filled.styles';
 import { FilledTonalButton, LinkFilledTonalButton } from './Button.tonal.styles';
@@ -8,7 +8,7 @@ import { LinkOutlinedButton, OutlinedButton } from './Button.outlined.styles';
 import { LinkTextButton, TextButton } from './Button.text.styles';
  
 // const Button: React.ForwardRefRenderFunction<HTMLButtonElement, IButtonProps> = (props: IButtonProps, _ref) => {
-const Button = (props: IButtonProps) => {
+const Button = (props: ButtonProps) => {
   
   const content: JSX.Element[] = [];
   const icon: React.ReactNode = props.success ? <>success</> : props.icon;

@@ -52,3 +52,23 @@ export interface IButtonProps {
     //rel?: string; // TODO: use `noopener` as default
     loadingLabel?: string;
 }
+
+export type AnchorButtonProps = {
+    href: string;
+    target?: string;
+    onClick?: React.MouseEventHandler<HTMLElement>;
+  } & IButtonProps &
+    Omit<React.AnchorHTMLAttributes<any>, 'type' | 'onClick'>;
+  
+  export type NativeButtonProps = {
+    htmlType?: ButtonHTMLType;
+    onClick?: React.MouseEventHandler<HTMLElement>;
+  } & IButtonProps &
+    Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
+  
+  export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
+  
+  interface CompoundedComponent
+    extends React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLElement>> {
+    __ANT_BUTTON: boolean;
+  }
