@@ -284,20 +284,3 @@ export const Href = (args: IButtonProps) => (
     </Button>
   </>
 );
-
-export const OnColor = (args: IButtonProps) => (
-  <>
-    <Button {...args} tabIndex={9} onColor variant="filled">
-      Filled
-    </Button>
-    <Button {...args} onColor variant="outlined">
-      Outlined
-    </Button>
-    <Button {...args} onColor variant="text">
-      Text
-    </Button>
-    <Button {...args} onColor variant="tonal">
-      Filled Tonal
-    </Button>
-  </>
-);

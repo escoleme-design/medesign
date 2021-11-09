@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
 import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
 import { ButtonBase } from "./Button.styles";
@@ -6,12 +6,12 @@ import { IButtonProps } from "./Button.types";
 import merge from 'lodash.merge'
 
 export const getStyles = ({
-    size = "normal",
-    variant = "filled",
-    ...props
+  size = "normal",
+  variant = "filled",
+  ...props
 }: IButtonProps) => {
 
-  const { comp, sys } = React.useContext(ThemeContext);
+  const { comp, sys } = useContext(ThemeContext);
   const button = comp.button;
   const { color } = sys;
 
@@ -134,71 +134,71 @@ export const getStyles = ({
 }
 
 export const FilledButton = styled(ButtonBase)<IButtonProps>`
-    /* Size */
+  /* Size */
 
-    // min-width: 0px;
-    ${(props) => props.block && `min-width: 100%;`}
-    min-height: ${(props) => getStyles(props).minHeight};
-    height: ${(props) => getStyles(props).height};
-    padding: ${(props) => getStyles(props).padding};
-    border-radius: ${(props) => getStyles(props).borderRadius};
+  // min-width: 0px;
+  ${(props) => props.block && `min-width: 100%;`}
+  min-height: ${(props) => getStyles(props).minHeight};
+  height: ${(props) => getStyles(props).height};
+  padding: ${(props) => getStyles(props).padding};
+  border-radius: ${(props) => getStyles(props).borderRadius};
 
 
-    /* Typograph */
+  /* Typograph */
 
-    white-space: nowrap;
-    font-family: ${(props) => getStyles(props).fontFamily};
-    line-height: ${(props) => getStyles(props).lineHeight};
-    font-size: ${(props) => getStyles(props).fontSize};
-    font-weight: ${(props) => getStyles(props).fontWeight};
-    
-    /* Appearance */
+  white-space: nowrap;
+  font-family: ${(props) => getStyles(props).fontFamily};
+  line-height: ${(props) => getStyles(props).lineHeight};
+  font-size: ${(props) => getStyles(props).fontSize};
+  font-weight: ${(props) => getStyles(props).fontWeight};
+  
+  /* Appearance */
 
-    background: ${(props) => getStyles(props).states.enabled.background};
-    border: none;
-    color: ${props => getStyles(props).states.enabled.color};
-    cursor: ${(props) => getStyles(props).states.enabled.cursor};
-    pointer-events: ${(props) => getStyles(props).pointerEvents};
+  background: ${(props) => getStyles(props).states.enabled.background};
+  border: none;
+  color: ${props => getStyles(props).states.enabled.color};
+  cursor: ${(props) => getStyles(props).states.enabled.cursor};
+  pointer-events: ${(props) => getStyles(props).pointerEvents};
 
-    ///transition: opacity 15ms linear,background-color 15ms linear;
+  ///transition: opacity 15ms linear,background-color 15ms linear;
 
-    > *:not(:last-child):not(:only-child) {
-        margin-right: 0;
+  > *:not(:last-child):not(:only-child) {
+    margin-right: 0;
+  }
+
+  /* States */
+
+  &:hover {
+    color: ${props => getStyles(props).states.hover.color};
+    background: ${props => getStyles(props).states.hover.background};
+  }
+
+  &:focus {
+    color: ${props => getStyles(props).states.focus.color};
+    background: ${props => getStyles(props).states.focus.background};
+    outline: ${props => getStyles(props).states.focus.outline};
+  }
+
+  &:active {
+    background: ${(props) => getStyles(props).states.active.background};
+    color: ${props => getStyles(props).states.active.color};
+  }
+
+  ${props => {
+    if (props.disabled) {
+      return (`
+        color: ${() => getStyles(props).states.disabled.color};
+        background: ${() => getStyles(props).states.disabled.background};
+        outline: ${() => getStyles(props).states.disabled.outline};
+      `);
     }
+  }}
 
-    /* States */
-
-    &:hover {
-        color: ${props => getStyles(props).states.hover.color};
-        background: ${props => getStyles(props).states.hover.background};
-    }
-
-    &:focus {
-        color: ${props => getStyles(props).states.focus.color};
-        background: ${props => getStyles(props).states.focus.background};
-        outline: ${props => getStyles(props).states.focus.outline};
-    }
-
-    &:active {
-        background: ${(props) => getStyles(props).states.active.background};
-        color: ${props => getStyles(props).states.active.color};
-    }
-
-    ${props => {
-      if (props.disabled) {
-        return (`
-          color: ${() => getStyles(props).states.disabled.color};
-          background: ${() => getStyles(props).states.disabled.background};
-          outline: ${() => getStyles(props).states.disabled.outline};
-        `);
-      }
-    }}
-
-    &:disabled {
-      color: ${props => getStyles(props).states.disabled.color};
-      background: ${props => getStyles(props).states.disabled.background};
-      outline: ${props => getStyles(props).states.disabled.outline};
-    }
+  &:disabled {
+    color: ${props => getStyles(props).states.disabled.color};
+    background: ${props => getStyles(props).states.disabled.background};
+    outline: ${props => getStyles(props).states.disabled.outline};
+  }
 `; 
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`

@@ -2,12 +2,12 @@ import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
 import { IButtonProps } from "./Button.types";
 import { getBackgroundOpacity } from "../../helpers/utils";
-import { merge } from "lodash";
+import merge from "lodash.merge";
 
 export const getStyles = ({
-    size = "normal",
-    variant = "filled",
-    ...props
+  size = "normal",
+  variant = "filled",
+  ...props
 }: IButtonProps) => {
 
   const { comp, sys } = useContext(ThemeContext);
@@ -31,30 +31,30 @@ export const getStyles = ({
     pointerEvents: `auto`,
     transtion: ``,
     states: {
-        enabled: {
-            background: `transparent`,
-            color: `${variantStyles.color.labelText}`,
-            cursor: `${props.disabled ? "not-allowed" : "pointer"}`,
-            transition: ``,
-        },
-        hover: {
-        color: `${variantStyles.state.hovered.labelText.color}`,
-        background: getBackgroundOpacity(variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.state.hovered.container.stateLayerColor),
-        },
-        focus: {
-        color: `${variantStyles.state.focused.labelText.color}`,
-        background: getBackgroundOpacity(variantStyles.state.focused.container.stateLayerOpacity, variantStyles.state.focused.container.stateLayerColor),
-        outline: `none`,
-        },
-        active: {
-        background: getBackgroundOpacity(variantStyles.state.pressed.container.stateLayerOpacity, variantStyles.state.pressed.container.stateLayerColor),
-        color: `${variantStyles.state.pressed.labelText.color}`,
-        },
-        disabled: {
+      enabled: {
         background: `transparent`,
-        color: getBackgroundOpacity(variantStyles.state.disabled.labelText.opacity, variantStyles.state.disabled.labelText.color),
-        outline: `none`,
-        }
+        color: `${variantStyles.color.labelText}`,
+        cursor: `${props.disabled ? "not-allowed" : "pointer"}`,
+        transition: ``,
+      },
+      hover: {
+      color: `${variantStyles.state.hovered.labelText.color}`,
+      background: getBackgroundOpacity(variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.state.hovered.container.stateLayerColor),
+      },
+      focus: {
+      color: `${variantStyles.state.focused.labelText.color}`,
+      background: getBackgroundOpacity(variantStyles.state.focused.container.stateLayerOpacity, variantStyles.state.focused.container.stateLayerColor),
+      outline: `none`,
+      },
+      active: {
+      background: getBackgroundOpacity(variantStyles.state.pressed.container.stateLayerOpacity, variantStyles.state.pressed.container.stateLayerColor),
+      color: `${variantStyles.state.pressed.labelText.color}`,
+      },
+      disabled: {
+      background: `transparent`,
+      color: getBackgroundOpacity(variantStyles.state.disabled.labelText.opacity, variantStyles.state.disabled.labelText.color),
+      outline: `none`,
+      }
     },
   };
 
@@ -113,80 +113,80 @@ export const getStyles = ({
 }
 
 export const TextButton = styled.button<IButtonProps>`
-    display: inline-flex;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
 
-    /* Size */
+  /* Size */
 
-    // min-width: 0px;
-    ${(props) => props.block && `min-width: 100%;`}
-    min-height: ${(props) => getStyles(props).minHeight};
-    height: ${(props) => getStyles(props).height};
-    padding: ${(props) => getStyles(props).padding};
-    border-radius: ${(props) => getStyles(props).borderRadius};
+  // min-width: 0px;
+  ${(props) => props.block && `min-width: 100%;`}
+  min-height: ${(props) => getStyles(props).minHeight};
+  height: ${(props) => getStyles(props).height};
+  padding: ${(props) => getStyles(props).padding};
+  border-radius: ${(props) => getStyles(props).borderRadius};
 
-    /* Safari button margins reset */
-    /* See https://github.com/google/material-design-lite/issues/4008 */
-    margin-top: 0px;
-    margin-left: 0px;
+  /* Safari button margins reset */
+  /* See https://github.com/google/material-design-lite/issues/4008 */
+  margin-top: 0px;
+  margin-left: 0px;
 
-    /* Typograph */
+  /* Typograph */
 
-    white-space: nowrap;
-    font-family: ${(props) => getStyles(props).fontFamily};
-    line-height: ${(props) => getStyles(props).lineHeight};
-    font-size: ${(props) => getStyles(props).fontSize};
-    font-weight: ${(props) => getStyles(props).fontWeight};
-    
-    /* Appearance */
+  white-space: nowrap;
+  font-family: ${(props) => getStyles(props).fontFamily};
+  line-height: ${(props) => getStyles(props).lineHeight};
+  font-size: ${(props) => getStyles(props).fontSize};
+  font-weight: ${(props) => getStyles(props).fontWeight};
 
-    color: ${props => getStyles(props).states.enabled.color};
-    cursor: ${(props) => getStyles(props).states.enabled.cursor};
-    pointer-events: ${(props) => getStyles(props).pointerEvents};
-    background: ${(props) => getStyles(props).states.enabled.background};
-    border: none;
+  /* Appearance */
 
-    ///transition: opacity 15ms linear,background-color 15ms linear;
+  color: ${props => getStyles(props).states.enabled.color};
+  cursor: ${(props) => getStyles(props).states.enabled.cursor};
+  pointer-events: ${(props) => getStyles(props).pointerEvents};
+  background: ${(props) => getStyles(props).states.enabled.background};
+  border: none;
 
-    > *:not(:last-child):not(:only-child) {
-        margin-right: 0;
+  ///transition: opacity 15ms linear,background-color 15ms linear;
+
+  > *:not(:last-child):not(:only-child) {
+    margin-right: 0;
+  }
+
+  /* States */
+
+  &:hover {
+    color: ${props => getStyles(props).states.hover.color};
+    background: ${props => getStyles(props).states.hover.background};
+  } 
+
+  &:focus {
+    color: ${props => getStyles(props).states.focus.color};
+    background: ${props => getStyles(props).states.focus.background};
+    outline: ${props => getStyles(props).states.focus.outline};
+  }
+
+  &:active {
+    background: ${(props) => getStyles(props).states.active.background};
+    color: ${props => getStyles(props).states.active.color};
+  }
+
+  ${props => {
+    if (props.disabled) {
+      return (`
+        color: ${() => getStyles(props).states.disabled.color};
+        background: ${() => getStyles(props).states.disabled.background};
+        outline: ${() => getStyles(props).states.disabled.outline};
+      `);
     }
+  }}
 
-    /* States */
-
-    &:hover {
-        color: ${props => getStyles(props).states.hover.color};
-        background: ${props => getStyles(props).states.hover.background};
-    } 
-
-    &:focus {
-        color: ${props => getStyles(props).states.focus.color};
-        background: ${props => getStyles(props).states.focus.background};
-        outline: ${props => getStyles(props).states.focus.outline};
-    }
-
-    &:active {
-        background: ${(props) => getStyles(props).states.active.background};
-        color: ${props => getStyles(props).states.active.color};
-    }
-
-    ${props => {
-      if (props.disabled) {
-        return (`
-          color: ${() => getStyles(props).states.disabled.color};
-          background: ${() => getStyles(props).states.disabled.background};
-          outline: ${() => getStyles(props).states.disabled.outline};
-        `);
-      }
-    }}
-
-    &:disabled {
-      color: ${props => getStyles(props).states.disabled.color};
-      background: ${props => getStyles(props).states.disabled.background};
-      outline: ${props => getStyles(props).states.disabled.outline};
-    }
+  &:disabled {
+    color: ${props => getStyles(props).states.disabled.color};
+    background: ${props => getStyles(props).states.disabled.background};
+    outline: ${props => getStyles(props).states.disabled.outline};
+  }
 `; 
 
 export const LinkTextButton = styled(TextButton).attrs({ as: "a" })`
