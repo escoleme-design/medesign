@@ -1,9 +1,8 @@
-import { Theme, light } from "@escoleme/medesign-tokens";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
 import { IButtonProps } from "./Button.types";
-import chroma from 'chroma-js'
 import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
+import merge from "lodash.merge";
 
 export const getStyles = ({
     size = "normal",
@@ -65,96 +64,55 @@ let styles = {
 
   // Botão com estado de bem-sucedido
   if (props.success) {
-    styles = {
-      ...styles,
+    styles = merge(styles, {
       states: {
-        ...styles.states,
         enabled: {
-          ...styles.states.enabled,
           background: color.successContainer,
           color: color.onSuccessContainer,
         },
         hover: {
-          ...styles.states.hover,
           color: `${color.onSuccessContainer}`,
           background: getBackgroundOverlay(color.successContainer, variantStyles.state.hovered.container.stateLayerOpacity, color.onSuccessContainer),
         },
         focus: {
-          ...styles.states.focus,
           color: `${color.onSuccessContainer}`,
           background: getBackgroundOverlay(color.successContainer, variantStyles.state.focused.container.stateLayerOpacity, color.onSuccessContainer),
         },
         active: {
-          ...styles.states.active,
           color: `${color.onSuccessContainer}`,
           background: `${color.successContainer}`,
         }
       }
-    };
+    })
   }
 
   // Botão com estado de "danger"
   if (props.danger) {
-    styles = {
-      ...styles,
+    styles = merge(styles, {
       states: {
-        ...styles.states,
         enabled: {
-          ...styles.states.enabled,
           background: color.error,
           color: color.onError,
         },
         hover: {
-          ...styles.states.hover,
           color: `${color.onError}`,
           background: getBackgroundOverlay(color.error, variantStyles.state.hovered.container.stateLayerOpacity, color.onError),
         },
         focus: {
-          ...styles.states.focus,
           color: `${color.onError}`,
           background: getBackgroundOverlay(color.error, variantStyles.state.focused.container.stateLayerOpacity, color.onError),
         },
         active: {
-          ...styles.states.active,
           color: `${color.onError}`,
           background: `${color.error}`,
         }
       }
-    };
+    })
   }
 
   // Desativando os pointer events
   if (props.disabled || props.loading || props.success) {
     styles.pointerEvents = 'none'
-  }
-
-  if (props.onColor) {
-    styles = {
-      ...styles,
-      states: {
-        ...styles.states,
-        enabled: {
-          ...styles.states.enabled,
-          color: `${variantStyles.state.enabled.container.color}`,
-          background: `${variantStyles.state.enabled.labelText.color}`,
-        },
-        hover: {
-          ...styles.states.hover,
-          color: `${variantStyles.state.enabled.container.color}`,
-          background: getBackgroundOverlay(variantStyles.state.hovered.container.stateLayerColor, variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.color.container),
-        },
-        focus: {
-          ...styles.states.focus,
-          color: `${variantStyles.state.enabled.container.color}`,
-          background: getBackgroundOverlay(variantStyles.state.focused.container.stateLayerColor, variantStyles.state.focused.container.stateLayerOpacity, variantStyles.color.container),
-        },
-        active: {
-          ...styles.states.active,
-          background: `${variantStyles.state.enabled.labelText.color}`,
-          color: `${variantStyles.state.enabled.container.color}`,
-        }
-      }
-    };
   }
 
   return styles;
