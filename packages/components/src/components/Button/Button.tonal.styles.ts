@@ -3,17 +3,7 @@ import React, { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
 import { IButtonProps } from "./Button.types";
 import chroma from 'chroma-js'
-
-const getBackgroundOverlay = (background: string, opacity: number, stateLayer: string) => {
-  const [red, green, blue] = chroma(stateLayer).rgb();
-  const layerOpacity = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-  return `linear-gradient(0deg, ${layerOpacity}, ${layerOpacity}), ${background}`;
-}
-
-const getBackgroundOpacity = (opacity: number, background: string) => {
-  const [red, green, blue] = chroma(background).rgb()
-  return `rgba(${red},${green},${blue},${opacity})`;
-}
+import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
 
 export const getStyles = ({
     size = "normal",

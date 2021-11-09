@@ -1,19 +1,10 @@
 import { Theme, light } from "@escoleme/medesign-tokens";
 import React, { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
+import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
+import { ButtonBase } from "./Button.styles";
 import { IButtonProps } from "./Button.types";
-import chroma from 'chroma-js'
-
-const getBackgroundOverlay = (background: string, opacity: number, stateLayer: string) => {
-  const [red, green, blue] = chroma(stateLayer).rgb();
-  const layerOpacity = `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-  return `linear-gradient(0deg, ${layerOpacity}, ${layerOpacity}), ${background}`;
-}
-
-const getBackgroundOpacity = (opacity: number, background: string) => {
-  const [red, green, blue] = chroma(background).rgb()
-  return `rgba(${red},${green},${blue},${opacity})`;
-}
+import merge from 'lodash.merge'
 
 export const getStyles = ({
     size = "normal",
@@ -25,49 +16,63 @@ export const getStyles = ({
   const button = comp.button;
   const { color } = sys;
 
-  const variantStyles = button.filled;
+  const style = button.filled;
 
 //   const sizeStyles = buttonSizes[size] ? buttonSizes[size] : buttonSizes.normal;
 
-let styles = {
-    style: variantStyles,
-    minHeight: `${variantStyles.layout.height}px`,
-    height: `${variantStyles.layout.height}px`,
-    padding: `0 ${variantStyles.layout.leftRightPadding}px`,
-    borderRadius: `${variantStyles.layout.shape}px`,
-    fontFamily: `${variantStyles.state.enabled.labelText.font}`,
-    lineHeight: `${variantStyles.state.enabled.labelText.lineHeight}`,
-    fontSize: `${variantStyles.state.enabled.labelText.size}px`,
-    fontWeight: `${variantStyles.state.enabled.labelText.weight}`,
+  let styles = {
+    style: style,
+    minHeight: `${style.layout.height}px`,
+    height: `${style.layout.height}px`,
+    padding: `0 ${style.layout.leftRightPadding}px`,
+    borderRadius: `${style.layout.shape}px`,
+    fontFamily: `${style.state.enabled.labelText.font}`,
+    lineHeight: `${style.state.enabled.labelText.lineHeight}`,
+    fontSize: `${style.state.enabled.labelText.size}px`,
+    fontWeight: `${style.state.enabled.labelText.weight}`,
     pointerEvents: `auto`,
     transtion: ``,
     states: {
       enabled: {
-        background: `${variantStyles.state.enabled.container.color}`,
-        border: `none`,
-        color: `${variantStyles.state.enabled.labelText.color}`,
+        background: `${style.state.enabled.container.color}`,
+        color: `${style.state.enabled.labelText.color}`,
         cursor: `${props.disabled ? "not-allowed" : "pointer"}`,
         transition: ``,
       },
       hover: {
-        color: `${variantStyles.state.hovered.labelText.color}`,
-        background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.state.hovered.container.stateLayerColor),
+        color: `${style.state.hovered.labelText.color}`,
+        background: getBackgroundOverlay(
+          style.color.container,
+          style.state.hovered.container.stateLayerOpacity,
+          style.state.hovered.container.stateLayerColor
+        ),
       },
       focus: {
-        color: `${variantStyles.state.focused.labelText.color}`,
-        background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.focused.container.stateLayerOpacity, variantStyles.state.focused.container.stateLayerColor),
-        borderColor: `none`,
+        color: `${style.state.focused.labelText.color}`,
+        background: getBackgroundOverlay(
+          style.color.container,
+          style.state.focused.container.stateLayerOpacity,
+          style.state.focused.container.stateLayerColor
+        ),
         outline: `none`,
       },
       active: {
-        background: `${variantStyles.state.enabled.container.color}`,
-        color: `${variantStyles.state.enabled.labelText.color}`,
-        border: `none`,
+        background: getBackgroundOverlay(
+          style.color.container,
+          style.state.pressed.container.stateLayerOpacity,
+          style.state.pressed.container.stateLayerColor
+        ),
+        color: `${style.state.pressed.labelText.color}`,
       },
       disabled: {
-        color: getBackgroundOpacity(variantStyles.state.disabled.labelText.opacity, variantStyles.state.disabled.labelText.color),
-        background: getBackgroundOpacity(variantStyles.state.disabled.container.opacity, variantStyles.state.disabled.container.color),
-        border: `none`,
+        color: getBackgroundOpacity(
+          style.state.disabled.labelText.opacity,
+          style.state.disabled.labelText.color
+        ),
+        background: getBackgroundOpacity(
+          style.state.disabled.container.opacity,
+          style.state.disabled.container.color
+        ),
         outline: `none`,
       }
     },
@@ -75,33 +80,30 @@ let styles = {
 
   // Botão com estado de bem-sucedido
   if (props.success) {
-    styles = {
-      ...styles,
-      states: {
-        ...styles.states,
-        enabled: {
-          ...styles.states.enabled,
-          background: color.success,
-          color: color.onSuccess,
-        },
-        hover: {
-          ...styles.states.hover,
-          color: `${color.onSuccess}`,
-          background: getBackgroundOverlay(color.success, variantStyles.state.hovered.container.stateLayerOpacity, color.onSuccess),
-        },
-        focus: {
-          ...styles.states.focus,
-          color: `${color.onSuccess}`,
-          background: getBackgroundOverlay(color.success, variantStyles.state.focused.container.stateLayerOpacity, color.onSuccess),
-        },
-        active: {
-          ...styles.states.active,
-          color: `${color.onSuccess}`,
-          background: `${color.success}`,
+
+    styles = merge(styles, {
+        states: {
+          enabled: {
+            background: color.success,
+            color: color.onSuccess,
+          },
+          hover: {
+            color: `${color.onSuccess}`,
+            background: getBackgroundOverlay(color.success, style.state.hovered.container.stateLayerOpacity, color.onSuccess),
+          },
+          focus: {
+            color: `${color.onSuccess}`,
+            background: getBackgroundOverlay(color.success, style.state.focused.container.stateLayerOpacity, color.onSuccess),
+          },
+          active: {
+            color: `${color.onSuccess}`,
+            background: `${color.success}`,
+          }
         }
-      }
-    };
-  }
+      })
+    }
+
+    
 
   // Botão com estado de "danger"
   if (props.danger) {
@@ -117,12 +119,12 @@ let styles = {
         hover: {
           ...styles.states.hover,
           color: `${color.onError}`,
-          background: getBackgroundOverlay(color.error, variantStyles.state.hovered.container.stateLayerOpacity, color.onError),
+          background: getBackgroundOverlay(color.error, style.state.hovered.container.stateLayerOpacity, color.onError),
         },
         focus: {
           ...styles.states.focus,
           color: `${color.onError}`,
-          background: getBackgroundOverlay(color.error, variantStyles.state.focused.container.stateLayerOpacity, color.onError),
+          background: getBackgroundOverlay(color.error, style.state.focused.container.stateLayerOpacity, color.onError),
         },
         active: {
           ...styles.states.active,
@@ -145,23 +147,23 @@ let styles = {
         ...styles.states,
         enabled: {
           ...styles.states.enabled,
-          color: `${variantStyles.state.enabled.container.color}`,
-          background: `${variantStyles.state.enabled.labelText.color}`,
+          color: `${style.state.enabled.container.color}`,
+          background: `${style.state.enabled.labelText.color}`,
         },
         hover: {
           ...styles.states.hover,
-          color: `${variantStyles.state.enabled.container.color}`,
-          background: getBackgroundOverlay(variantStyles.state.hovered.container.stateLayerColor, variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.color.container),
+          color: `${style.state.enabled.container.color}`,
+          background: getBackgroundOverlay(style.state.hovered.container.stateLayerColor, style.state.hovered.container.stateLayerOpacity, style.color.container),
         },
         focus: {
           ...styles.states.focus,
-          color: `${variantStyles.state.enabled.container.color}`,
-          background: getBackgroundOverlay(variantStyles.state.focused.container.stateLayerColor, variantStyles.state.focused.container.stateLayerOpacity, variantStyles.color.container),
+          color: `${style.state.enabled.container.color}`,
+          background: getBackgroundOverlay(style.state.focused.container.stateLayerColor, style.state.focused.container.stateLayerOpacity, style.color.container),
         },
         active: {
           ...styles.states.active,
-          background: `${variantStyles.state.enabled.labelText.color}`,
-          color: `${variantStyles.state.enabled.container.color}`,
+          background: `${style.state.enabled.labelText.color}`,
+          color: `${style.state.enabled.container.color}`,
         }
       }
     };
@@ -170,12 +172,7 @@ let styles = {
   return styles;
 }
 
-export const FilledButton = styled.button<IButtonProps>`
-    display: inline-flex;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-
+export const FilledButton = styled(ButtonBase)<IButtonProps>`
     /* Size */
 
     // min-width: 0px;
@@ -185,10 +182,6 @@ export const FilledButton = styled.button<IButtonProps>`
     padding: ${(props) => getStyles(props).padding};
     border-radius: ${(props) => getStyles(props).borderRadius};
 
-    /* Safari button margins reset */
-    /* See https://github.com/google/material-design-lite/issues/4008 */
-    margin-top: 0px;
-    margin-left: 0px;
 
     /* Typograph */
 
@@ -201,7 +194,7 @@ export const FilledButton = styled.button<IButtonProps>`
     /* Appearance */
 
     background: ${(props) => getStyles(props).states.enabled.background};
-    border: ${props => getStyles(props).states.enabled.border};
+    border: none;
     color: ${props => getStyles(props).states.enabled.color};
     cursor: ${(props) => getStyles(props).states.enabled.cursor};
     pointer-events: ${(props) => getStyles(props).pointerEvents};
@@ -217,19 +210,16 @@ export const FilledButton = styled.button<IButtonProps>`
     &:hover {
         color: ${props => getStyles(props).states.hover.color};
         background: ${props => getStyles(props).states.hover.background};
-        border-color: ${props => getStyles(props).style.state.enabled.container.color};
     }
 
     &:focus {
         color: ${props => getStyles(props).states.focus.color};
         background: ${props => getStyles(props).states.focus.background};
-        border-color: ${props => getStyles(props).states.focus.borderColor};
         outline: ${props => getStyles(props).states.focus.outline};
     }
 
     &:active {
         background: ${(props) => getStyles(props).states.active.background};
-        border: 1px solid ${props => getStyles(props).states.active.border};
         color: ${props => getStyles(props).states.active.color};
     }
 
@@ -238,7 +228,6 @@ export const FilledButton = styled.button<IButtonProps>`
         return (`
           color: ${() => getStyles(props).states.disabled.color};
           background: ${() => getStyles(props).states.disabled.background};
-          border: ${() => getStyles(props).states.disabled.border};
           outline: ${() => getStyles(props).states.disabled.outline};
         `);
       }
@@ -247,7 +236,6 @@ export const FilledButton = styled.button<IButtonProps>`
     &:disabled {
       color: ${props => getStyles(props).states.disabled.color};
       background: ${props => getStyles(props).states.disabled.background};
-      border: ${props => getStyles(props).states.disabled.border};
       outline: ${props => getStyles(props).states.disabled.outline};
     }
 `; 

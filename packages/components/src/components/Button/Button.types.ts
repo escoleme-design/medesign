@@ -17,6 +17,7 @@ const ButtonIconAligns = tupleString('left', 'right');
 export type ButtonIconAlign = (typeof ButtonIconAligns)[number];
 
 export interface IButtonProps {
+// export interface IButtonProps extends React.HTMLProps<HTMLButtonElement> {
     id?: string;
     className?: string;
     variant?: Style;
@@ -27,7 +28,7 @@ export interface IButtonProps {
     block?: boolean;
     onClick?: React.MouseEventHandler<HTMLElement>;
     loading?: boolean;
-    children?: React.ReactNode;
+    children: React.ReactNode;
     success?: boolean;
     danger?: boolean;
     onColor?: boolean;
@@ -39,7 +40,6 @@ export interface IButtonProps {
     ref?: React.Ref<any>;
 
 
-
     
     size?: any;
 
@@ -49,6 +49,6 @@ export interface IButtonProps {
     icon?: React.ReactNode;
     /** Align Icon Left or Right */
     iconAlign?: ButtonIconAlign;
-    rel?: string; // TODO: use `noopener` as default
+    //rel?: string; // TODO: use `noopener` as default
     loadingLabel?: string;
 }

@@ -5,15 +5,6 @@ import {IButtonProps} from './Button.types';
 import docs from './Button.docs.mdx';
 import dedent from 'dedent'
 import { Wrapper } from '../../../../../.storybook/components';
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from '@storybook/addon-docs';
 
 export default {
   title: 'Components/Button',
@@ -124,27 +115,9 @@ export default {
 export const Base: Story<IButtonProps> = (args: IButtonProps) => <Button {...args} />
 
 Base.args = {
-  id: "OLHA_O_ID",
-  className: "OLHA_O_CLASSNAME",
-  // href: 'asdsd',
-  type: "submit",
-  target: '_black',
-  // disabled: true,
   onClick: () => alert("oi"),
-  loading: false,
   children: 'Click me',
-  success: false,
-  danger: false,
-
-
-
-
   variant: 'filled',
-  // size: 'normal',
-  // lowercase: false,
-  // variant: 'Con',
-  // block: false,
-  // loading: false,
 }
 
 export const Variants = (args: IButtonProps) => (
@@ -155,7 +128,7 @@ export const Variants = (args: IButtonProps) => (
     <Button {...args}  variant="tonal">
       Filled Tonal
     </Button>
-    <Button {...args}  variant="outlined">
+    <Button {...args} variant="outlined">
       Outlined
     </Button>
     <Button {...args}  variant="text">
@@ -314,7 +287,7 @@ export const Href = (args: IButtonProps) => (
 
 export const OnColor = (args: IButtonProps) => (
   <>
-    <Button {...args} onColor variant="filled">
+    <Button {...args} tabIndex={9} onColor variant="filled">
       Filled
     </Button>
     <Button {...args} onColor variant="outlined">
@@ -328,51 +301,3 @@ export const OnColor = (args: IButtonProps) => (
     </Button>
   </>
 );
-
-
-// const Template: ComponentStory<any> = (args) => <Button {...args} />;
-// Template.args = {
-//   children: 'edf',
-//   size: 'normal',
-//   lowercase: false,
-//   href: '',
-//   target: '',
-//   disabled: false,
-//   variant: 'contained',
-//   className: "",
-//   id: "",
-//   // type: "button",
-//   onClick: () => alert("oi"),
-//   block: false,
-//   success: false,
-//   loading: false,
-//   danger: false,
-// }
-
-// export const Variants = (args: IButtonProps) => {
-//   <div>
-//     <Button {...args} type="button" variant="filled" />
-//     <Button {...args} type="button" variant="outlined" />
-//     <Button {...args} type="button" variant="text" />
-//   </div>
-// }
-
-// export const Primary = Template.bind({});
-
-// Primary.args = {
-//   children: 'edf',
-//   size: 'normal',
-//   lowercase: false,
-//   href: '',
-//   target: '',
-//   disabled: false,
-//   variant: 'contained',
-//   className: "",
-//   id: "",
-//   type: "button",
-//   onClick: () => alert("oi"),
-//   block: false,
-//   success: false,
-//   loading: false,
-//   danger: false,
-// };
