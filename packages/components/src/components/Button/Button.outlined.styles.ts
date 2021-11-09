@@ -1,5 +1,5 @@
-import { Theme, light } from "@escoleme/medesign-tokens";
-import React, { useContext } from "react";
+import { merge } from "lodash";
+import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
 import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
 import { IButtonProps } from "./Button.types";
@@ -64,98 +64,55 @@ let styles = {
 
   // Botão com estado de bem-sucedido
   if (props.success) {
-    styles = {
-      ...styles,
+    styles = merge(styles, {
       states: {
-        ...styles.states,
         enabled: {
-          ...styles.states.enabled,
           border: `${variantStyles.state.enabled.container.outlineWidth}px solid ${color.success}`,
           color: color.success,
         },
         hover: {
-          ...styles.states.hover,
           color: `${color.success}`,
           background: getBackgroundOpacity(variantStyles.state.hovered.container.stateLayerOpacity, color.success),
         },
         focus: {
-          ...styles.states.focus,
           color: `${color.success}`,
           background: getBackgroundOpacity(variantStyles.state.focused.container.stateLayerOpacity, color.success),
         },
         active: {
-          ...styles.states.active,
           color: `${color.success}`,
           background: `${color.success}`,
         }
       }
-    };
+    })
   }
 
   // Botão com estado de "danger"
   if (props.danger) {
-    styles = {
-        ...styles,
-        states: {
-          ...styles.states,
-          enabled: {
-            ...styles.states.enabled,
-            border: `${variantStyles.state.enabled.container.outlineWidth}px solid ${color.error}`,
-            color: color.error,
-          },
-          hover: {
-            ...styles.states.hover,
-            color: `${color.error}`,
-            background: getBackgroundOpacity(variantStyles.state.hovered.container.stateLayerOpacity, color.error),
-          },
-          focus: {
-            ...styles.states.focus,
-            color: `${color.error}`,
-            background: getBackgroundOpacity(variantStyles.state.focused.container.stateLayerOpacity, color.error),
-          },
-          active: {
-            ...styles.states.active,
-            color: `${color.error}`,
-            background: `${color.error}`,
-          }
+    styles = merge(styles, {
+      states: {
+        enabled: {
+          border: `${variantStyles.state.enabled.container.outlineWidth}px solid ${color.error}`,
+          color: color.error,
+        },
+        hover: {
+          color: `${color.error}`,
+          background: getBackgroundOpacity(variantStyles.state.hovered.container.stateLayerOpacity, color.error),
+        },
+        focus: {
+          color: `${color.error}`,
+          background: getBackgroundOpacity(variantStyles.state.focused.container.stateLayerOpacity, color.error),
+        },
+        active: {
+          color: `${color.error}`,
+          background: `${color.error}`,
         }
-      };
+      }
+    })
   }
 
   // Desativando os pointer events
   if (props.disabled || props.loading || props.success) {
     styles.pointerEvents = 'none'
-  }
-
-  if (props.onColor) {
-    styles = {
-      ...styles,
-      states: {
-        ...styles.states,
-        enabled: {
-          ...styles.states.enabled,
-          border: `${variantStyles.state.enabled.container.outlineWidth}px solid ${variantStyles.state.enabled.container.outlineColor}`,
-          color: `${variantStyles.state.enabled.labelText.color}`,
-        },
-        hover: {
-          ...styles.states.hover,
-          color: `${variantStyles.state.hovered.labelText.color}`,
-          background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.hovered.container.stateLayerOpacity, variantStyles.state.hovered.container.stateLayerColor),
-        },
-        focus: {
-          ...styles.states.focus,
-          color: `${variantStyles.state.focused.labelText.color}`,
-          background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.focused.container.stateLayerOpacity, variantStyles.state.focused.container.stateLayerColor),
-          borderColor: `${variantStyles.state.focused.container.outlineColor}`,
-        },
-        active: {
-          ...styles.states.active,
-          background: getBackgroundOverlay(variantStyles.color.container, variantStyles.state.pressed.container.stateLayerOpacity, variantStyles.state.pressed.container.stateLayerColor),
-          border: `${variantStyles.state.enabled.container.outlineWidth}px solid ${variantStyles.state.enabled.container.outlineColor}`,
-          color: `${variantStyles.state.pressed.labelText.color}`,
-        }
-      }
-    };
   }
 
   return styles;
