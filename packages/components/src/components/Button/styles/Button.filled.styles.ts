@@ -1,15 +1,13 @@
 import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import { getBackgroundOpacity, getBackgroundOverlay } from "../../helpers/utils";
-import { ButtonBase } from "./Button.styles";
-import { IButtonProps } from "./Button.types";
 import merge from 'lodash.merge'
 
-export const getStyles = ({
-  size = "normal",
-  variant = "filled",
-  ...props
-}: IButtonProps) => {
+import { ButtonBase } from "./Button.base.styles";
+
+import { getBackgroundOpacity, getBackgroundOverlay } from "../../../helpers/utils";
+import { IButtonProps } from "../Button.types";
+
+export const getFilledStyles = (props: IButtonProps) => {
 
   const { comp, sys } = useContext(ThemeContext);
   const button = comp.button;
@@ -17,20 +15,11 @@ export const getStyles = ({
 
   const style = button.filled;
 
-//   const sizeStyles = buttonSizes[size] ? buttonSizes[size] : buttonSizes.normal;
-
   let styles = {
+    // component styles
     style: style,
-    minHeight: `${style.layout.height}px`,
-    height: `${style.layout.height}px`,
-    padding: `0 ${style.layout.leftRightPadding}px`,
-    borderRadius: `${style.layout.shape}px`,
-    fontFamily: `${style.state.enabled.labelText.font}`,
-    lineHeight: `${style.state.enabled.labelText.lineHeight}`,
-    fontSize: `${style.state.enabled.labelText.size}px`,
-    fontWeight: `${style.state.enabled.labelText.weight}`,
-    pointerEvents: `auto`,
-    transtion: ``,
+
+    // States
     states: {
       enabled: {
         background: `${style.state.enabled.container.color}`,
@@ -77,7 +66,6 @@ export const getStyles = ({
     },
   };
 
-  // Botão com estado de bem-sucedido
   if (props.success) {
     styles = merge(styles, {
       states: {
@@ -101,7 +89,6 @@ export const getStyles = ({
     })
   }
 
-  // Botão com estado de "danger"
   if (props.danger) {
     styles = merge(styles, {
       states: {
@@ -125,83 +112,54 @@ export const getStyles = ({
     })
   }
 
-  // Desativando os pointer events
-  if (props.disabled || props.loading || props.success) {
-    styles.pointerEvents = 'none'
-  }
-
   return styles;
 }
 
 export const FilledButton = styled(ButtonBase)<IButtonProps>`
-  /* Size */
 
-  // min-width: 0px;
-  ${(props) => props.block && `min-width: 100%;`}
-  min-height: ${(props) => getStyles(props).minHeight};
-  height: ${(props) => getStyles(props).height};
-  padding: ${(props) => getStyles(props).padding};
-  border-radius: ${(props) => getStyles(props).borderRadius};
-
-
-  /* Typograph */
-
-  white-space: nowrap;
-  font-family: ${(props) => getStyles(props).fontFamily};
-  line-height: ${(props) => getStyles(props).lineHeight};
-  font-size: ${(props) => getStyles(props).fontSize};
-  font-weight: ${(props) => getStyles(props).fontWeight};
-  
   /* Appearance */
 
-  background: ${(props) => getStyles(props).states.enabled.background};
+  background: ${(props) => getFilledStyles(props).states.enabled.background};
   border: none;
-  color: ${props => getStyles(props).states.enabled.color};
-  cursor: ${(props) => getStyles(props).states.enabled.cursor};
-  pointer-events: ${(props) => getStyles(props).pointerEvents};
-
-  ///transition: opacity 15ms linear,background-color 15ms linear;
-
-  > *:not(:last-child):not(:only-child) {
-    margin-right: 0;
-  }
+  color: ${props => getFilledStyles(props).states.enabled.color};
+  cursor: ${(props) => getFilledStyles(props).states.enabled.cursor};
 
   /* States */
 
   &:hover {
-    color: ${props => getStyles(props).states.hover.color};
-    background: ${props => getStyles(props).states.hover.background};
+    color: ${props => getFilledStyles(props).states.hover.color};
+    background: ${props => getFilledStyles(props).states.hover.background};
   }
 
   &:focus {
-    color: ${props => getStyles(props).states.focus.color};
-    background: ${props => getStyles(props).states.focus.background};
-    outline: ${props => getStyles(props).states.focus.outline};
+    color: ${props => getFilledStyles(props).states.focus.color};
+    background: ${props => getFilledStyles(props).states.focus.background};
+    outline: ${props => getFilledStyles(props).states.focus.outline};
   }
 
   &:active {
-    background: ${(props) => getStyles(props).states.active.background};
-    color: ${props => getStyles(props).states.active.color};
+    background: ${(props) => getFilledStyles(props).states.active.background};
+    color: ${props => getFilledStyles(props).states.active.color};
   }
 
   ${props => {
     if (props.disabled) {
       return (`
-        color: ${() => getStyles(props).states.disabled.color};
-        background: ${() => getStyles(props).states.disabled.background};
-        outline: ${() => getStyles(props).states.disabled.outline};
+        color: ${() => getFilledStyles(props).states.disabled.color};
+        background: ${() => getFilledStyles(props).states.disabled.background};
+        outline: ${() => getFilledStyles(props).states.disabled.outline};
       `);
     }
   }}
 
   &:disabled {
-    color: ${props => getStyles(props).states.disabled.color};
-    background: ${props => getStyles(props).states.disabled.background};
-    outline: ${props => getStyles(props).states.disabled.outline};
+    color: ${props => getFilledStyles(props).states.disabled.color};
+    background: ${props => getFilledStyles(props).states.disabled.background};
+    outline: ${props => getFilledStyles(props).states.disabled.outline};
   }
 `; 
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
   text-decoration: none;
-  ${(props) => props.block && `min-width: calc(100% - ${getStyles(props).style.layout.leftRightPadding*2}px);`}
+  ${(props) => props.block && `min-width: calc(100% - ${getFilledStyles(props).style.layout.leftRightPadding*2}px);`}
 `;
