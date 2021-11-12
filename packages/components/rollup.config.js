@@ -14,7 +14,10 @@ const styledComponentsTransformer = createStyledComponentsTransformer();
 // import typescript from 'rollup-plugin-typescript2';
 
 const plugins = [
-  babel({ exclude: "node_modules/**" }),
+  babel({
+    exclude: "node_modules/**",
+    presets: ['@babel/env', '@babel/preset-react']
+  }),
   external(),
   resolve(),
   commonjs(),

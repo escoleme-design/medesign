@@ -20,7 +20,8 @@
     "compile": "rollup -c",
     "compile:watch": "rollup -c -w",
     "clean": "rimraf dist",
-    "docs:dev": "npm run compile:watch"
+    "docs:dev": "npm run compile:watch",
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/Cairo-design-system/cairo-react/issues"

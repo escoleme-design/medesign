@@ -211,6 +211,20 @@ export const Block = (args: IButtonProps) => (
   </>
 );
 
+export const Ellipse = (args: IButtonProps) => (
+  <div style={{
+    width: '30%',
+    display: 'flex',
+    justifyContent: 'center'
+  }}>
+    <Button
+      {...args}
+      block
+      label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+    />
+  </div>
+);
+
 export const Disable = (args: IButtonProps) => (
   <>
     <Button

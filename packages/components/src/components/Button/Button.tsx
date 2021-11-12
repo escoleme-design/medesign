@@ -56,7 +56,11 @@ const Button = ({
 
     // Conteúdo normal
     } else {
-      content.push(<span>{props.label}</span>);
+      content.push(<span style={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+      }}>{props.label}</span>);
     }
   }
 

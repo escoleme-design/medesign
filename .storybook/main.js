@@ -5,10 +5,10 @@ module.exports = {
     '../packages/components/src/**/*.stories.@(js|ts|tsx|mdx)',
   ],
   "addons": [
-    {
-      name: '@storybook/preset-typescript',
-      options: { transpileManager: true },
-    },
+    // {
+    //   name: '@storybook/preset-typescript',
+    //   options: { transpileManager: true },
+    // },
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     // '@react-theming/storybook-addon',
