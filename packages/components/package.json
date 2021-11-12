@@ -1,6 +1,6 @@
 {
   "name": "@escoleme/mecomponents",
-  "version": "1.0.5-alpha.0",
+  "version": "1.0.6-alpha.0",
   "description": "> TODO: description",
   "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "homepage": "https://github.com/Cairo-design-system/cairo-react#readme",
@@ -51,8 +51,8 @@
     "typescript-plugin-styled-components": "^2.0.0"
   },
   "peerDependencies": {
-    "styled-components": "^5.x",
     "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "react-dom": ">=16.8.0 <18.0.0",
+    "styled-components": "^5.x"
   }
 }
