@@ -1,6 +1,6 @@
 {
   "name": "@escoleme/mecomponents",
-  "version": "1.0.6-alpha.0",
+  "version": "1.0.1-alpha.0",
   "description": "> TODO: description",
   "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "homepage": "https://github.com/Cairo-design-system/cairo-react#readme",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
-    "@escoleme/medesign-tokens": "^1.2.1-alpha.0",
+    "@escoleme/medesign-tokens": "^1.0.1-alpha.0",
     "@escoleme/meicons-react": "^0.2.3",
     "@rollup/plugin-alias": "^3.1.5",
     "@rollup/plugin-commonjs": "^21.0.0",
