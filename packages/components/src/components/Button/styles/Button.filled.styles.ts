@@ -161,5 +161,7 @@ export const FilledButton = styled(ButtonBase)<IButtonProps>`
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
   text-decoration: none;
-  ${(props) => props.block && `min-width: calc(100% - ${getFilledStyles(props).style.layout.leftRightPadding*2}px);`}
+  
 `;
+
+//${(props) => props.block && `min-width: calc(100% - ${getFilledStyles(props).style.layout.leftRightPadding*2}px);`}

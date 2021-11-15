@@ -30,7 +30,6 @@ export interface IButtonProps {
   label?: string;
   success?: boolean;
   danger?: boolean;
-  onColor?: boolean;
   'data-testid'?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref?: React.Ref<any>;
@@ -43,7 +42,7 @@ export interface IButtonProps {
   
   
   
-  size?: any;
+  size: 'small' | 'medium' | 'large';
   /** Align Icon Left or Right */
   //rel?: string; // TODO: use `noopener` as default
 }

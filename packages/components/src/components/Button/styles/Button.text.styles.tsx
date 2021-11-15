@@ -64,7 +64,7 @@ export const getStyles = (props: IButtonProps) => {
         },
         active: {
           color: `${color.success}`,
-          background: `${color.success}`,
+          background: getBackgroundOpacity(style.state.pressed.container.stateLayerOpacity, color.success),
         }
       }
     })
@@ -85,8 +85,8 @@ export const getStyles = (props: IButtonProps) => {
           background: getBackgroundOpacity(style.state.focused.container.stateLayerOpacity, color.error),
         },
         active: {
-          color: `${color.onError}`,
-          background: `${color.error}`,
+          color: `${color.error}`,
+          background: getBackgroundOpacity(style.state.pressed.container.stateLayerOpacity, color.error),
         }
       }
     })
@@ -141,5 +141,5 @@ export const TextButton = styled(ButtonBase)<IButtonProps>`
 
 export const LinkTextButton = styled(TextButton).attrs({ as: "a" })`
   text-decoration: none;
-  ${(props) => props.block && `min-width: calc(100% - ${getStyles(props).style.layout.leftRightPadding*2}px);`}
-`;
+  `;
+  // ${(props) => props.block && `min-width: calc(100% - ${getStyles(props).style.layout.leftRightPadding*2}px);`}

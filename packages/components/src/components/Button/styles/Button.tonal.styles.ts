@@ -79,20 +79,20 @@ export const getFilledTonalStyles = (props: IButtonProps) => {
     styles = merge(styles, {
       states: {
         enabled: {
-          background: color.error,
-          color: color.onError,
+          background: color.errorContainer,
+          color: color.onErrorContainer,
         },
         hover: {
-          color: `${color.onError}`,
-          background: getBackgroundOverlay(color.error, style.state.hovered.container.stateLayerOpacity, color.onError),
+          color: `${color.onErrorContainer}`,
+          background: getBackgroundOverlay(color.errorContainer, style.state.hovered.container.stateLayerOpacity, color.onErrorContainer),
         },
         focus: {
-          color: `${color.onError}`,
-          background: getBackgroundOverlay(color.error, style.state.focused.container.stateLayerOpacity, color.onError),
+          color: `${color.onErrorContainer}`,
+          background: getBackgroundOverlay(color.errorContainer, style.state.focused.container.stateLayerOpacity, color.onErrorContainer),
         },
         active: {
-          color: `${color.onError}`,
-          background: `${color.error}`,
+          color: `${color.onErrorContainer}`,
+          background: `${color.errorContainer}`,
         }
       }
     })
@@ -153,5 +153,5 @@ export const FilledTonalButton = styled(ButtonBase)<IButtonProps>`
 
 export const LinkFilledTonalButton = styled(FilledTonalButton).attrs({ as: "a" })`
   text-decoration: none;
-  ${(props) => props.block && `min-width: calc(100% - ${getFilledTonalStyles(props).style.layout.leftRightPadding*2}px);`}
-`;
+  `;
+  // ${(props) => props.block && `min-width: calc(100% - ${getFilledTonalStyles(props).style.layout.leftRightPadding*2}px);`}

@@ -13,6 +13,7 @@ import { ThemeContext } from 'styled-components';
 const Button = ({
   iconAlign = 'left',
   variant = 'filled',
+  size ='medium',
   ...props
 }: ButtonProps) => {
 
@@ -20,9 +21,10 @@ const Button = ({
   const button = comp.button;
 
   const buttonStyles = button[variant];
+  const layout = buttonStyles.layout[size] ? buttonStyles.layout[size] : buttonStyles.layout.medium;
 
   const content: JSX.Element[] = [];
-  const icon = props.success ? <CodeOutlined style={{ fontSize: buttonStyles.layout.iconSize }} /> : props.icon;
+  const icon = props.icon;
 
   const iconNode = icon ? icon : null;
 
@@ -39,7 +41,7 @@ const Button = ({
 
   // Icone de carregando
   if (props.loading) {
-    content.push(<CodeOutlined spin style={{ fontSize: 18 }} />);
+    content.push(<CodeOutlined spin style={{ fontSize: layout.iconSize }} />);
   }
 
   // Botão com ícone à esquerda
@@ -93,6 +95,7 @@ const Button = ({
       onClick={handleClick}
       {...props}
       iconAlign={iconAlign}
+      size={size}
     >
       {content}
     </ButtonStyle>

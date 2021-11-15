@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import styled, { ThemeContext } from "styled-components";
 import merge from "lodash.merge";
+import styled, { ThemeContext } from "styled-components";
 
 import { IButtonProps } from "../Button.types";
 
 export const getBaseStyles = ({
-    size = "normal",
+    size = "medium",
     variant = "filled",
     rtl = false,
     iconAlign = 'left',
@@ -14,7 +14,8 @@ export const getBaseStyles = ({
     icon = undefined,
     block = false,
     label = undefined,
-    success = false
+    success = false,
+    loadingLabel
 }: IButtonProps) => {
   
     const { comp } = useContext(ThemeContext);
@@ -22,43 +23,50 @@ export const getBaseStyles = ({
 
     let isIconAlignLeft =  rtl ? !(iconAlign === 'left') : (iconAlign === 'left');
     const style = button[variant];
-  
-    //   const sizeStyles = buttonSizes[size] ? buttonSizes[size] : buttonSizes.normal;
+    const layout = style.layout[size] ? style.layout[size] : style.layout.medium;
   
     let styles = {
         // component styles
         style,
+        layout,
 
         // layout and size       
         isIconAlignLeft,
-        minHeight: `${style.layout.height}px`,
-        height: `${style.layout.height}px`,
-        padding: `0 ${style.layout.leftRightPadding}px`,
-        borderRadius: `${style.layout.shape}px`,
-        paddingBetweenElements: `${label ? style.layout.paddingBetweenElements : 0}px`,
+        minHeight: `${layout.height}px`,
+        height: `${layout.height}px`,
+        padding: `0 ${layout.leftRightPadding}px`,
+        borderRadius: `${layout.shape}px`,
+        paddingBetweenElements: `${label ? layout.paddingBetweenElements : 0}px`,
 
         // Typography
-        fontFamily: `${style.state.enabled.labelText.font}`,
-        lineHeight: `${style.state.enabled.labelText.lineHeight}`,
-        fontSize: `${style.state.enabled.labelText.size}px`,
-        fontWeight: `${style.state.enabled.labelText.weight}`,
+        fontFamily: `${layout.labelText.font}`,
+        lineHeight: `${layout.labelText.lineHeight}`,
+        fontSize: `${layout.labelText.size}px`,
+        fontWeight: `${layout.labelText.weight}`,
         pointerEvents: `auto`,
     };
     
     // Caso o botão tenha um icone o padding vai ser alterado baseado no design token
     if ((icon || loading) && isIconAlignLeft) {
         styles = merge(styles, {
-            padding: `0px ${style.layout.rightPaddingWithIcon}px 0px ${style.layout.LeftPaddingWithIcon}px`,
+            padding: `0px ${layout.rightPaddingWithIcon}px 0px ${layout.LeftPaddingWithIcon}px`,
         })
     } else if ((icon || loading) && !isIconAlignLeft) {
         styles = merge(styles, {
-            padding: `0px ${style.layout.LeftPaddingWithIcon}px 0px ${style.layout.rightPaddingWithIcon}px`,
+            padding: `0px ${layout.LeftPaddingWithIcon}px 0px ${layout.rightPaddingWithIcon}px`,
         })
     }
   
     // Desativando o botão
-    if (disabled || loading || success) {
+    if (disabled || loading) {
         styles.pointerEvents = 'none'
+    }
+
+    // Se o botão tiver apenas o ícone
+    if (icon && (!label && !loadingLabel)) {
+        styles = merge(styles, {
+            padding: `0px`,
+        })
     }
     
     return styles;
@@ -81,6 +89,7 @@ export const ButtonBase = styled.button<IButtonProps>`
     /* Size */
 
     ${(props) => props.block && `min-width: 100%;`}
+    ${(props) => (props.icon && (!props.label && !props.loadingLabel)) ? `width: ${getBaseStyles(props).layout.height}px;`: ''}
     min-height: ${(props) => getBaseStyles(props).minHeight};
     height: ${(props) => getBaseStyles(props).height};
     padding: ${(props) => getBaseStyles(props).padding};
@@ -90,7 +99,7 @@ export const ButtonBase = styled.button<IButtonProps>`
 
     white-space: nowrap;
     font-family: ${(props) => getBaseStyles(props).fontFamily};
-    line-height: ${(props) => getBaseStyles(props).lineHeight};
+    //line-height: ${(props) => getBaseStyles(props).lineHeight};
     font-size: ${(props) => getBaseStyles(props).fontSize};
     font-weight: ${(props) => getBaseStyles(props).fontWeight};
 

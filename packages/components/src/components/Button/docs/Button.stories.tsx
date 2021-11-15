@@ -15,7 +15,7 @@ export default {
       <Wrapper>
         <Story />
       </Wrapper>
-    ),
+    )
   ],
   parameters: {
     docs: { 
@@ -24,18 +24,19 @@ export default {
   },
   argTypes: {
     size: {
-      options: ['small', 'normal', 'large', 'big'],
-      control: { type: 'select'},
-      description: "Defina o tamanho do botão, o padrão é normal.",
+      options: ['small', 'medium', 'large'],
+      control: { type: 'radio'},
+      description: "Defina o tamanho do botão, o padrão é medium.",
       table: {
-        defaultValue: { summary: '"normal"' },
+        defaultValue: { summary: '"medium"' },
       }
     },
-    uppercase: {
-      options: [false, true],
-      description: "Defina se o botão vai ter texto uppercase, o padrão é false.",
+    variant: {
+      options: ["filled", 'tonal', "outlined", "text"],
+      control: { type: 'radio'},
+      description: "Defina 4 tipos de botões, o padrão é filled.",
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: '"filled"' },
       }
     },
     block: {
@@ -70,27 +71,21 @@ export default {
       options: [false, true],
       description: "Muda a cor do botão para vermelho para sinalizar ao usuário que a ação é irreversível ou perigosa.",
       table: {
-        defaultValue: { summary: "" },
+        defaultValue: { summary: "false" },
       }
     },
     target: {
-      options: ['', '_black', '_self', '_parent', '_top'],
+      options: ['_black', '_self', '_parent', '_top'],
       control: { type: 'select'},
-      description: "Define como o navegador deve redirecionar o link",
-      table: {
-        defaultValue: { summary: "" },
-      }
+      description: "Define como o navegador deve redirecionar o link"
     },
-    variant: {
-      options: ["contained", "outlined", "text"],
-      control: { type: 'select'},
-      description: "Defina 4 tipos de botões, o padrão é contained.",
-      table: {
-        defaultValue: { summary: '"contained"' },
-      }
+    label: {
+      description: "Defina o texto do botão.",
+      control: { type: 'text'},
     },
-    children: {
-      description: "Defina o conteúdo do botão.",
+    loadingLabel: {
+      description: "Defina o texto do botão quando estiver com status de carregando.",
+      control: { type: 'text'},
     },
     onClick: {
       description: "Define a função do botão quando for clicado.",
@@ -100,15 +95,30 @@ export default {
     },
     className: {
       description: "Defina a class (html) do botão.",
+      control: { type: 'select'},
     },
     id: {
       description: "Defina o id (html) do botão.",
+      control: { type: 'select'},
     },
     type: {
+      options: ["button", "submit", "reset"],
+      control: { type: 'select'},
       description: "Tipo HTML do botão.",
+      table: {
+        defaultValue: { summary: "button" },
+      }
     },
     href: {
       description: "Defina a URL para navegar quando o botão é clicado.",
+      control: { type: 'text'},
+    },
+    rtl: {
+      options: [false, true],
+      description: "Aplica RTL ao botão.",
+      table: {
+        defaultValue: { summary: "false" },
+      }
     },
   }
 } as ComponentMeta<any>;
@@ -116,10 +126,30 @@ export default {
 export const Base: Story<IButtonProps> = (args: IButtonProps) => <Button {...args} />
 
 Base.args = {
-  onClick: () => alert("oi"),
-  label: 'Click me',
   variant: 'filled',
+  href: undefined,
+  type: 'button',
+  target: undefined,
+  disabled: false,
+  block: false,
+  onClick: () => alert("Hello World!"),
+  loading: false,
+  label: 'Click me',
+  success: false,
+  danger: false,
+  rtl: false,
 }
+
+Base.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button label="Filled" />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const Variants = (args: IButtonProps) => (
   <>
@@ -150,17 +180,22 @@ Variants.parameters = {
   docs: {
     source: {
       code: dedent(`
-      <Button {...args} variant="filled">
-        Contained
-      </Button>
-    
-      <Button {...args} variant="outlined">
-        Outlined
-      </Button>
-    
-      <Button {...args} variant="text">
-        Text
-      </Button>
+        <Button
+          variant="filled"
+          label="Filled"
+        />
+        <Button
+          variant="tonal"
+          label="Filled Tonal"
+        />
+        <Button
+          variant="outlined"
+          label="Outlined"
+        />
+        <Button
+          variant="text"
+          label="Text"
+        />
       `),
       language: 'jsx'
     }
@@ -196,10 +231,60 @@ export const Danger = (args: IButtonProps) => (
   </>
 );
 
+Danger.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          variant="filled"
+          danger
+          label="Filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
+
 export const Size = (args: IButtonProps) => (
   <>
+    <Button
+      {...args}
+      size="small"
+      label="Small"
+    />
+    <Button
+      {...args}
+      label="Medium"
+    />
+    <Button
+      {...args}
+      size="large"
+      label="Large"
+    />
   </>
 );
+
+Size.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          size="small"
+          label="Small"
+        />
+        <Button
+          label="Medium"
+        />
+        <Button
+          size="large"
+          label="Large"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const Block = (args: IButtonProps) => (
   <>
@@ -211,7 +296,18 @@ export const Block = (args: IButtonProps) => (
   </>
 );
 
-export const Ellipse = (args: IButtonProps) => (
+Block.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button block label="block" />
+      `),
+      language: 'jsx'
+    }
+  }
+};
+
+export const Ellipsis = (args: IButtonProps) => (
   <div style={{
     width: '30%',
     display: 'flex',
@@ -224,6 +320,20 @@ export const Ellipse = (args: IButtonProps) => (
     />
   </div>
 );
+
+Ellipsis.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          block
+          label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const Disable = (args: IButtonProps) => (
   <>
@@ -254,15 +364,23 @@ export const Disable = (args: IButtonProps) => (
   </>
 );
 
+Disable.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          disabled
+          variant="filled"
+          label="Filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
+
 export const Loading = (args: IButtonProps) => (
   <>
-    <Button
-      {...args}
-      loading
-      rtl
-      variant="filled"
-      label="Filled"
-    />
     <Button
       {...args}
       loading
@@ -289,6 +407,21 @@ export const Loading = (args: IButtonProps) => (
     />
   </>
 );
+
+Loading.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          loading
+          variant="filled"
+          label="Filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const Success = (args: IButtonProps) => (
   <>
@@ -319,58 +452,103 @@ export const Success = (args: IButtonProps) => (
   </>
 );
 
+Success.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          success
+          variant="filled"
+          label="Filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
+
 export const Icon = (args: IButtonProps) => (
   <>
-    <div>
-      <>
-      <Button
-        {...args}
-        icon={<CodeOutlined style={{ fontSize: 18 }} />}
-        iconAlign="left"
-        label="Icon align to left"
-        variant="filled"
-      />
-      <Button
-        {...args}
-        icon={<CodeOutlined style={{ fontSize: 18 }} />}
-        iconAlign="right"
-        label="Icon align to right"
-        variant="filled"
-      />
-    </>
-    </div>
-    <div>
-      <>
-      <Button
-        {...args}
-        icon={<CodeOutlined style={{ fontSize: 18 }} />}
-        rtl
-        iconAlign="left"
-        label="Icon align to left rtl"
-        variant="filled"
-      />
-      <Button
-        {...args}
-        icon={<CodeOutlined style={{ fontSize: 18 }} />}
-        rtl
-        iconAlign="right"
-        label="Icon align to right rtl"
-        variant="filled"
-      />
-    </>
-    </div>
+    <Button
+      {...args}
+      icon={<CodeOutlined style={{ fontSize: 18 }} />}
+      iconAlign="left"
+      label="Icon align to left"
+      variant="filled"
+    />
   </>
 );
+
+Icon.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          icon={<CodeOutlined style={{ fontSize: 18 }} />}
+          label="Icon align to left"
+          variant="filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const RTL = (args: IButtonProps) => (
   <>
+    <Button
+      {...args}
+      icon={<CodeOutlined style={{ fontSize: 18 }} />}
+      variant="filled"
+      rtl
+      label="Left icon"
+    />
   </>
 );
 
+RTL.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          icon={<CodeOutlined style={{ fontSize: 18 }} />}
+          variant="filled"
+          rtl
+          label="Left icon"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
+
 export const LoadingLabel = (args: IButtonProps) => (
   <>
+    <Button
+      {...args}
+      loading
+      variant="filled"
+      label="Filled"
+      loadingLabel="Loading"
+    />
   </>
 );
+
+LoadingLabel.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          loading
+          variant="filled"
+          label="Filled"
+          loadingLabel="Loading"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const OnlyIcon = (args: IButtonProps) => (
   <>
@@ -380,8 +558,41 @@ export const OnlyIcon = (args: IButtonProps) => (
         iconAlign="left"
         variant="filled"
       />
+    <Button
+        {...args}
+        icon={<CodeOutlined style={{ fontSize: 18 }} />}
+        iconAlign="left"
+        variant="tonal"
+      />
+    <Button
+        {...args}
+        icon={<CodeOutlined style={{ fontSize: 18 }} />}
+        iconAlign="left"
+        variant="outlined"
+      />
+    <Button
+        {...args}
+        icon={<CodeOutlined style={{ fontSize: 18 }} />}
+        iconAlign="left"
+        variant="text"
+      />
   </>
 );
+
+OnlyIcon.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+          <Button
+            icon={<CodeOutlined style={{ fontSize: 18 }} />}
+            iconAlign="left"
+            variant="filled"
+          />
+      `),
+      language: 'jsx'
+    }
+  }
+};
 
 export const Type = (args: IButtonProps) => (
   <>
@@ -412,6 +623,21 @@ export const Type = (args: IButtonProps) => (
   </>
 );
 
+Type.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          type="submit"
+          label="Filled"
+          variant="filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
+
 export const Href = (args: IButtonProps) => (
   <>
     <Button
@@ -440,3 +666,18 @@ export const Href = (args: IButtonProps) => (
     />
   </>
 );
+
+Href.parameters = {
+  docs: {
+    source: {
+      code: dedent(`
+        <Button
+          href="#"
+          label="Filled"
+          variant="filled"
+        />
+      `),
+      language: 'jsx'
+    }
+  }
+};
