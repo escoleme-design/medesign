@@ -45,5 +45,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Visual primitives such as typography, color, and spacing that are shared between the medesign ecosystem."
+  "description": "Visual primitives such as typography, color, and spacing that are shared between the medesign ecosystem.",
+  "gitHead": "b89be46e67a3c82b4b586e009639652b30e6c963"
 }

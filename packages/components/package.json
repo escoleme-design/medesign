@@ -66,5 +66,6 @@
   "dependencies": {
     "@escoleme/medesign-tokens": "^1.1.0",
     "lodash": "^4.17.21"
-  }
+  },
+  "gitHead": "b89be46e67a3c82b4b586e009639652b30e6c963"
 }
