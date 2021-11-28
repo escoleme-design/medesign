@@ -1,6 +1,6 @@
 {
   "name": "@escoleme/medesign-tokens",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "types": "dist/es/index.d.ts",
@@ -46,5 +46,5 @@
     "access": "public"
   },
   "description": "Visual primitives such as typography, color, and spacing that are shared between the medesign ecosystem.",
-  "gitHead": "b89be46e67a3c82b4b586e009639652b30e6c963"
+  "gitHead": "21ab80fafc59612036a530ee71fc4171589bbfd3"
 }
