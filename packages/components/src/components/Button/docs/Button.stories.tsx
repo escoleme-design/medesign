@@ -2,10 +2,10 @@ import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
 import Button from '../Button';
 import {IButtonProps} from '../Button.types';
-import docs from './Button.docs.mdx';
 import dedent from 'dedent'
 import Wrapper from '../../../../../../.storybook/components/Wrapper';
 import { CodeOutlined } from '@escoleme/meicons-react';
+import docs from './Button.docs.mdx';
 
 export default {
   title: 'Components/Button',
@@ -132,7 +132,7 @@ Base.args = {
   target: undefined,
   disabled: false,
   block: false,
-  onClick: () => alert("Hello World!"),
+  onClick: () => alert('Hello World!'),
   loading: false,
   label: 'Click me',
   success: false,

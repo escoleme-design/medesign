@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import merge from 'lodash.merge'
+import merge from 'lodash/merge';
 
 import { ButtonBase } from "./Button.base.styles";
 
@@ -132,17 +132,6 @@ export const OutlinedButton = styled(ButtonBase)<IButtonProps>`
     color: ${props => getOutlinedStyles(props).states.active.color};
   }
 
-  ${props => {
-    if (props.disabled) {
-      return (`
-        color: ${() => getOutlinedStyles(props).states.disabled.color};
-        background: ${() => getOutlinedStyles(props).states.disabled.background};
-        border: ${() => getOutlinedStyles(props).states.disabled.border};
-        outline: ${() => getOutlinedStyles(props).states.disabled.outline};
-      `);
-    }
-  }}
-
   &:disabled {
     color: ${props => getOutlinedStyles(props).states.disabled.color};
     background: ${props => getOutlinedStyles(props).states.disabled.background};
@@ -154,5 +143,27 @@ export const OutlinedButton = styled(ButtonBase)<IButtonProps>`
 
 export const LinkOutlinedButton = styled(OutlinedButton).attrs({ as: "a" })`
   text-decoration: none;
+
+  ${props => {
+    if (props.block) {
+      return `
+        padding: 0px;
+        `;
+      }
+    }
+  }
+
+
+  ${props => {
+    if (props.disabled) {
+      return `
+        color: ${getOutlinedStyles(props).states.disabled.color};
+        background: ${getOutlinedStyles(props).states.disabled.background};
+        border: ${getOutlinedStyles(props).states.disabled.border};
+        outline: ${getOutlinedStyles(props).states.disabled.outline};
+        pointer-events: none;
+        `;
+      }
+    }
+  }
 `;
-// ${(props) => props.block && `min-width: calc(100% - ${getOutlinedStyles(props).style.layout.leftRightPadding*2}px);`}

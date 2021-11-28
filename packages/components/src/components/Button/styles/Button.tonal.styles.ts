@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import merge from 'lodash.merge'
+import merge from 'lodash/merge';
 
 import { ButtonBase } from "./Button.base.styles";
 
@@ -131,27 +131,35 @@ export const FilledTonalButton = styled(ButtonBase)<IButtonProps>`
     color: ${props => getFilledTonalStyles(props).states.active.color};
   }
 
-  ${props => {
-    if (props.disabled) {
-      return (`
-        color: ${() => getFilledTonalStyles(props).states.disabled.color};
-        background: ${() => getFilledTonalStyles(props).states.disabled.background};
-        border: ${() => getFilledTonalStyles(props).states.disabled.border};
-        outline: ${() => getFilledTonalStyles(props).states.disabled.outline};
-      `);
-    }
-  }}
-
   &:disabled {
     color: ${props => getFilledTonalStyles(props).states.disabled.color};
     background: ${props => getFilledTonalStyles(props).states.disabled.background};
     border: ${props => getFilledTonalStyles(props).states.disabled.border};
     outline: ${props => getFilledTonalStyles(props).states.disabled.outline};
   }
-
 `; 
 
 export const LinkFilledTonalButton = styled(FilledTonalButton).attrs({ as: "a" })`
   text-decoration: none;
-  `;
-  // ${(props) => props.block && `min-width: calc(100% - ${getFilledTonalStyles(props).style.layout.leftRightPadding*2}px);`}
+
+  ${props => {
+    if (props.block) {
+      return `
+        padding: 0px;
+        `;
+      }
+    }
+  }
+
+  ${props => {
+    if (props.disabled) {
+      return `
+        color: ${getFilledTonalStyles(props).states.disabled.color};
+        background: ${getFilledTonalStyles(props).states.disabled.background};
+        outline: ${getFilledTonalStyles(props).states.disabled.outline};
+        pointer-events: none;
+        `;
+      }
+    }
+  }
+`;

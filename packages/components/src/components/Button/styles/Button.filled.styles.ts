@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import merge from 'lodash.merge'
+import merge from 'lodash/merge';
 
 import { ButtonBase } from "./Button.base.styles";
 
@@ -142,16 +142,6 @@ export const FilledButton = styled(ButtonBase)<IButtonProps>`
     color: ${props => getFilledStyles(props).states.active.color};
   }
 
-  ${props => {
-    if (props.disabled) {
-      return (`
-        color: ${() => getFilledStyles(props).states.disabled.color};
-        background: ${() => getFilledStyles(props).states.disabled.background};
-        outline: ${() => getFilledStyles(props).states.disabled.outline};
-      `);
-    }
-  }}
-
   &:disabled {
     color: ${props => getFilledStyles(props).states.disabled.color};
     background: ${props => getFilledStyles(props).states.disabled.background};
@@ -161,7 +151,25 @@ export const FilledButton = styled(ButtonBase)<IButtonProps>`
 
 export const LinkFilledButton = styled(FilledButton).attrs({ as: "a" })`
   text-decoration: none;
-  
-`;
 
-//${(props) => props.block && `min-width: calc(100% - ${getFilledStyles(props).style.layout.leftRightPadding*2}px);`}
+  ${props => {
+    if (props.block) {
+      return `
+        padding: 0px;
+        `;
+      }
+    }
+  }
+
+  ${props => {
+    if (props.disabled) {
+      return `
+        color: ${getFilledStyles(props).states.disabled.color};
+        background: ${getFilledStyles(props).states.disabled.background};
+        outline: ${getFilledStyles(props).states.disabled.outline};
+        pointer-events: none;
+        `;
+      }
+    }
+  }
+`;

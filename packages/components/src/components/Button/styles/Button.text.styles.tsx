@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import merge from 'lodash.merge'
+import merge from 'lodash/merge';
 
 import { ButtonBase } from "./Button.base.styles";
 
@@ -122,16 +122,6 @@ export const TextButton = styled(ButtonBase)<IButtonProps>`
     color: ${props => getStyles(props).states.active.color};
   }
 
-  ${props => {
-    if (props.disabled) {
-      return (`
-        color: ${() => getStyles(props).states.disabled.color};
-        background: ${() => getStyles(props).states.disabled.background};
-        outline: ${() => getStyles(props).states.disabled.outline};
-      `);
-    }
-  }}
-
   &:disabled {
     color: ${props => getStyles(props).states.disabled.color};
     background: ${props => getStyles(props).states.disabled.background};
@@ -141,5 +131,26 @@ export const TextButton = styled(ButtonBase)<IButtonProps>`
 
 export const LinkTextButton = styled(TextButton).attrs({ as: "a" })`
   text-decoration: none;
+
+  ${props => {
+    if (props.block) {
+      return `
+        padding: 0px;
+        `;
+      }
+    }
+  }
+
+
+  ${props => {
+    if (props.disabled) {
+      return `
+        color: ${getStyles(props).states.disabled.color};
+        background: ${getStyles(props).states.disabled.background};
+        outline: ${getStyles(props).states.disabled.outline};
+        pointer-events: none;
+        `;
+      }
+    }
+  }
   `;
-  // ${(props) => props.block && `min-width: calc(100% - ${getStyles(props).style.layout.leftRightPadding*2}px);`}

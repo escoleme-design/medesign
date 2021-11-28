@@ -1,4 +1,4 @@
-import chroma from 'chroma-js'
+const chroma = require('chroma-js')
 
 export const tupleString = <T extends string[]>(...args: T) => args;
 

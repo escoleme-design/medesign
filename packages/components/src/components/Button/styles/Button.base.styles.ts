@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import merge from "lodash.merge";
+import merge from 'lodash/merge';
 import styled, { ThemeContext } from "styled-components";
 
 import { IButtonProps } from "../Button.types";
@@ -99,7 +99,6 @@ export const ButtonBase = styled.button<IButtonProps>`
 
     white-space: nowrap;
     font-family: ${(props) => getBaseStyles(props).fontFamily};
-    //line-height: ${(props) => getBaseStyles(props).lineHeight};
     font-size: ${(props) => getBaseStyles(props).fontSize};
     font-weight: ${(props) => getBaseStyles(props).fontWeight};
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CodeOutlined } from '@escoleme/meicons-react';
 
 import { FilledButton, LinkFilledButton } from './styles/Button.filled.styles';
@@ -10,18 +10,23 @@ import { automationAttribute } from '../../helpers/utils';
 import { ButtonProps } from './Button.types';
 import { ThemeContext } from 'styled-components';
 
-const Button = ({
-  iconAlign = 'left',
-  variant = 'filled',
-  size ='medium',
-  ...props
-}: ButtonProps) => {
+
+const Button = React.forwardRef(
+  (
+    {
+      iconAlign = 'left',
+      variant = 'filled',
+      size ='medium',
+      ...props
+    }: ButtonProps,
+    ref: ButtonProps['ref']
+  ) => {
 
   const { comp } = useContext(ThemeContext);
   const button = comp.button;
 
   const buttonStyles = button[variant];
-  const layout = buttonStyles.layout[size] ? buttonStyles.layout[size] : buttonStyles.layout.medium;
+  const { iconSize } = buttonStyles.layout[size] ? buttonStyles.layout[size] : buttonStyles.layout.medium;
 
   const content: JSX.Element[] = [];
   const icon = props.icon;
@@ -29,9 +34,9 @@ const Button = ({
   const iconNode = icon ? icon : null;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
-    const { onClick, disabled, loading } = props;
+    const { onClick, disabled, disabledOnClick, loading } = props;
 
-    if(disabled || loading) {
+    if(disabledOnClick || disabled || loading) {
       e.preventDefault();
       return;
     }
@@ -39,9 +44,10 @@ const Button = ({
     (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
   }
 
+
   // Icone de carregando
   if (props.loading) {
-    content.push(<CodeOutlined spin style={{ fontSize: layout.iconSize }} />);
+    content.push(<CodeOutlined spin style={{ fontSize: iconSize }} />);
   }
 
   // Botão com ícone à esquerda
@@ -72,7 +78,8 @@ const Button = ({
   }
 
   // Se tiver a propriedade href então o botão vai ser um a senão vai ser um button.
-  let ButtonStyle;
+  let ButtonStyle = FilledButton;
+
   if (variant === 'filled') {
     ButtonStyle = props.href ? LinkFilledButton : FilledButton;
   } else if (variant === "tonal") {
@@ -81,8 +88,6 @@ const Button = ({
     ButtonStyle = props.href ? LinkOutlinedButton : OutlinedButton;
   } else if (variant === "text") {
     ButtonStyle = props.href ? LinkTextButton : TextButton;
-  } else {
-    ButtonStyle = FilledButton;
   }
 
   if(props.rtl) {
@@ -92,14 +97,19 @@ const Button = ({
   return (
     <ButtonStyle
       {...automationAttribute("button")}
-      onClick={handleClick}
+
       {...props}
+      onClick={handleClick}
       iconAlign={iconAlign}
       size={size}
+      loading={props.loading}
+      ref={ref}
     >
       {content}
     </ButtonStyle>
   );
-}
+});
+
+Button.displayName = 'Button';
 
 export default Button;

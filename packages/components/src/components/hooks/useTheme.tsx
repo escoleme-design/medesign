@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 
 export const useLightTheme = (theme: Theme) => {
     let styles = merge(light, theme);
-
     light.comp = styles.comp;
     light.ref = styles.ref;
     light.sys = styles.sys;
