@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import Button from '../Button';
+// import Button from '../Button';
+import {Button} from '../../../../dist';
 import {IButtonProps} from '../Button.types';
 import dedent from 'dedent'
 import Wrapper from '../../../../../../.storybook/components/Wrapper';

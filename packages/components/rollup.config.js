@@ -1,63 +1,87 @@
-import babel from "rollup-plugin-babel";
-import resolve from '@rollup/plugin-node-resolve';
+import babel from "@rollup/plugin-babel";
+import resolve from "@rollup/plugin-node-resolve";
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import pkg from "./package.json";
+import typescript from 'rollup-plugin-typescript2';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
 import dts from "rollup-plugin-dts";
+import { terser } from 'rollup-plugin-terser';
 
-
-// \/
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
-// import typescript from 'rollup-plugin-typescript2';
+
+// Array of extensions to be handled by babel
+const EXTENSIONS = [".ts", ".tsx"];
+
+// Excluded dependencies - dev dependencies
+const EXTERNAL = Object.keys(pkg.devDependencies);
 
 const plugins = [
-  babel({
-    exclude: "node_modules/**",
-    presets: ['@babel/env', '@babel/preset-react']
+  peerDepsExternal(),
+  commonjs({
+    include: /node_modules/,
+    namedExports: {
+      'node_modules/lodash/index.js': ['get'],
+    }
   }),
-  external(),
   resolve(),
-  commonjs(),
+  babel({
+    extensions: EXTENSIONS,
+    babelHelpers: "runtime",  // https://github.com/kraftdorian/react-ts-rollup-starter-lib/issues/1
+    include: EXTENSIONS.map(ext => `src/**/*${ext}`),
+    plugins: ["@babel/plugin-transform-runtime"]
+  }),
   typescript({
     tsconfig: './tsconfig.json',
-    // transformers: [
-    //   () => ({
-    //     before: [styledComponentsTransformer],
-    //   }),
-    // ],
+    transformers: [
+      () => ({
+        before: [styledComponentsTransformer],
+      }),
+    ],
   }),
-  postcss(),
   terser(),
-  
-];
-
-
-const packageJson = require('./package.json');
-const formats = ['esm', 'umd']
+]
 
 export default [
   {
     input: 'src/index.ts',
-    output: formats.map(format => ({
-      file: `dist/index.${format}.js`,
-      format,
-      sourcemap: true,
-      name: 'mecomponents',
-      globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'styled-components': 'styled'
+
+    output: [
+      {
+        dir: "dist",
+        sourcemap: true,
+        format: "esm",
+        name: 'mecomponents',
+        exports: "named",
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        external: ['@escoleme/meicons-react'],
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'styled-components': 'styled'
+        }
+      },
+      {
+        dir: "dist",
+        sourcemap: true,
+        format: "umd",
+        name: 'mecomponents',
+        external: ['@escoleme/meicons-react'],
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'styled-components': 'styled'
+        }
       }
-    })),
-    plugins: plugins
-  }, 
+    ],
+    plugins,
+    external: EXTERNAL  // https://rollupjs.org/guide/en/#peer-dependencies
+  },
   {
-    input: 'dist/types/index.d.ts',
+    input: 'dist/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: "esm" }],
     external: [/\.css$/],
     plugins: [dts()],
   }
-]
+];

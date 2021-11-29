@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled, {ThemeContext} from "styled-components";
-import merge from 'lodash/merge';
+import {merge} from 'lodash';
 
 import { ButtonBase } from "./Button.base.styles";
 

@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import merge from 'lodash/merge';
+import {merge} from 'lodash';
+// import merge from 'deepmerge'
 import styled, { ThemeContext } from "styled-components";
 
 import { IButtonProps } from "../Button.types";
@@ -45,7 +46,7 @@ export const getBaseStyles = ({
         fontWeight: `${layout.labelText.weight}`,
         pointerEvents: `auto`,
     };
-    
+
     // Caso o botão tenha um icone o padding vai ser alterado baseado no design token
     if ((icon || loading) && isIconAlignLeft) {
         styles = merge(styles, {

@@ -54,7 +54,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugin-visualizer": "^5.5.2",
-    "styled-components": "^5.3.1",
     "typescript": "^4.4.4",
     "typescript-plugin-styled-components": "^2.0.0"
   },
@@ -64,8 +63,12 @@
     "styled-components": "^5.x"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.4",
     "@escoleme/medesign-tokens": "^1.1.2",
-    "lodash": "^4.17.21"
+    "@rollup/plugin-babel": "^5.3.0",
+    "deepmerge": "^4.2.2",
+    "lodash": "^4.17.21",
+    "styled-components": "^5.3.1"
   },
-  "gitHead": "21ab80fafc59612036a530ee71fc4171589bbfd3"
+  "gitHead": "21f039257a0c96d7a9ba480754756f173466f886"
 }
