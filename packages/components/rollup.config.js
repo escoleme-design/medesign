@@ -76,7 +76,7 @@ export default [
       }
     ],
     plugins,
-    external: EXTERNAL  // https://rollupjs.org/guide/en/#peer-dependencies
+    // external: EXTERNAL  // https://rollupjs.org/guide/en/#peer-dependencies
   },
   {
     input: 'dist/index.d.ts',
