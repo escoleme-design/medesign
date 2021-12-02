@@ -1,16 +1,24 @@
 "use strict";
 
-// import Button from './components/Button'
+/* eslint import/extensions: 0 */
 
-// export {
-//     Button
-// }
+import AnExample from './components/AnExample/index.jsx';
 
-// export * from './components'
+export {
+  AnExample
+};
 
-export {  Button  } from './components'
-export {  ThemeProvider  } from './components'  
+// // import Button from './components/Button'
 
-// const Component = () => {};
+// // export {
+// //     Button
+// // }
 
-// export default Component;
+// // export * from './components'
+
+// export {  Button  } from './components'
+// export {  ThemeProvider  } from './components'  
+
+// // const Component = () => {};
+
+// // export default Component;
