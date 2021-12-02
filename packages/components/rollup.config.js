@@ -55,7 +55,7 @@ export default [
         exports: "named",
         preserveModules: true,
         preserveModulesRoot: "src",
-        external: ['@escoleme/meicons-react'],
+        // external: ['@escoleme/meicons-react'],
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
@@ -67,7 +67,7 @@ export default [
         sourcemap: true,
         format: "umd",
         name: 'mecomponents',
-        external: ['@escoleme/meicons-react'],
+        // external: ['@escoleme/meicons-react'],
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
