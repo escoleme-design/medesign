@@ -1,95 +1,78 @@
-import babel from "@rollup/plugin-babel";
-import resolve from "@rollup/plugin-node-resolve";
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import pkg from "./package.json";
-import typescript from 'rollup-plugin-typescript2';
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import dts from "rollup-plugin-dts";
-import { terser } from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss';
+// import filesize from 'rollup-plugin-filesize';
+// import autoprefixer from 'autoprefixer';
 
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const styledComponentsTransformer = createStyledComponentsTransformer();
+import pkg from './package.json';
 
-// Array of extensions to be handled by babel
-const EXTENSIONS = [".ts", ".tsx"];
+const INPUT_FILE_PATH = 'src/index.js';
+const OUTPUT_NAME = 'Example';
 
-// Excluded dependencies - dev dependencies
-// const EXTERNAL = Object.keys(pkg.devDependencies);
+const GLOBALS = {
+  react: 'React',
+  'react-dom': 'ReactDOM',
+  'prop-types': 'PropTypes',
+};
+
+const PLUGINS = [
+  postcss({
+    extract: true,
+    // plugins: [
+    //   autoprefixer,
+    // ],
+  }),
+  babel({
+    babelHelpers: 'runtime',
+    exclude: 'node_modules/**',
+  }),
+  resolve({
+    browser: true,
+    resolveOnly: [
+      /^(?!react$)/,
+      /^(?!react-dom$)/,
+      /^(?!prop-types)/,
+    ],
+  }),
+  commonjs(),
+  // filesize(),
+];
 
 const EXTERNAL = [
   'react',
   'react-dom',
+  'prop-types',
 ];
+
 // https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers
 const CJS_AND_ES_EXTERNALS = EXTERNAL.concat(/@babel\/runtime/);
 
-const plugins = [
-  peerDepsExternal(),
-  commonjs({
-    include: /node_modules/,
-    namedExports: {
-      'node_modules/lodash/index.js': ['get'],
-    }
-  }),
-  resolve(),
-  babel({
-    extensions: EXTENSIONS,
-    babelHelpers: "runtime",  // https://github.com/kraftdorian/react-ts-rollup-starter-lib/issues/1
-    include: EXTENSIONS.map(ext => `src/**/*${ext}`),
-    plugins: ["@babel/plugin-transform-runtime"]
-  }),
-  typescript({
-    tsconfig: './tsconfig.json',
-    transformers: [
-      () => ({
-        before: [styledComponentsTransformer],
-      }),
-    ],
-  }),
-  terser(),
-]
-
-export default [
+const OUTPUT_DATA = [
   {
-    input: 'src/index.ts',
-
-    output: [
-      {
-        dir: "dist",
-        // sourcemap: true,
-        format: "esm",
-        name: 'mecomponents',
-        // exports: "named",
-        // preserveModules: true,
-        // preserveModulesRoot: "src",
-        // external: ['@escoleme/meicons-react'],
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'styled-components': 'styled'
-        }
-      },
-      {
-        dir: "dist",
-        // sourcemap: true,
-        format: "umd",
-        name: 'mecomponents',
-        // external: ['@escoleme/meicons-react'],
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'styled-components': 'styled'
-        }
-      }
-    ],
-    external: ['cjs', 'es'].includes(format) ? CJS_AND_ES_EXTERNALS : EXTERNAL,
-    plugins,
-    // external: EXTERNAL  // https://rollupjs.org/guide/en/#peer-dependencies
+    file: pkg.browser,
+    format: 'umd',
   },
   {
-    input: 'dist/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: "esm" }],
-    external: [/\.css$/],
-    plugins: [dts()],
-  }
+    file: pkg.main,
+    format: 'cjs',
+  },
+  {
+    file: pkg.module,
+    format: 'es',
+  },
 ];
+
+const config = OUTPUT_DATA.map(({ file, format }) => ({
+  input: INPUT_FILE_PATH,
+  output: {
+    file,
+    format,
+    name: OUTPUT_NAME,
+    globals: GLOBALS,
+  },
+  external: ['cjs', 'es'].includes(format) ? CJS_AND_ES_EXTERNALS : EXTERNAL,
+  plugins: PLUGINS,
+}));
+
+export default config;
