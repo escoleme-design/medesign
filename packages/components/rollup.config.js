@@ -14,7 +14,14 @@ const styledComponentsTransformer = createStyledComponentsTransformer();
 const EXTENSIONS = [".ts", ".tsx"];
 
 // Excluded dependencies - dev dependencies
-const EXTERNAL = Object.keys(pkg.devDependencies);
+// const EXTERNAL = Object.keys(pkg.devDependencies);
+
+const EXTERNAL = [
+  'react',
+  'react-dom',
+];
+// https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers
+const CJS_AND_ES_EXTERNALS = EXTERNAL.concat(/@babel\/runtime/);
 
 const plugins = [
   peerDepsExternal(),
@@ -49,12 +56,12 @@ export default [
     output: [
       {
         dir: "dist",
-        sourcemap: true,
+        // sourcemap: true,
         format: "esm",
         name: 'mecomponents',
-        exports: "named",
-        preserveModules: true,
-        preserveModulesRoot: "src",
+        // exports: "named",
+        // preserveModules: true,
+        // preserveModulesRoot: "src",
         // external: ['@escoleme/meicons-react'],
         globals: {
           react: 'React',
@@ -64,7 +71,7 @@ export default [
       },
       {
         dir: "dist",
-        sourcemap: true,
+        // sourcemap: true,
         format: "umd",
         name: 'mecomponents',
         // external: ['@escoleme/meicons-react'],
@@ -75,6 +82,7 @@ export default [
         }
       }
     ],
+    external: ['cjs', 'es'].includes(format) ? CJS_AND_ES_EXTERNALS : EXTERNAL,
     plugins,
     // external: EXTERNAL  // https://rollupjs.org/guide/en/#peer-dependencies
   },
