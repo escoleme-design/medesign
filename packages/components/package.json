@@ -8,6 +8,7 @@
   "main": "build/index.cjs.js",
   "module": "build/index.esm.js",
   "browser": "build/index.js",
+  "types": "build/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -75,6 +76,7 @@
     "chroma-js": "^2.1.2",
     "deepmerge": "^4.2.2",
     "lodash": "^4.17.21",
+    "rollup-plugin-filesize": "^9.1.1",
     "styled-components": "^5.3.1"
   },
   "gitHead": "e27c20595c9804d3b585c737de26ae4f58a3e7b9"

@@ -4,22 +4,20 @@ import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
-// import filesize from 'rollup-plugin-filesize';
-// import autoprefixer from 'autoprefixer';
+import dts from "rollup-plugin-dts";
+import filesize from 'rollup-plugin-filesize';
 
 import pkg from './package.json';
-
 
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
 const INPUT_FILE_PATH = 'src/index.ts';
-const OUTPUT_NAME = 'Example';
+const OUTPUT_NAME = 'mecomponents';
 
 const GLOBALS = {
   react: 'React',
   'react-dom': 'ReactDOM',
-  'prop-types': 'PropTypes',
 };
 
 // Array of extensions to be handled by babel
@@ -55,7 +53,7 @@ const PLUGINS = [
     ],
   }),
   terser(),
-  // filesize(),
+  filesize(),
 ];
 
 const EXTERNAL = [
@@ -94,4 +92,12 @@ const config = OUTPUT_DATA.map(({ file, format }) => ({
   plugins: PLUGINS,
 }));
 
-export default config;
+export default [
+  ...config,
+  {
+    input: 'build/index.d.ts',
+    output: [{ file: 'build/index.d.ts', format: "esm" }],
+    external: [/\.css$/],
+    plugins: [dts()],
+  }
+];
