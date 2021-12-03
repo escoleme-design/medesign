@@ -1,0 +1,41 @@
+import React from 'react';
+declare const style: ["filled", "tonal", "outlined", "text"];
+export declare type Style = typeof style[number];
+declare const ButtonHTMLTypes: ["button", "submit", "reset"];
+export declare type ButtonHTMLType = (typeof ButtonHTMLTypes)[number];
+declare const ButtonTargets: ["_black", "_self", "_parent", "_top"];
+export declare type ButtonTarget = (typeof ButtonTargets)[number];
+declare const ButtonIconAligns: ["left", "right"];
+export declare type ButtonIconAlign = (typeof ButtonIconAligns)[number];
+declare const ButtonSizes: ["small", "medium", "large"];
+export declare type ButtonSize = (typeof ButtonSizes)[number];
+export interface IButtonProps {
+    id?: string;
+    className?: string;
+    variant?: Style;
+    href?: string;
+    type?: ButtonHTMLType;
+    target?: ButtonTarget;
+    disabled?: boolean;
+    disabledOnClick?: boolean;
+    block?: boolean;
+    onClick?: React.MouseEventHandler<HTMLElement>;
+    loading?: boolean;
+    label?: string;
+    success?: boolean;
+    danger?: boolean;
+    'data-testid'?: string;
+    ref?: React.Ref<any>;
+    tabIndex?: number;
+    rtl?: boolean;
+    icon?: JSX.Element;
+    iconAlign?: ButtonIconAlign;
+    loadingLabel?: string;
+    size: ButtonSize;
+}
+export declare type AnchorButtonProps = IButtonProps & Omit<React.AnchorHTMLAttributes<any>, 'type' | 'onClick'>;
+export declare type NativeButtonProps = {
+    htmlType?: ButtonHTMLType;
+} & IButtonProps & Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
+export declare type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
+export {};

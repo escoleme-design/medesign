@@ -13,7 +13,7 @@ import pkg from './package.json';
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
-const INPUT_FILE_PATH = 'src/index.js';
+const INPUT_FILE_PATH = 'src/index.ts';
 const OUTPUT_NAME = 'Example';
 
 const GLOBALS = {
@@ -21,6 +21,9 @@ const GLOBALS = {
   'react-dom': 'ReactDOM',
   'prop-types': 'PropTypes',
 };
+
+// Array of extensions to be handled by babel
+const EXTENSIONS = [".ts", ".tsx"];
 
 const PLUGINS = [
   postcss({
@@ -32,6 +35,7 @@ const PLUGINS = [
   babel({
     babelHelpers: 'runtime',
     exclude: 'node_modules/**',
+    extensions: EXTENSIONS,
   }),
   resolve({
     browser: true,
