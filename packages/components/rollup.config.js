@@ -2,10 +2,16 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
+import typescript from 'rollup-plugin-typescript2';
+import { terser } from 'rollup-plugin-terser';
 // import filesize from 'rollup-plugin-filesize';
 // import autoprefixer from 'autoprefixer';
 
 import pkg from './package.json';
+
+
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 const INPUT_FILE_PATH = 'src/index.js';
 const OUTPUT_NAME = 'Example';
@@ -36,6 +42,15 @@ const PLUGINS = [
     ],
   }),
   commonjs(),
+  typescript({
+    tsconfig: './tsconfig.json',
+    transformers: [
+      () => ({
+        before: [styledComponentsTransformer],
+      }),
+    ],
+  }),
+  terser(),
   // filesize(),
 ];
 
